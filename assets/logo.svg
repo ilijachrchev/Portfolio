@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
+  <defs>
+    <style>
+      .handle { font: 400 72px 'Inter', 'Poppins', 'Montserrat', Arial, sans-serif; letter-spacing: 1px; }
+      .name   { font: 800 300px 'Inter', 'Poppins', 'Montserrat', Arial, sans-serif; }
+    </style>
+  </defs>
+
+  <!-- Handle above the name, much larger -->
+  <text class="handle" x="50%" y="140" text-anchor="middle">
+    <tspan fill="#d31111">@</tspan>
+    <tspan fill="#000000">ilijachrchev</tspan>
+  </text>
+
+  <!-- Name (capital I, max size) -->
+  <text id="nameText" class="name" x="50%" y="420" text-anchor="middle" fill="#000000">Ilija</text>
+
+  <!-- Red dot aligned right after Ilija -->
+  <circle cx="520" cy="350" r="35" fill="#d31111"/>
+</svg>
