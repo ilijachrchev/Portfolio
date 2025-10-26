@@ -1,23 +1,22 @@
 # 🌐 Ilija Chrchev – Personal Portfolio
 
 **Modern, responsive, and animated portfolio built with Next.js and Tailwind CSS.**
-Showcasing my projects, volunteering work, and professional endorsements — all in one minimal, performance-driven site.
+Showcasing my projects, volunteering work and etc. All in one minimal site.
 
 ---
 
 ## 🚀 Overview
 
-This portfolio represents **my personal brand** as a computer science student and developer based in Slovenia.
-It focuses on clarity, interactivity, and storytelling — blending a developer’s precision with a designer’s touch.
+This portfolio reflects who I am as a computer science student and developer in Slovenia. It’s **built to be clear, interactive, and easy to explore.**
 
 Built to be more than just a “resume site,” it features:
 
 * ⚡ **Full dark/light mode system**
 * ✨ **Smooth animations on scroll**
 * 💬 **Live endorsement system** (real-time updates)
-* 🧩 **Dynamic project cards** with progress tracking
-* 🫱‍🫲 **Volunteer & organization showcase** (FAMNIT, MSOS, GDG on Campus)
-* 📱 **Fully responsive** on all devices
+* 🧩 **Dynamic project cards** 
+* 🫱‍🫲 **Volunteer & organization showcase** 
+* 📱 **Fully responsive**
 
 ---
 
@@ -32,7 +31,7 @@ Built to be more than just a “resume site,” it features:
 
 **Backend & Data:**
 
-* Supabase (for endorsements)
+* Supabase (endorsements)
 * Node.js / Next API routes
 
 **Tools:**
@@ -50,32 +49,21 @@ Built to be more than just a “resume site,” it features:
 | 🎨 **Theming**                     | Seamless dark/light mode switch with custom gradients and subtle depth.       |
 | 🧠 **Smart Animations**            | Motion-based reveals on scroll for a smooth, professional UX.                 |
 | 💬 **Endorsements System**         | Real-time comments from peers or collaborators with moderation support.       |
-| 🧱 **Project Grid**                | Dynamic, tag-based project cards with progress indicators for WIP projects.   |
 | 🕴️ **Organizations Section**      | Highlights volunteering, tutoring, and community work in a clean card layout. |
-| 🔗 **Accessibility & Performance** | 100+ Lighthouse score, optimized for readability and speed.                   |
+| 🔗 **Accessibility & Performance** | 100+ Lighthouse score, optimized for readability.                   |
 
 ---
 
 ## 📂 Project Structure
 
 ```bash
-├── public/             # Static assets
-├── components/         # UI components (cards, buttons, forms, etc.)
-├── sections/           # Each major page section
-├── app/                # Next.js app router
-├── lib/                # Configs & utilities
-└── README.md           # You’re here
+├── public/             # assets
+├── components/         # all UI components
+├── sections/           # all sections
+├── app/                # the router
+├── lib/                # utils
+└── README.md           # you are here
 ```
-
----
-
-## 💡 Design Philosophy
-
-> “Simplicity isn’t lack of detail — it’s mastery of it.”
-
-This site is built around **intentional design choices**:
-clean typography, subtle animation, and one consistent accent (the red dot).
-Every interaction is crafted to feel deliberate and balanced.
 
 ---
 
@@ -92,17 +80,9 @@ Visit [http://localhost:3000](http://localhost:3000)
 
 ---
 
-## 📸 Preview
-
-| Light Mode                                    | Dark Mode                                   |
-| --------------------------------------------- | ------------------------------------------- |
-| ![Light Mode Screenshot](./preview-light.png) | ![Dark Mode Screenshot](./preview-dark.png) |
-
----
-
 ## 🤝 Contributing
 
-Suggestions are welcome — feel free to open an issue or pull request.
+Suggestions are welcome, feel free to open an issue or pull request.
 For endorsements, please use the live site form.
 
 ---
@@ -112,21 +92,5 @@ For endorsements, please use the live site form.
 * **Portfolio:** [ilijachrchev.com](https://ilijachrchev.com)
 * **Email:** [ilijachrchev@gmail.com](mailto:ilijachrchev@gmail.com)
 * **LinkedIn:** [linkedin.com/in/ilijachrchev](https://linkedin.com/in/ilijachrchev)
-
----
-
-## 🧾 License
-
-This project is open-source under the **MIT License**.
-You’re free to fork, study, and build upon it — just keep credit where it’s due.
-
----
-
-## 🩸 Final Thought
-
-This isn’t a template — it’s a statement.
-Every pixel, gradient, and line of code was crafted to express **who I am and how I build.**
-
-> “Polished simplicity beats noisy complexity every time.”
 
 ---
