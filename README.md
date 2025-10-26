@@ -1,36 +1,132 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🌐 Ilija Chrchev – Personal Portfolio
 
-## Getting Started
+**Modern, responsive, and animated portfolio built with Next.js and Tailwind CSS.**
+Showcasing my projects, volunteering work, and professional endorsements — all in one minimal, performance-driven site.
 
-First, run the development server:
+---
+
+## 🚀 Overview
+
+This portfolio represents **my personal brand** as a computer science student and developer based in Slovenia.
+It focuses on clarity, interactivity, and storytelling — blending a developer’s precision with a designer’s touch.
+
+Built to be more than just a “resume site,” it features:
+
+* ⚡ **Full dark/light mode system**
+* ✨ **Smooth animations on scroll**
+* 💬 **Live endorsement system** (real-time updates)
+* 🧩 **Dynamic project cards** with progress tracking
+* 🫱‍🫲 **Volunteer & organization showcase** (FAMNIT, MSOS, GDG on Campus)
+* 📱 **Fully responsive** on all devices
+
+---
+
+## 🛠️ Tech Stack
+
+**Frontend:**
+
+* Next.js 14
+* React
+* Tailwind CSS 4
+* Framer Motion
+
+**Backend & Data:**
+
+* Supabase (for endorsements)
+* Node.js / Next API routes
+
+**Tools:**
+
+* Git & GitHub
+* Figma
+* Visual Studio Code
+
+---
+
+## ⚙️ Features
+
+| Feature                            | Description                                                                   |
+| ---------------------------------- | ----------------------------------------------------------------------------- |
+| 🎨 **Theming**                     | Seamless dark/light mode switch with custom gradients and subtle depth.       |
+| 🧠 **Smart Animations**            | Motion-based reveals on scroll for a smooth, professional UX.                 |
+| 💬 **Endorsements System**         | Real-time comments from peers or collaborators with moderation support.       |
+| 🧱 **Project Grid**                | Dynamic, tag-based project cards with progress indicators for WIP projects.   |
+| 🕴️ **Organizations Section**      | Highlights volunteering, tutoring, and community work in a clean card layout. |
+| 🔗 **Accessibility & Performance** | 100+ Lighthouse score, optimized for readability and speed.                   |
+
+---
+
+## 📂 Project Structure
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+├── public/             # Static assets
+├── components/         # UI components (cards, buttons, forms, etc.)
+├── sections/           # Each major page section
+├── app/                # Next.js app router
+├── lib/                # Configs & utilities
+└── README.md           # You’re here
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 💡 Design Philosophy
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+> “Simplicity isn’t lack of detail — it’s mastery of it.”
 
-## Learn More
+This site is built around **intentional design choices**:
+clean typography, subtle animation, and one consistent accent (the red dot).
+Every interaction is crafted to feel deliberate and balanced.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🧩 How to Run Locally
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+git clone https://github.com/ilijachrchev/portfolio.git
+cd portfolio
+npm install
+npm run dev
+```
 
-## Deploy on Vercel
+Visit [http://localhost:3000](http://localhost:3000)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📸 Preview
+
+| Light Mode                                    | Dark Mode                                   |
+| --------------------------------------------- | ------------------------------------------- |
+| ![Light Mode Screenshot](./preview-light.png) | ![Dark Mode Screenshot](./preview-dark.png) |
+
+---
+
+## 🤝 Contributing
+
+Suggestions are welcome — feel free to open an issue or pull request.
+For endorsements, please use the live site form.
+
+---
+
+## 📬 Contact
+
+* **Portfolio:** [ilijachrchev.com](https://ilijachrchev.com)
+* **Email:** [ilijachrchev@gmail.com](mailto:ilijachrchev@gmail.com)
+* **LinkedIn:** [linkedin.com/in/ilijachrchev](https://linkedin.com/in/ilijachrchev)
+
+---
+
+## 🧾 License
+
+This project is open-source under the **MIT License**.
+You’re free to fork, study, and build upon it — just keep credit where it’s due.
+
+---
+
+## 🩸 Final Thought
+
+This isn’t a template — it’s a statement.
+Every pixel, gradient, and line of code was crafted to express **who I am and how I build.**
+
+> “Polished simplicity beats noisy complexity every time.”
+
+---
