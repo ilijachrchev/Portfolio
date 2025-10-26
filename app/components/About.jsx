@@ -29,12 +29,13 @@ const About = ({isDarkMode}) => {
             initial={{opacity: 0}} whileInView={{opacity: 1}} transition={{duration: 0.6, delay: 0.8}}
             className='flex-1'>
                 <p className='mb-10 max-w-2xl font-Ovo'>
-                    I am Ilija Chrchev, a computer science student passionate about technology,
-                     digital marketing, and creative problem-solving. My experiences in sports,
-                      hospitality, and marketing have shaped my teamwork, leadership,
-                       and adaptability while sharpening my technical and communication skills.
-                        I am always eager to learn, take on new challenges, and create a positive
-                         impact through both tech and people-focused work.
+                    Hi, I’m Ilija Chrchev. A computer science student with a passion
+                     for continuous learning and creation.
+                    Originally from Macedonia and now studying in Slovenia,
+                     I’ve learned to embrace change, adapt quickly, and stay curious.
+                    Each project I work on pushes me to grow, explore new ideas,
+                     and become a better version of myself.
+                    Progress keeps me motivated, and every challenge is another step forward.
                 </p>
 
                 <motion.h4

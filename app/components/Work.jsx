@@ -31,14 +31,14 @@ const projects = [
     featured: true,
   },
   {
-    title: 'Student Tutoring Platform',
-    event: 'In Progress',
-    role: 'Full-stack Developer',
+    title: 'SendWise-AI',
+    event: 'In Development– SaaS Chatbot Platform',
+    role: 'Builder',
     description:
-      'Educational web app to help students find and book tutoring sessions: authenticated profiles, subject tagging and search, availability scheduling, booking flow and lightweight messaging.',
-    stack: ['Next.js', 'Node.js', 'TailwindCSS', 'Python', 'PostrgreSQL', 'NextAuth'],
+      'Developing an intelligent email automation platform that uses AI to craft, optimize, and schedule marketing campaigns. Focused on enhancing personalization and efficiency for small businesses.',
+    stack: ['Next.js', 'React', 'Clerk Auth', 'Stripe', 'PostrgreSQL', 'OpenAI API'],
     github: null,
-    type: 'Web App',
+    type: 'SaaS',
     featured: false,
   },
 ];
@@ -73,10 +73,7 @@ const Work = () => {
     initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
      transition={{ duration: 1 }} 
     id="work" ref={sectionRef} className="w-full px-[12%] py-16 scroll-m-20">
-      <motion.h4
-      initial={{ y: -20, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ delay: 0.3, duration: 0.5 }} 
 
-      className="text-center mb-2 text-lg font-Ovo">Smeni go posle</motion.h4>
 
       <motion.h2
       initial={{ y: -20, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ delay: 0.5, duration: 0.5 }}

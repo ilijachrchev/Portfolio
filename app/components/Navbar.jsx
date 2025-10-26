@@ -6,6 +6,7 @@ import Link from 'next/link'
 
 const Navbar = ({isDarkMode, setIsDarkMode}) => {
 
+    const linkUnderline = "relative font-Ovo after:content-[] after:absolute after:left-1/2 after:bottom-[-3px] after:-translate-x-1/2 after:w-0 after:h-[2px] after:bg-[var(--color-darkHover)] dark:after:bg-[var(--color-lightHover)] after:transition-all after:duration-300 hover:after:w-[80%]"
     const [isScroll, setIsScroll] = useState(false);
     const sideMenuRef = useRef();
     const openMenu = ()=> {
@@ -42,11 +43,15 @@ const Navbar = ({isDarkMode, setIsDarkMode}) => {
                 absolute left-1/2 -translate-x-1/2 
                 ${isScroll ? "" : "bg-white shadow-sm bg-opacity-50 border backdrop-blur-md"}
                 `}>
-                <li><Link className='font-Ovo' href="/#top">Home</Link></li>
-                <li><Link className='font-Ovo' href="/#about">About</Link></li>
-                <li><Link className='font-Ovo' href="/#service">Services</Link></li>
-                <li><Link className='font-Ovo' href="/#work">Work</Link></li>
-                <li><Link className='font-Ovo' href="/endorsements-submit-test">Endorsements</Link></li>
+                <li><Link className={linkUnderline} href="/#top">Home</Link></li>
+
+                <li><Link className={linkUnderline} href="/#about">About</Link></li>
+
+                <li><Link className={linkUnderline} href="/#service">Volunteering</Link></li>
+
+                <li><Link className={linkUnderline} href="/#work">Projects</Link></li>
+
+                <li><Link className={linkUnderline} href="/#endorsements-home">Endorsements</Link></li>
             </ul>
 
             <div className='flex items-center gap-4'>
@@ -76,9 +81,9 @@ const Navbar = ({isDarkMode, setIsDarkMode}) => {
 
                 <li><Link className='font-Ovo' onClick={closeMenu} href="/#top">Home</Link></li>
                 <li><Link className='font-Ovo' onClick={closeMenu} href="/#about">About</Link></li>
-                <li><Link className='font-Ovo' onClick={closeMenu} href="/#service">Services</Link></li>
-                <li><Link className='font-Ovo' onClick={closeMenu} href="/#work">Work</Link></li>
-                <li><Link className='font-Ovo' onClick={closeMenu} href="/endorsements-submit-test">Endorse</Link></li>
+                <li><Link className='font-Ovo' onClick={closeMenu} href="/#service">Orgs</Link></li>
+                <li><Link className='font-Ovo' onClick={closeMenu} href="/#work">Projects</Link></li>
+                <li><Link className='font-Ovo' onClick={closeMenu} href="/#endorsements-home">Endorsements</Link></li>
             </ul>
 
 

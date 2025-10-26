@@ -6,6 +6,7 @@ import Footer from '../components/Footer.jsx'
 import Header from '../components/Header.jsx'
 import Services from '../components/Services.jsx'
 import Work from '../components/Work.jsx'
+import EndorsementsHome from '../components/EndorsementsHome'
 
 export default function Home() {
   const { isDarkMode } = useTheme()
@@ -16,6 +17,7 @@ export default function Home() {
       <About isDarkMode={isDarkMode} />
       <Services isDarkMode={isDarkMode} />
       <Work isDarkMode={isDarkMode} />
+      <EndorsementsHome />
       <Contact isDarkMode={isDarkMode} />
       <Footer isDarkMode={isDarkMode} />
     </>

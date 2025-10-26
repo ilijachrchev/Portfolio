@@ -25,7 +25,8 @@ const Header = ({isDarkMode, setIsDarkMode}) => {
             <motion.p initial={{opacity: 0}} whileInView={{ opacity: 1}}
              transition={{duration: 0.6, delay: 0.7}}
              className='max-w-2xl mx-auto font-Ovo'>
-                I am Ilija asdjsahdjhasdhupasd asdbhjasnbdasd asdhas hjasdansbdahujsn js
+                I’m building my path through curiosity, discipline, and creation! One step, one project,
+                 one dream at a time.
             </motion.p>
 
             <div className='flex flex-col sm:flex-row items-center gap-4 mt-4'>

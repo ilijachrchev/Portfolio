@@ -41,10 +41,13 @@ import vs from './visualstudio.png';
 import ssms from './ssms.png';
 import react from './react.png';
 import nodejs from './nodejs.png';
+import tutor from './tutor.png';
+import member from './member.png'
 
 export const assets = {
     user_image,
     code_icon,
+    member,
     code_icon_dark,
     edu_icon,
     edu_icon_dark,
@@ -85,7 +88,8 @@ export const assets = {
     react,
     ssms,
     dotnet,
-    vs
+    vs,
+    tutor
 };
 
 export const workData = [
@@ -100,8 +104,8 @@ export const workData = [
         bgImage: '/work-2.png',
     },
     {
-        title: 'Student Tutoring Platform',
-        description: 'In Progress – Educational Web App',
+        title: 'AI Chatbot SaaS Platform',
+        description: 'In Development',
         bgImage: '/work-3.png',
     },
     {
@@ -112,8 +116,55 @@ export const workData = [
 ]
 
 export const serviceData = [
-    { icon: assets.web_icon, title: 'Student Tutor', description: 'Supporting fellow students by explaining course topics, answering questions, and sharing study strategies to make learning easier and more enjoyable.', link: '' },
-    { icon: assets.mobile_icon, title: 'Active Member', description: 'Contributing to student events and activities by taking on tasks, supporting initiatives, and helping build a welcoming community.', link: '' },
+    { icon: assets.tutor, title: 'Student Tutor',
+        organization: "FAMNIT - University of Primorska",
+    description: 'Supporting fellow students by explaining course topics, answering questions, and sharing study strategies to make learning easier and more enjoyable.',
+     details: {
+      location: "Koper, Slovenia",
+      period: "01/09/2025 – Present",
+      highlights: [
+        "Improving student confidence by explaining complex topics in simple, clear ways",
+        "Encouraging collaborative learning and peer discussion",
+        "Developing my technical and teaching skills while supporting others",
+      ],
+      links: [
+        { label: "FAMNIT Website", href: "https://www.famnit.upr.si/en/education/tutoring-system" },
+      ],
+    },
+    link: "#", },
+    { icon: assets.member, title: 'Active Member',
+        organization: "MSOS - Macedonian Student Organization in Slovenia",
+    description: 'Being an active part of a motivated team that brings students closer through meaningful events and shared experiences. Through these activities, I’ve developed strong teamwork and organizational skills while helping create a more connected and supportive student community.',
+     details: {
+      location: "Koper, Slovenia",
+      period: "01/05/2025 – Present",
+      highlights: [
+        "Learning teamwork, organization, and event management through hands-on involvement",
+        "Contributing creative ideas to improve engagement and participation",
+        "Helping coordinate academic and cultural activities throughout the year",
+      ],
+      links: [
+        { label: "MSOS Website", href: "https://www.msosorg.com/" },
+      ],
+    },
+    link: "#", },
+    { icon: assets.edu_icon, title: 'GDG on Campus – Member',
+        organization: "Google Developer Group",
+        description: 'As part of the organizing team, I assist with planning and running developer events, from preparing materials and managing registrations to helping attendees during workshops. I enjoy making events run seamlessly and welcoming for everyone.',
+        details: {
+            period: 'Oct 2024 – Present',
+            location: 'Koper, Slovenia',    
+            highlights: [
+                'Planned and supported developer events on campus',
+                'Handled coordination between teams and speakers',
+                'Recently joined the team and excited to contribute more',
+            ],
+            links: [
+                { label: "GDG Website", href: "https://developers.google.com/community/gdg" },
+            ],
+        },
+
+    }
 ]
 
 export const infoList = [

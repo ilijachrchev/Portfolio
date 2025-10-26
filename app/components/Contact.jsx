@@ -50,7 +50,7 @@ const Contact = ({isDarkMode}) => {
 
         <motion.h2
         initial = {{ y: -20, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ delay: 0.5, duration: 0.5 }}
-        className='text-center text-5xl font-Ovo'>Get in Tocuh</motion.h2>
+        className='text-center text-5xl font-Ovo'>Get in Touch</motion.h2>
 
         <motion.p
         initial = {{opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.7, duration: 0.5 }}
