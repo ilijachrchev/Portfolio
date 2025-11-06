@@ -43,11 +43,13 @@ import react from './react.png';
 import nodejs from './nodejs.png';
 import tutor from './tutor.png';
 import member from './member.png'
+import iaeste from './iaestelogo.png'
 
 export const assets = {
     user_image,
     code_icon,
     member,
+    iaeste,
     code_icon_dark,
     edu_icon,
     edu_icon_dark,
@@ -148,9 +150,10 @@ export const serviceData = [
       ],
     },
     link: "#", },
-    { icon: assets.edu_icon, title: 'GDG on Campus – Member',
+
+    { icon: assets.edu_icon, title: 'GDG on Campus – Social Media Manager',
         organization: "Google Developer Group",
-        description: 'As part of the organizing team, I assist with planning and running developer events, from preparing materials and managing registrations to helping attendees during workshops. I enjoy making events run seamlessly and welcoming for everyone.',
+        description: 'As part of the organizing team, I help plan and run developer events, manage registrations, and assist attendees during workshops. I also handle social media promotion to boost event engagement and create a welcoming community atmosphere.',
         details: {
             period: 'Oct 2024 – Present',
             location: 'Koper, Slovenia',    
@@ -163,7 +166,26 @@ export const serviceData = [
                 { label: "GDG Website", href: "https://developers.google.com/community/gdg" },
             ],
         },
+    },
 
+    {
+        icon: assets.iaeste,
+        title: 'IT Team Member',
+        organization: "IAESTE Slovenia",
+        description: 'As part of IAESTE Slovenia’s IT team, I help maintain and improve the organization’s digital tools, ensuring smooth communication and collaboration across student members and international partners.',
+        link: "https://iaeste.si",
+        details: {
+            period: 'October 2025 – Present',
+            location: 'Slovenia',
+            highlights: [
+                "Supporting website updates and digital infrastructure",
+                "Collaborating with team members to optimize internal systems",
+                "Enhancing tech-based solutions to improve student exchange coordination"
+            ],
+            links: [
+                { label: "IAESTE Webiste", href: "https://iaeste.si" },
+            ],
+        }
     }
 ]
 

@@ -44,7 +44,7 @@ const Services = ({isDarkMode}) => {
 
         <motion.div
         initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.9, duration: 0.6 }} 
-        className={`grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 my-10`}>
+        className={`grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 my-10`}>
             {serviceData.map(({icon, title, description, link, organization, details}, index)=>(
                 <motion.div
                 whileHover={{ scale: 1.05 }}
