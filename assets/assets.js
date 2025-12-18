@@ -118,6 +118,50 @@ export const workData = [
 ]
 
 export const serviceData = [
+
+    {
+        icon: assets.iaeste,
+        title: 'President on Board',
+        organization: "IAESTE LC Koper",
+        description: 'Leading the local IAESTE committee by coordinating student volunteers, managing partnerships and events, and representing the organization at the national level.',
+        details: {
+            location: "Koper, Slovenia",
+            period: "01/10/2025 – Present",
+            highlights: [
+            "Leading and coordinating the local IAESTE committee",
+            "Managing partnerships, events, and volunteer activities",
+            "Representing IAESTE LC Koper at the national level",
+            "Developing leadership, organizational, and communication skills",
+            ],
+            links: [
+            { label: "IAESTE Website", href: "https://iaeste.si/" },
+            ],
+        },
+        link: "#",
+    },
+
+    {
+        icon: assets.edu_icon,
+        title: 'Student Council Representative (Computer Science)',
+        organization: "Student Council (Študentski svet) – UP FAMNIT",
+        description: 'Elected as the only Computer Science student representative, actively contributing to council discussions, academic improvements, and representing CS student interests.',
+        details: {
+            location: "Koper, Slovenia",
+            period: "01/11/2025 – Present",
+            highlights: [
+            "Elected as the only Computer Science student representative",
+            "Participating in regular council meetings and academic committees",
+            "Contributing to discussions on academic standards and improvements",
+            "Representing concerns and suggestions of Computer Science students",
+            ],
+            links: [
+            { label: "UP FAMNIT", href: "https://www.famnit.upr.si/" },
+            ],
+        },
+        link: "#",
+    },
+
+
     { icon: assets.tutor, title: 'Student Tutor',
         organization: "FAMNIT - University of Primorska",
     description: 'Supporting fellow students by explaining course topics, answering questions, and sharing study strategies to make learning easier and more enjoyable.',
@@ -131,22 +175,6 @@ export const serviceData = [
       ],
       links: [
         { label: "FAMNIT Website", href: "https://www.famnit.upr.si/en/education/tutoring-system" },
-      ],
-    },
-    link: "#", },
-    { icon: assets.member, title: 'Active Member',
-        organization: "MSOS - Macedonian Student Organization in Slovenia",
-    description: 'Being an active part of a motivated team that brings students closer through meaningful events and shared experiences. Through these activities, I’ve developed strong teamwork and organizational skills while helping create a more connected and supportive student community.',
-     details: {
-      location: "Koper, Slovenia",
-      period: "01/05/2025 – Present",
-      highlights: [
-        "Learning teamwork, organization, and event management through hands-on involvement",
-        "Contributing creative ideas to improve engagement and participation",
-        "Helping coordinate academic and cultural activities throughout the year",
-      ],
-      links: [
-        { label: "MSOS Website", href: "https://www.msosorg.com/" },
       ],
     },
     link: "#", },
@@ -186,7 +214,25 @@ export const serviceData = [
                 { label: "IAESTE Webiste", href: "https://iaeste.si" },
             ],
         }
-    }
+    },
+
+    { icon: assets.member, title: 'Active Member',
+        organization: "MSOS - Macedonian Student Organization in Slovenia",
+        description: 'Being an active part of a motivated team that brings students closer through meaningful events and shared experiences. Through these activities, I’ve developed strong teamwork and organizational skills while helping create a more connected and supportive student community.',
+        details: {
+        location: "Koper, Slovenia",
+        period: "01/05/2025 – Present",
+        highlights: [
+            "Learning teamwork, organization, and event management through hands-on involvement",
+            "Contributing creative ideas to improve engagement and participation",
+            "Helping coordinate academic and cultural activities throughout the year",
+        ],
+        links: [
+            { label: "MSOS Website", href: "https://www.msosorg.com/" },
+        ],
+        },
+    link: "#", 
+    },
 ]
 
 export const infoList = [
