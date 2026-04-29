@@ -1,95 +1,176 @@
 'use client'
-import { assets } from '@/assets/assets'
-import Image from 'next/image'
-import React, { useEffect, useRef, useState } from 'react'
+
+import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
+import { Sun, Moon, Menu, X, ArrowUpRight } from 'lucide-react'
+import { useTheme } from '../(site)/components/ThemeProvider'
 
-const Navbar = ({isDarkMode, setIsDarkMode}) => {
+const NAV_LINKS = [
+  { id: 'home', label: 'Home', href: '#home' },
+  { id: 'about', label: 'About', href: '#about' },
+  { id: 'service', label: 'Volunteering', href: '#service' },
+  { id: 'work', label: 'Projects', href: '#work' },
+  { id: 'endorsements-home', label: 'Endorsements', href: '#endorsements-home' },
+]
 
-    const linkUnderline = "relative font-Ovo after:content-[] after:absolute after:left-1/2 after:bottom-[-3px] after:-translate-x-1/2 after:w-0 after:h-[2px] after:bg-[var(--color-darkHover)] dark:after:bg-[var(--color-lightHover)] after:transition-all after:duration-300 hover:after:w-[80%]"
-    const [isScroll, setIsScroll] = useState(false);
-    const sideMenuRef = useRef();
-    const openMenu = ()=> {
-        sideMenuRef.current.style.transform = 'translateX(-16rem)'
+export default function Navbar() {
+  const { isDarkMode, setIsDarkMode } = useTheme()
+  const [scrolled, setScrolled] = useState(false)
+  const [active, setActive] = useState('home')
+  const [mobileOpen, setMobileOpen] = useState(false)
+  const drawerRef = useRef(null)
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 50)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  useEffect(() => {
+    const ids = NAV_LINKS.map((l) => l.id).concat('contact')
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]
+        if (visible) setActive(visible.target.id)
+      },
+      { rootMargin: '-45% 0px -45% 0px', threshold: [0, 0.01, 0.1] }
+    )
+    ids.forEach((id) => {
+      const el = document.getElementById(id)
+      if (el) observer.observe(el)
+    })
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? 'hidden' : ''
+    return () => {
+      document.body.style.overflow = ''
     }
-    const closeMenu = ()=> {
-        sideMenuRef.current.style.transform = 'translateX(16rem)'
-    }
-
-    useEffect(()=>{
-        window.addEventListener('scroll',()=> {
-            if(scrollY > 50) {
-                setIsScroll(true);
-            } else {
-                setIsScroll(false);
-            }
-        })
-    },[])
+  }, [mobileOpen])
 
   return (
     <>
-        <div className={`fixed top-0 right-0 w-11/12 -z-10 translate-y-[-80%] ${ isDarkMode ? "hidden" : "" }`}>
-            <Image src={assets.header_bg_color} alt='' className='w-full' />
-        </div>
+      <nav
+        className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
+          scrolled ? 'liquid-glass' : ''
+        }`}
+        aria-label="Primary"
+      >
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 md:px-8">
+          <Link
+            href="#home"
+            aria-label="Ilija, home"
+            className="flex items-center gap-1 font-display text-2xl italic text-foreground"
+            style={{ letterSpacing: '-0.01em' }}
+          >
+            <span>ilija</span>
+            <span className="-mb-1 ml-0.5 h-1.5 w-1.5 rounded-full bg-primary" aria-hidden="true" />
+          </Link>
 
-        <nav className={`w-full fixed px-5 lg:px-8 xl:px-[8%] py-4 flex items-center justify-between z-50 
-        ${isScroll ? "bg-white/60 backdrop-blur-md ring-1 ring-black/10 shadow-sm" : ""}
-         ${isDarkMode ? "bg-darkTheme shadow-white/20" : ""}`}>
-            <Link href="#top">
-                <Image src={isDarkMode ? assets.logo_dark : assets.logo} className='w-28 cursor-pointer mr-14' alt="" />
+          <div className="hidden items-center gap-8 text-[13.5px] md:flex">
+            {NAV_LINKS.map((link) => (
+              <Link
+                key={link.id}
+                href={link.href}
+                data-nav={link.id}
+                className={`text-foreground transition-opacity duration-200 ${
+                  active === link.id ? 'opacity-100' : 'opacity-60 hover:opacity-100'
+                }`}
+                style={{ letterSpacing: '0.005em' }}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+
+          <div className="flex items-center gap-2.5">
+            <button
+              type="button"
+              onClick={() => setIsDarkMode((v) => !v)}
+              aria-label="Toggle theme"
+              aria-pressed={isDarkMode}
+              className="liquid-glass inline-flex h-9 w-9 items-center justify-center rounded-full text-foreground transition-transform duration-200 hover:-translate-y-px"
+            >
+              {isDarkMode ? (
+                <Sun className="h-4 w-4" aria-hidden="true" />
+              ) : (
+                <Moon className="h-4 w-4" aria-hidden="true" />
+              )}
+            </button>
+
+            <Link
+              href="#contact"
+              className="liquid-glass hidden items-center gap-1.5 rounded-full px-4 py-2 text-[13.5px] text-foreground transition-transform duration-200 hover:-translate-y-px lg:inline-flex"
+              style={{ letterSpacing: '0.005em' }}
+            >
+              Contact
+              <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
             </Link>
 
-            <ul className={`hidden md:flex items-center gap-6 lg:gap-8 rounded-full px-12 py-3
-                absolute left-1/2 -translate-x-1/2 
-                ${isScroll ? "" : "bg-white shadow-sm bg-opacity-50 border backdrop-blur-md"}
-                `}>
-                <li><Link className={linkUnderline} href="/#top">Home</Link></li>
+            <button
+              type="button"
+              onClick={() => setMobileOpen(true)}
+              aria-label="Open menu"
+              aria-expanded={mobileOpen}
+              className="liquid-glass inline-flex h-9 w-9 items-center justify-center rounded-full text-foreground md:hidden"
+            >
+              <Menu className="h-4 w-4" aria-hidden="true" />
+            </button>
+          </div>
+        </div>
+      </nav>
 
-                <li><Link className={linkUnderline} href="/#about">About</Link></li>
+      <div
+        className={`fixed inset-0 z-[60] bg-foreground/30 backdrop-blur-sm transition-opacity duration-300 md:hidden ${
+          mobileOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
+        }`}
+        onClick={() => setMobileOpen(false)}
+        aria-hidden="true"
+      />
 
-                <li><Link className={linkUnderline} href="/#service">Volunteering</Link></li>
+      <aside
+        ref={drawerRef}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Mobile navigation"
+        className={`fixed right-0 top-0 z-[70] flex h-full w-72 flex-col gap-2 bg-background p-8 pt-20 shadow-2xl transition-transform duration-300 md:hidden ${
+          mobileOpen ? 'translate-x-0' : 'translate-x-full'
+        }`}
+      >
+        <button
+          type="button"
+          onClick={() => setMobileOpen(false)}
+          aria-label="Close menu"
+          className="absolute right-5 top-5 inline-flex h-9 w-9 items-center justify-center rounded-full text-foreground hover:bg-muted"
+        >
+          <X className="h-4 w-4" aria-hidden="true" />
+        </button>
 
-                <li><Link className={linkUnderline} href="/#work">Projects</Link></li>
-
-                <li><Link className={linkUnderline} href="/#endorsements-home">Endorsements</Link></li>
-            </ul>
-
-            <div className='flex items-center gap-4'>
-                
-                <button onClick={()=> setIsDarkMode(prev => !prev)}>
-                    <Image src={isDarkMode ? assets.sun_icon : assets.moon_icon} alt='' className='w-6 cursor-pointer' />
-                </button>
-
-                <Link href="/#contact" className={`hidden lg:flex items-center gap-3 px-10 py-2.5 border border-gray-500 rounded-full ml-4 font-Ovo
-                    ${isDarkMode ? "border-white/50" : ""}`}>Contact 
-                    <Image src={isDarkMode ? assets.arrow_icon_dark : assets.arrow_icon } alt="" className='w-3'/></Link>
-
-                    <button className='block md:hidden ml-3' onClick={openMenu}>
-                        <Image src={isDarkMode ? assets.menu_white : assets.menu_black} alt='' className='w-6' />
-                    </button>
-            </div>
-
-            {/* ----------- mobile menu --------- */}
-
-            <ul ref={sideMenuRef} className={`flex md:hidden flex-col gap-4 py-20 px-10 fixed -right-64
-             top-0 bottom-0 2-64 z-50 h-screen bg-rose-50 transition duration-500
-             ${isDarkMode ? "backdrop-blur-md" : ""}`}>
-                
-                <div className='absolute right-6 top-6' onClick={closeMenu}>
-                    <Image src={isDarkMode ? assets.close_white : assets.close_black} alt='' className='w-5 cursor-pointer' />
-                </div>
-
-                <li><Link className='font-Ovo' onClick={closeMenu} href="/#top">Home</Link></li>
-                <li><Link className='font-Ovo' onClick={closeMenu} href="/#about">About</Link></li>
-                <li><Link className='font-Ovo' onClick={closeMenu} href="/#service">Orgs</Link></li>
-                <li><Link className='font-Ovo' onClick={closeMenu} href="/#work">Projects</Link></li>
-                <li><Link className='font-Ovo' onClick={closeMenu} href="/#endorsements-home">Endorsements</Link></li>
-            </ul>
-
-
+        <nav className="flex flex-col gap-1" aria-label="Mobile primary">
+          {NAV_LINKS.map((link) => (
+            <Link
+              key={link.id}
+              href={link.href}
+              onClick={() => setMobileOpen(false)}
+              className="rounded-lg px-3 py-2.5 font-display text-lg text-foreground transition-colors hover:bg-muted"
+            >
+              {link.label}
+            </Link>
+          ))}
+          <Link
+            href="#contact"
+            onClick={() => setMobileOpen(false)}
+            className="mt-4 inline-flex items-center justify-between rounded-full bg-primary px-5 py-3 text-sm font-medium text-primary-foreground"
+          >
+            Contact
+            <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+          </Link>
         </nav>
+      </aside>
     </>
   )
 }
-
-export default Navbar

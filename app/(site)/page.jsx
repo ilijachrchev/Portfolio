@@ -13,7 +13,7 @@ export default function Home() {
 
   return (
     <>
-      <Header isDarkMode={isDarkMode} />
+      <Header />
       <About isDarkMode={isDarkMode} />
       <Services isDarkMode={isDarkMode} />
       <Work isDarkMode={isDarkMode} />
