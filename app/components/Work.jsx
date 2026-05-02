@@ -1,191 +1,281 @@
-'use client';
+'use client'
 
-import React, { useEffect, useRef } from 'react';
-import { Github, ExternalLink } from 'lucide-react';
-import { Button } from '../components/ui/button';
-import {motion} from "motion/react"
-import { OrbitProgress } from 'react-loading-indicators';
-
+import { motion } from 'motion/react'
+import { Github, ExternalLink, ArrowUpRight } from 'lucide-react'
+import { OrbitProgress } from 'react-loading-indicators'
+import { Button } from '../components/ui/button'
+import ScrollRail from './ScrollRail'
 
 const projects = [
   {
-    title: 'Port Optimization with AI',
-    event: 'GDG Hackathon 2025',
-    role: 'Team Lead, Backend & Database, System Integrator',
+    title: 'SendWise-AI',
+    event: 'Nov 2025 – Present',
+    role: 'Builder',
     description:
-      'Intelligent port management system addressing berth allocation, vessel queuing, and port optimization using AI predictions. Built a comprehensive solution integrating multiple technologies.',
-    stack: ['C# .NET', 'MySQL', 'React', 'Python', 'Unity', 'AI'],
-    github: 'https://github.com/ilijachrchev/Full-App-Hackathon.git',
+      'SaaS platform for AI-powered chatbot and email automation. Experimenting with message routing, automation logic, and system design to optimize response quality and performance.',
+    stack: ['Next.js', 'React', 'Node.js', 'Clerk', 'Stripe', 'PostgreSQL', 'OpenAI API'],
+    github: 'https://github.com/ilijachrchev/ChatBot-AI',
+    live: 'https://www.sendwiseai.com/',
+    type: 'SaaS',
+    featured: true,
+    inDevelopment: true,
+  },
+  {
+    title: 'AI-Detective',
+    event: 'DragonHack · April 2026',
+    role: 'Builder',
+    description:
+      'Crime scene analysis assistant using OAK-D camera for spatial scanning with depth data, AI-driven questioning for probability analysis, and a frame annotation system for evidence documentation.',
+    stack: ['Python', 'React', 'FastAPI', 'Gemini API', 'DepthAI'],
+    github: 'https://github.com/FT1E/AI-Detective-K',
+    live: null,
     type: 'Hackathon',
     featured: true,
   },
   {
-    title: 'Personal Portfolio Website',
-    event: 'Side Project',
+    title: 'ReachLog',
+    event: 'April 2026 – Present',
+    role: 'Builder',
+    description:
+      'Job outreach tracker with skill gap analytics, multi-platform internship scraper, Chrome extension for LinkedIn outreach automation, and email parser for tracking applications.',
+    stack: ['C#', '.NET', 'TypeScript', 'Angular', 'PostgreSQL', 'Docker'],
+    github: 'https://github.com/ilijachrchev/reachlog',
+    live: null,
+    type: 'Full-Stack',
+    featured: true,
+    inDevelopment: true,
+  },
+  {
+    title: 'Personal Portfolio',
+    event: 'Oct 2025',
     role: 'Designer & Developer',
     description:
-      "Responsie portfolio built with Next.js and Tailwind 4 featuring a frosted glass nabar,smooth section naigation, dark mode and reusable card components.",
-    stack: ['React', 'Next.js', 'TailwindCSS'],
-    github: 'https://github.com/ilijachrchev/Full-App-Hackathon.git',
+      'Polished, responsive portfolio with adaptive theming and a reusable component architecture. Frosted-glass navbar, smooth section navigation, and dark mode.',
+    stack: ['Next.js', 'React', 'TailwindCSS'],
+    github: 'https://github.com/ilijachrchev/portfolio',
+    live: 'https://ilijachrchev.com',
     type: 'Web App',
     featured: true,
   },
   {
-    title: 'SendWise-AI',
-    event: 'In Development– SaaS Chatbot Platform',
-    role: 'Builder',
+    title: 'Port Optimization with AI',
+    event: 'GDG Hackathon · May 2025',
+    role: 'Team Lead, Backend & Database, System Integrator',
     description:
-      'Developing an intelligent email automation platform that uses AI to craft, optimize, and schedule marketing campaigns. Focused on enhancing personalization and efficiency for small businesses.',
-    stack: ['Next.js', 'React', 'Clerk Auth', 'Stripe', 'PostrgreSQL', 'OpenAI API'],
-    github: null,
-    type: 'SaaS',
+      'Real-time port operations system modeling berth allocation, vessel queuing, and traffic flow under realistic constraints. Scheduling and analysis layer adapts to changing arrivals and external conditions.',
+    stack: ['C#', '.NET', 'Python', 'React', 'SQL', 'Unity'],
+    github: 'https://github.com/ilijachrchev/Full-App-Hackathon.git',
+    live: null,
+    type: 'Hackathon',
     featured: false,
   },
-];
+  {
+    title: 'NFT Wash Trading Detection',
+    event: 'Dec 2025 – Feb 2026',
+    role: 'Builder',
+    description:
+      'Graph-based system for detecting wash trading behaviour in NFT markets. Evaluates sequential, parallel, and distributed processing strategies on real transaction data.',
+    stack: ['Java', 'MPJ'],
+    github: 'https://github.com/ilijachrchev/NFTWashTradingRecognition',
+    live: null,
+    type: 'Research',
+    featured: false,
+  },
+]
 
-const Work = () => {
-  const sectionRef = useRef(null);
+function ProjectActions({ project }) {
+  if (!project.github && !project.live) {
+    return (
+      <Button variant="outline" disabled className="w-full">
+        Coming Soon
+      </Button>
+    )
+  }
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      entries =>
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.remove('opacity-0', 'translate-y-6');
-            entry.target.classList.add('opacity-100', 'translate-y-0');
-            observer.unobserve(entry.target);
-          }
-        }),
-      { threshold: 0.12 }
-    );
+  if (project.github && project.live) {
+    return (
+      <div className="grid grid-cols-2 gap-2">
+        <Button
+          asChild
+          variant="outline"
+          className="group hover:border-primary hover:bg-primary hover:text-primary-foreground"
+        >
+          <a
+            href={project.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-2"
+          >
+            <Github size={16} />
+            GitHub
+          </a>
+        </Button>
+        <Button
+          asChild
+          className="bg-primary text-primary-foreground hover:opacity-90"
+        >
+          <a
+            href={project.live}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-2"
+          >
+            Visit
+            <ArrowUpRight size={14} />
+          </a>
+        </Button>
+      </div>
+    )
+  }
 
-    const items = sectionRef.current?.querySelectorAll('[data-reveal]');
-    items?.forEach(el => {
-      el.classList.add('opacity-0', 'translate-y-6');
-      observer.observe(el);
-    });
-
-    return () => observer.disconnect();
-  }, []);
+  if (project.github) {
+    return (
+      <Button
+        asChild
+        variant="outline"
+        className="group w-full hover:border-primary hover:bg-primary hover:text-primary-foreground"
+      >
+        <a
+          href={project.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center justify-center gap-2"
+        >
+          <Github size={16} />
+          View on GitHub
+          <ExternalLink
+            size={14}
+            className="ml-auto transition-transform group-hover:translate-x-1"
+          />
+        </a>
+      </Button>
+    )
+  }
 
   return (
+    <Button asChild className="w-full bg-primary text-primary-foreground hover:opacity-90">
+      <a
+        href={project.live}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex items-center justify-center gap-2"
+      >
+        Visit site
+        <ArrowUpRight size={14} />
+      </a>
+    </Button>
+  )
+}
+
+export default function Work() {
+  return (
     <motion.section
-    initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
-     transition={{ duration: 1 }} 
-    id="work" ref={sectionRef} className="w-full px-[12%] py-16 scroll-m-20">
+      id="work"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, amount: 0.1 }}
+      transition={{ duration: 1 }}
+      className="w-full scroll-m-20 py-24 md:py-32"
+    >
+      <div className="mx-auto max-w-6xl px-6">
+        <motion.h2
+          initial={{ y: -20, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="text-center font-display text-4xl text-foreground md:text-5xl"
+        >
+          Featured{' '}
+          <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+            Projects
+          </span>
+        </motion.h2>
 
-
-      <motion.h2
-      initial={{ y: -20, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ delay: 0.5, duration: 0.5 }}
-      className="text-center text-5xl font-Ovo">
-        Featured{' '}
-        <span className="bg-gradient-to-r from-primary to-accent bg-clip-text">
-          Projects
-        </span>
-      </motion.h2>
-
-      <motion.p
-      initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.7, duration: 0.5 }}
-      className="text-center max-w-2xl mx-auto mt-5 mb-12 font-Ovo text-muted-foreground">
-        Showcasing innovative solutions and technical expertise through hands-on projects.
-      </motion.p>
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="mx-auto mt-5 mb-12 max-w-2xl text-center font-display text-muted-foreground"
+        >
+          Showcasing innovative solutions and technical expertise through hands-on projects.
+        </motion.p>
+      </div>
 
       <motion.div
-      initial={{ opacity: 0 }} whileInView={{  opacity: 1 }} transition={{ delay: 0.9, duration: 0.6 }}
-      className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-        {projects.map((project, index) => (
-          <motion.div
-          whileHover={{ scale: 1.05}} transition={{ duration: 0.3 }}
-            key={index}
-            data-reveal
-            style={{ transitionDelay: `${index * 100}ms` }}
-            className={[
-              'bg-card rounded-2xl overflow-hidden shadow-lg transition-all duration-300 transform-gpu will-change-transform',
-              project.featured ? 'border-3 border-blue-700' : 'border border-blue-300',
-              'hover:-translate-y-1 hover:shadow-xl',
-            ].join(' ')}
-          >
-            <div className="h-2 bg-gradient-to-r from-primary to-accent" />
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.6 }}
+        className="mx-auto max-w-7xl"
+      >
+        <ScrollRail ariaLabel="Featured projects, scroll horizontally">
+          {projects.map((project) => (
+            <article
+              key={project.title}
+              data-rail-item
+              className={[
+                'flex w-[85vw] shrink-0 snap-start flex-col overflow-hidden rounded-2xl bg-card shadow-lg transition-all duration-300',
+                'sm:w-[60vw] md:w-[400px] lg:w-[420px]',
+                project.featured ? 'border-2 border-primary/40' : 'border border-border',
+                'hover:-translate-y-1 hover:shadow-xl',
+              ].join(' ')}
+            >
+              <div className="h-2 bg-gradient-to-r from-primary to-accent" />
 
-            <div className="p-6 space-y-4">
-              <div className="flex items-center justify-between">
-                <span
-                  className={[
-                    'inline-flex items-center px-3 py-1 rounded-full text-xs font-medium',
-                    project.featured
-                      ? 'bg-primary/10 text-primary border border-primary/20'
-                      : 'bg-muted text-muted-foreground',
-                  ].join(' ')}
-                >
-                  {project.type}
-                </span>
-                {index === 2 ? (
-                  <OrbitProgress
-                    color="#ffec91"
-                    size="small"
-                    text=""
-                    textColor=""
-                    speedPlus="-5"
-                  />
-                ) : project.featured ? (
-                    <span className="text-xs font-semibold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                    Featured
-                  </span>
-                ) : null }
-
-              </div>
-
-              <div>
-                <h3 className="text-xl font-bold text-foreground mb-1">{project.title}</h3>
-                <p className="text-sm text-muted-foreground">{project.event}</p>
-              </div>
-
-              <div className="flex items-center gap-2 text-sm">
-                <span className="font-medium text-foreground"><b>Role:</b></span>
-                <span className="text-muted-foreground ">{project.role}</span>
-              </div>
-
-              <p className="text-sm text-muted-foreground leading-relaxed">{project.description}</p>
-
-              <div className="flex flex-wrap gap-2">
-                {project.stack.map((tech, i) => (
+              <div className="flex flex-1 flex-col gap-4 p-6">
+                <div className="flex items-center justify-between">
                   <span
-                    key={i}
-                    className="px-2 py-1 bg-muted rounded-md text-xs font-medium text-muted-foreground"
+                    className={[
+                      'inline-flex items-center rounded-full px-3 py-1 text-xs font-medium',
+                      project.featured
+                        ? 'border border-primary/20 bg-primary/10 text-primary'
+                        : 'bg-muted text-muted-foreground',
+                    ].join(' ')}
                   >
-                    {tech}
+                    {project.type}
                   </span>
-                ))}
-              </div>
 
-              {project.github ? (
-                <Button
-                  asChild
-                  variant="outline"
-                  className="w-full hover:bg-primary hover:text-primary-foreground hover:border-primary"
-                >
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2"
-                  >
-                    <Github size={16} />
-                    View on GitHub
-                    <ExternalLink size={14} className="ml-auto transition-transform group-hover:translate-x-1" />
-                  </a>
-                </Button>
-              ) : (
-                <Button variant="outline" disabled className="w-full">
-                  Coming Soon
-                </Button>
-              )}
-            </div>
-          </motion.div>
-        ))}
+                  {project.inDevelopment ? (
+                    <OrbitProgress color="#ffec91" size="small" text="" textColor="" speedPlus="-5" />
+                  ) : project.featured ? (
+                    <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-xs font-semibold text-transparent">
+                      Featured
+                    </span>
+                  ) : null}
+                </div>
+
+                <div>
+                  <h3 className="mb-1 font-display text-xl text-foreground">{project.title}</h3>
+                  <p className="text-sm text-muted-foreground">{project.event}</p>
+                </div>
+
+                <div className="flex items-start gap-2 text-sm">
+                  <span className="font-semibold text-foreground">Role:</span>
+                  <span className="text-muted-foreground">{project.role}</span>
+                </div>
+
+                <p className="text-sm leading-relaxed text-muted-foreground">{project.description}</p>
+
+                <div className="flex flex-wrap gap-2">
+                  {project.stack.map((tech) => (
+                    <span
+                      key={tech}
+                      className="rounded-md bg-muted px-2 py-1 text-xs font-medium text-muted-foreground"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="mt-auto pt-2">
+                  <ProjectActions project={project} />
+                </div>
+              </div>
+            </article>
+          ))}
+        </ScrollRail>
       </motion.div>
     </motion.section>
-  );
-};
-
-export default Work;
+  )
+}

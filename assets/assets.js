@@ -179,7 +179,7 @@ export const serviceData = [
     },
     link: "#", },
 
-    { icon: assets.edu_icon, title: 'GDG on Campus – Social Media Manager',
+    { icon: assets.edu_icon, title: 'Technical Support',
         organization: "Google Developer Group",
         description: 'As part of the organizing team, I help plan and run developer events, manage registrations, and assist attendees during workshops. I also handle social media promotion to boost event engagement and create a welcoming community atmosphere.',
         details: {
