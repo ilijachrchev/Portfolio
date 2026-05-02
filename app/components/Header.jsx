@@ -62,7 +62,7 @@ export default function Header() {
               style={{ animation: reduceMotion ? 'none' : 'pulse-ring 2.2s cubic-bezier(0.4,0,0.6,1) infinite' }}
               aria-hidden="true"
             />
-            <span>Available for Summer 2026 — currently building</span>
+            <span>Ilija Chrchev</span>
           </motion.div>
 
           <motion.h1
@@ -85,7 +85,7 @@ export default function Header() {
             {...rise(0.6)}
             className="m-0 max-w-[36rem] text-[clamp(15px,1.3vw,18px)] font-normal leading-[1.55] text-muted-foreground"
           >
-            CS student in Koper. I ship full-stack products, lead IAESTE Slovenia,
+            CS student in Koper. I ship full-stack products, lead IAESTE LC Koper,
             and spend weekends at hackathons.
           </motion.p>
 
