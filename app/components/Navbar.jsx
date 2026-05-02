@@ -6,11 +6,11 @@ import { Sun, Moon, Menu, X, ArrowUpRight } from 'lucide-react'
 import { useTheme } from '../(site)/components/ThemeProvider'
 
 const NAV_LINKS = [
-  { id: 'home', label: 'Home', href: '#home' },
-  { id: 'about', label: 'About', href: '#about' },
-  { id: 'service', label: 'Volunteering', href: '#service' },
-  { id: 'work', label: 'Projects', href: '#work' },
-  { id: 'endorsements-home', label: 'Endorsements', href: '#endorsements-home' },
+  { id: 'home',              label: 'Home',         href: '/#home' },
+  { id: 'about',             label: 'About',        href: '/#about' },
+  { id: 'service',           label: 'Volunteering', href: '/#service' },
+  { id: 'work',              label: 'Projects',     href: '/#work' },
+  { id: 'endorsements-home', label: 'Endorsements', href: '/#endorsements-home' },
 ]
 
 export default function Navbar() {
@@ -62,7 +62,7 @@ export default function Navbar() {
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 md:px-8">
           <Link
-            href="#home"
+            href="/#home"
             aria-label="Ilija, home"
             className="flex items-center gap-1 font-display text-2xl italic text-foreground"
             style={{ letterSpacing: '-0.01em' }}
@@ -103,7 +103,7 @@ export default function Navbar() {
             </button>
 
             <Link
-              href="#contact"
+              href="/#contact"
               className="liquid-glass hidden items-center gap-1.5 rounded-full px-4 py-2 text-[13.5px] text-foreground transition-transform duration-200 hover:-translate-y-px lg:inline-flex"
               style={{ letterSpacing: '0.005em' }}
             >
