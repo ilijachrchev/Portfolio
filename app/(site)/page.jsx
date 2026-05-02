@@ -18,7 +18,7 @@ export default function Home() {
       <Services isDarkMode={isDarkMode} />
       <Work isDarkMode={isDarkMode} />
       <EndorsementsHome />
-      <Contact isDarkMode={isDarkMode} />
+      <Contact />
       <Footer isDarkMode={isDarkMode} />
     </>
   )
