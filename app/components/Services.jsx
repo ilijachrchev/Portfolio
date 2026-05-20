@@ -1,171 +1,245 @@
+'use client'
+
 import { assets, serviceData } from '@/assets/assets'
 import Image from 'next/image'
+import { createPortal } from 'react-dom'
 import React, { useEffect, useState } from 'react'
-import {motion} from "motion/react"
+import { motion, AnimatePresence } from 'motion/react'
+import { X, ArrowUpRight } from 'lucide-react'
 
-const Services = ({isDarkMode}) => {
-
-    const [active, setActive] = useState(null)
-    const [open, setOpen] = useState(false)
-
+function VolunteeringModal({ item, onClose }) {
     useEffect(() => {
-        function onKey(e) { if (e.key === "Escape") setOpen(false) }
-        if (open) {
-            document.addEventListener('keydown', onKey)
-            document.body.style.overflow = 'hidden'
+        const handleKey = (e) => {
+            if (e.key === 'Escape') onClose()
         }
+        document.addEventListener('keydown', handleKey)
+        document.body.style.overflow = 'hidden'
         return () => {
-            document.removeEventListener('keydown', onKey)
+            document.removeEventListener('keydown', handleKey)
             document.body.style.overflow = ''
         }
-    }, [open])
+    }, [onClose])
 
-    const openModal = (item) => { setActive(item); setOpen(true) }
-    const closeModal = () => setOpen(false)
-
-  return (
-    <motion.div
-        initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1 }} 
-        id='service' className='w-full px-[12%] py-10 scroll-m-20'>
-        <motion.h4
-        initial={{ y: -20, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ delay: 0.3, duration: 0.5 }} 
-        className='text-center mb-2 text-lg font-Ovo'>Building skills by helping others</motion.h4>
-        <motion.h2
-        initial={{ y: -20, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ delay: 0.5, duration: 0.5 }} 
-        className='text-center text-5xl font-Ovo'>Volunteering & Organizations</motion.h2>
-
-        <motion.p
-        initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.7, duration: 0.5 }} 
-        className='text-center max-w-2xl mx-auto mt-5 mb-12 font-Ovo'>
-            Volunteering is a way for me to give back, connect with others, and grow both personally and professionally.
-            It continues to strengthen my communication, teamwork, and leadership skills while reminding
-             me of the value of community.
-        </motion.p>
-
+    return createPortal(
         <motion.div
-        initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.9, duration: 0.6 }} 
-        className={`grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 my-10`}>
-            {serviceData.map(({icon, title, description, link, organization, details}, index)=>(
-                <motion.div
-                whileHover={{ scale: 1.05 }}
-                key={index} className={`border border-gray-400 rounded-lg px-8 py-12 
-                 cursor-pointer hover:-translate-y-1 duration-500 hover:shadow-lg
-                ${isDarkMode 
-                ? "hover:bg-darkHover/40 hover:shadow-white " 
-                : "hover:bg-lightHover/40 hover:shadow-black"}`}>
-                    <Image src={icon} alt='' className='w-10' />
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.18 }}
+            onClick={onClose}
+        >
+            <div className="absolute inset-0 bg-background/75 backdrop-blur-md" />
 
-                    <h3 className={`text-lg my-4 text-gray-700 ${isDarkMode ? "text-white" : ""}`}>{title}</h3>
+            <motion.div
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="volunteering-title"
+                className="relative z-10 w-full max-w-2xl max-h-[85vh] overflow-y-auto rounded-2xl bg-card border border-border shadow-2xl"
+                initial={{ scale: 0.96, opacity: 0, y: 14 }}
+                animate={{ scale: 1, opacity: 1, y: 0 }}
+                exit={{ scale: 0.96, opacity: 0, y: 14 }}
+                transition={{ duration: 0.2, ease: 'easeOut' }}
+                onClick={(e) => e.stopPropagation()}
+            >
+                <div className="h-1.5 bg-gradient-to-r from-primary to-accent" />
 
-                    <p
-                        className={`text-sm italic text-gray-500 mb-2 ${
-                            isDarkMode ? "text-white/60" : ""
-                        }`}
-                        >
-                        Organization: <b>{organization}</b>
-                    </p>
-
-
-                    <p className={`text-sm text-gray-600 leading-5 ${isDarkMode ? "text-white/80" : ""}`}>
-                        {description}
-                    </p>
-
-                    <button onClick={() => openModal({icon, title, organization, description, link, details})}
-                        className='flex items-center gap-2 text-sm mt-5 hover:cursor-grab'>
-                            Read More
-                            <Image alt='' src={assets.right_arrow} className='w-4' />
-                    </button>
-                </motion.div>
-            ))}
-        </motion.div>
-
-            {open && active && (
-                <div className='fixed inset-0 z-[70] flex items-center justify-center'>
-                    <motion.div className='absolute inset-0 bg-black/50'
-                    initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={closeModal}>
-                    </motion.div>
-                    <motion.div role='dialog' aria-modal="true" aria-labelledby='volunteering-title'
-                    className='relative z-[71] w-[92%] max-w-2xl rounded-2xl bg-white dark:bg-neutral-900
-                    shadow-2xl border border-black/10 dark:border-white/10'
-                    initial={{ y: 40, opacity: 0, scale: 0.98 }}
-                    animate={{ y: 0, opacity: 1, scale: 1 }}
-                    exit={{ y: 10, opacity: 0, scale: 0.98 }}
-                    transition={{ duration: 0.25 }}>
-                        <div className='flex items-start gap-3 p-5 border-b border-black/5 dark:border-white/10'>
-                            {active.icon && <Image src={active.icon} alt='' className='w-8 h-8' />}
-                            <div className='flex-1'>
-                                <h3 id='volunteering-title' className='text-lg font-semibold'>{active.title}</h3>
-                                {active.organization && (
-                                    <p className='text-sm text-neutral-500 dark:text-neutral-400'>
-                                        {active.organization}
+                <div className="flex flex-col gap-5 p-6">
+                    <div className="flex items-start justify-between gap-4">
+                        <div className="flex items-start gap-3">
+                            {item.icon && (
+                                <div className="shrink-0 rounded-lg bg-muted p-2">
+                                    <Image src={item.icon} alt="" className="w-8 h-8" />
+                                </div>
+                            )}
+                            <div>
+                                <h2 id="volunteering-title" className="font-display text-2xl text-foreground">
+                                    {item.title}
+                                </h2>
+                                {item.organization && (
+                                    <p className="mt-0.5 text-sm text-muted-foreground">
+                                        {item.organization}
                                     </p>
                                 )}
                             </div>
-                            <button onClick={closeModal} aria-label='Close' 
-                            className='p-2 rounded hover:bg-black/5 dark:hover:bg-white/10'>
-                                ✕
-                            </button>
                         </div>
-                        <div className="p-5 space-y-4">
-                            {active.details?.period && (
-                                <p className="text-sm">
-                                <span className="font-medium">Period:</span> {active.details.period}
-                                </p>
-                            )}
-                            {active.details?.location && (
-                            <p className="text-sm">
-                            <span className="font-medium">Location:</span> {active.details.location}
-                            </p>
-                            )}
+                        <button
+                            onClick={onClose}
+                            className="mt-1 shrink-0 rounded-lg p-1.5 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                            aria-label="Close"
+                        >
+                            <X size={18} />
+                        </button>
+                    </div>
 
-                            {active.description && (
-                                <p className="text-sm text-neutral-700 dark:text-neutral-200">
-                                {active.description}
-                                </p>
-                            )}
-
-                            {Array.isArray(active.details?.highlights) && active.details.highlights.length > 0 && (
-                                <div>
-                                <p className="text-sm font-medium mb-2">Highlights</p>
-                                <ul className="list-disc pl-5 space-y-1 text-sm text-neutral-700 dark:text-neutral-200">
-                                    {active.details.highlights.map((h, i) => <li key={i}>{h}</li>)}
-                                </ul>
+                    {(item.details?.period || item.details?.location) && (
+                        <div className="flex flex-wrap gap-4 text-sm">
+                            {item.details?.period && (
+                                <div className="flex items-start gap-2">
+                                    <span className="font-semibold text-foreground">Period:</span>
+                                    <span className="text-muted-foreground">{item.details.period}</span>
                                 </div>
                             )}
+                            {item.details?.location && (
+                                <div className="flex items-start gap-2">
+                                    <span className="font-semibold text-foreground">Location:</span>
+                                    <span className="text-muted-foreground">{item.details.location}</span>
+                                </div>
+                            )}
+                        </div>
+                    )}
 
-                            {Array.isArray(active.details?.links) && active.details.links.length > 0 && (
-                                <div className="flex flex-wrap gap-2">
-                                {active.details.links.map((l, i) => (
-                                    <a
+                    {item.description && (
+                        <p className="text-sm leading-relaxed text-muted-foreground">
+                            {item.description}
+                        </p>
+                    )}
+
+                    {Array.isArray(item.details?.highlights) && item.details.highlights.length > 0 && (
+                        <div>
+                            <p className="mb-2 text-sm font-semibold text-foreground">Highlights</p>
+                            <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                                {item.details.highlights.map((h, i) => (
+                                    <li key={i}>{h}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
+
+                    {Array.isArray(item.details?.links) && item.details.links.length > 0 && (
+                        <div className="flex flex-wrap gap-2 pt-1">
+                            {item.details.links.map((l, i) => (
+                                <a
                                     key={i}
                                     href={l.href}
                                     target="_blank"
-                                    rel="noreferrer"
-                                    className="text-sm underline underline-offset-2 hover:opacity-80"
-                                    >
-                                    {l.label} ↗
-                                    </a>
-                                ))}
-                                </div>
-                            )}
-                            </div>
-
-                            {/* footer */}
-                            <div className="p-4 flex justify-end border-t border-black/5 dark:border-white/10">
-                            <button
-                                onClick={closeModal}
-                                className="px-4 h-10 rounded-md border border-neutral-300 dark:border-neutral-700 hover:bg-black/5 dark:hover:bg-white/10"
-                            >
-                                Close
-                            </button>
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-1.5 rounded-md border border-border bg-muted px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:border-primary hover:text-foreground"
+                                >
+                                    {l.label}
+                                    <ArrowUpRight size={12} />
+                                </a>
+                            ))}
                         </div>
-                    </motion.div>
-
+                    )}
                 </div>
-            )}
+            </motion.div>
+        </motion.div>,
+        document.body
+    )
+}
 
-    </motion.div>
-  )
+const Services = () => {
+    const [selected, setSelected] = useState(null)
+
+    return (
+        <>
+            <motion.section
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true, amount: 0.1 }}
+                transition={{ duration: 1 }}
+                id="service"
+                className="w-full scroll-m-20 py-24 md:py-32"
+            >
+                <div className="mx-auto max-w-6xl px-6">
+                    <motion.h4
+                        initial={{ y: -20, opacity: 0 }}
+                        whileInView={{ y: 0, opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.2, duration: 0.5 }}
+                        className="text-center font-display text-lg text-muted-foreground"
+                    >
+                        Building skills by helping others
+                    </motion.h4>
+
+                    <motion.h2
+                        initial={{ y: -20, opacity: 0 }}
+                        whileInView={{ y: 0, opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.3, duration: 0.5 }}
+                        className="mt-2 text-center font-display text-4xl text-foreground md:text-5xl"
+                    >
+                        Volunteering &{' '}
+                        <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                            Organizations
+                        </span>
+                    </motion.h2>
+
+                    <motion.p
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.5, duration: 0.5 }}
+                        className="mx-auto mt-5 mb-12 max-w-2xl text-center font-display text-muted-foreground"
+                    >
+                        Volunteering is a way for me to give back, connect with others, and grow both
+                        personally and professionally. It continues to strengthen my communication,
+                        teamwork, and leadership skills while reminding me of the value of community.
+                    </motion.p>
+
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.7, duration: 0.6 }}
+                        className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
+                    >
+                        {serviceData.map((item, index) => {
+                            const { icon, title, description, organization } = item
+                            return (
+                                <motion.article
+                                    key={index}
+                                    whileHover={{ y: -4 }}
+                                    transition={{ duration: 0.2 }}
+                                    className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-lg transition-all duration-300 hover:border-primary/40 hover:shadow-xl"
+                                >
+                                    <div className="h-1.5 bg-gradient-to-r from-primary to-accent opacity-60 transition-opacity duration-300 group-hover:opacity-100" />
+
+                                    <div className="flex flex-1 flex-col gap-4 p-6">
+                                        <div className="flex h-14 w-14 items-center justify-center rounded-xl !bg-white shadow-md ring-1 ring-black/10 transition-all duration-300 group-hover:shadow-lg group-hover:ring-primary/40">
+                                            <Image src={icon} alt="" className="h-8 w-8 object-contain" />
+                                        </div>
+
+                                        <div>
+                                            <h3 className="mb-1 font-display text-xl text-foreground">
+                                                {title}
+                                            </h3>
+                                            <p className="text-sm text-muted-foreground">
+                                                <span className="font-medium">Organization:</span>{' '}
+                                                <span className="italic">{organization}</span>
+                                            </p>
+                                        </div>
+
+                                        <p className="text-sm leading-relaxed text-muted-foreground">
+                                            {description}
+                                        </p>
+
+                                        <button
+                                            onClick={() => setSelected(item)}
+                                            className="mt-auto inline-flex items-center gap-1.5 self-start pt-2 text-sm font-medium text-foreground transition-colors hover:text-primary"
+                                        >
+                                            Read more
+                                            <ArrowUpRight
+                                                size={14}
+                                                className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                                            />
+                                        </button>
+                                    </div>
+                                </motion.article>
+                            )
+                        })}
+                    </motion.div>
+                </div>
+            </motion.section>
+
+            <AnimatePresence>
+                {selected && (
+                    <VolunteeringModal item={selected} onClose={() => setSelected(null)} />
+                )}
+            </AnimatePresence>
+        </>
+    )
 }
 
 export default Services
