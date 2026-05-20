@@ -44,6 +44,9 @@ import nodejs from './nodejs.png';
 import tutor from './tutor.png';
 import member from './member.png'
 import iaeste from './iaestelogo.png'
+import gdg from './gdg.jpg'
+import student_council from './student_council.png'
+import msos from './msos.jpg'
 
 export const assets = {
     user_image,
@@ -91,7 +94,10 @@ export const assets = {
     ssms,
     dotnet,
     vs,
-    tutor
+    tutor,
+    gdg,
+    student_council,
+    msos
 };
 
 export const workData = [
@@ -141,7 +147,7 @@ export const serviceData = [
     },
 
     {
-        icon: assets.edu_icon,
+        icon: assets.student_council,
         title: 'Student Council Representative (Computer Science)',
         organization: "Student Council (Študentski svet) – UP FAMNIT",
         description: 'Elected as the only Computer Science student representative, actively contributing to council discussions, academic improvements, and representing CS student interests.',
@@ -179,7 +185,7 @@ export const serviceData = [
     },
     link: "#", },
 
-    { icon: assets.edu_icon, title: 'Technical Support',
+    { icon: assets.gdg, title: 'Technical Support',
         organization: "Google Developer Group",
         description: 'As part of the organizing team, I help plan and run developer events, manage registrations, and assist attendees during workshops. I also handle social media promotion to boost event engagement and create a welcoming community atmosphere.',
         details: {
@@ -216,7 +222,7 @@ export const serviceData = [
         }
     },
 
-    { icon: assets.member, title: 'Active Member',
+    { icon: assets.msos, title: 'Active Member',
         organization: "MSOS - Macedonian Student Organization in Slovenia",
         description: 'Being an active part of a motivated team that brings students closer through meaningful events and shared experiences. Through these activities, I’ve developed strong teamwork and organizational skills while helping create a more connected and supportive student community.',
         details: {
