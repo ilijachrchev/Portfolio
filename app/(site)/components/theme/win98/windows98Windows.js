@@ -63,3 +63,13 @@ export const WINDOWS98_WINDOWS = {
     size: { width: 380, height: 190 },
   },
 }
+
+export function createWindows98WindowState() {
+  return Object.fromEntries(Object.values(WINDOWS98_WINDOWS).map((window) => [window.id, {
+    ...window,
+    open: false,
+    minimized: false,
+    maximized: false,
+    zIndex: 41,
+  }]))
+}
