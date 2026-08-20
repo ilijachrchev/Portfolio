@@ -147,12 +147,15 @@ export default function ThemeSelector({ open, onOpenChange }) {
                       </span>
                       <span className="mt-0.5 block text-xs text-muted-foreground">{item.description}</span>
                       <span className="mt-2 flex gap-1.5" aria-hidden="true">
-                        {item.preview.map((color) => (
-                          <span
-                            key={color}
-                            className="h-1.5 w-5 rounded-full border border-foreground/10"
-                            style={{ backgroundColor: color }}
-                          />
+                        {item.id === 'win98' ? (
+                          <span className="relative h-5 w-14 overflow-hidden border border-black bg-[#008080]">
+                            <span className="absolute left-2 top-1 h-3 w-8 bg-[#c0c0c0] shadow-[1px_1px_0_#000]">
+                              <span className="block h-1 bg-[#000080]" />
+                            </span>
+                            <span className="absolute inset-x-0 bottom-0 h-1 bg-[#c0c0c0]" />
+                          </span>
+                        ) : item.preview.map((color) => (
+                          <span key={color} className="h-1.5 w-5 rounded-full border border-foreground/10" style={{ backgroundColor: color }} />
                         ))}
                       </span>
                     </span>
