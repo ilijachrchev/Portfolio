@@ -46,6 +46,25 @@
   color: var(--github-fg-default);
 }
 
+:root[data-theme='github'] {
+  scrollbar-color: #484f58 var(--github-canvas);
+}
+
+:root[data-theme='github'] ::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+:root[data-theme='github'] ::-webkit-scrollbar-track {
+  background: var(--github-canvas);
+}
+
+:root[data-theme='github'] ::-webkit-scrollbar-thumb {
+  border: 2px solid var(--github-canvas);
+  border-radius: 999px;
+  background: #484f58;
+}
+
 :root[data-theme='github'] [data-theme-slot='navbar'] {
   visibility: hidden;
   pointer-events: none;
