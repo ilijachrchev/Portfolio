@@ -26,6 +26,7 @@ export const WINDOWS98_WINDOWS = {
     icon: '/themes/win98/icons/computer.svg',
     position: { x: 260, y: 170 },
     size: { width: 410, height: 190 },
+    maximizable: false,
   },
   winver: {
     id: 'winver',
@@ -33,6 +34,7 @@ export const WINDOWS98_WINDOWS = {
     icon: '/themes/win98/icons/info.svg',
     position: { x: 230, y: 110 },
     size: { width: 430, height: 270 },
+    maximizable: false,
   },
   find: {
     id: 'find',
@@ -47,6 +49,7 @@ export const WINDOWS98_WINDOWS = {
     icon: '/themes/win98/icons/computer.svg',
     position: { x: 240, y: 90 },
     size: { width: 440, height: 340 },
+    maximizable: false,
   },
   shutdown: {
     id: 'shutdown',
@@ -54,6 +57,7 @@ export const WINDOWS98_WINDOWS = {
     icon: '/themes/win98/icons/info.svg',
     position: { x: 270, y: 150 },
     size: { width: 410, height: 220 },
+    maximizable: false,
   },
   error: {
     id: 'error',
@@ -61,6 +65,7 @@ export const WINDOWS98_WINDOWS = {
     icon: '/themes/win98/icons/error.svg',
     position: { x: 300, y: 180 },
     size: { width: 380, height: 190 },
+    maximizable: false,
   },
 }
 
