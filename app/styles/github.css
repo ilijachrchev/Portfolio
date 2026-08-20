@@ -280,3 +280,20 @@
   outline-offset: 2px;
   box-shadow: none;
 }
+
+:root[data-theme='github'] #endorsements-home {
+  position: relative;
+  border-top: 1px solid var(--github-border-muted);
+  background: var(--github-canvas-inset);
+}
+
+:root[data-theme='github'] #endorsements-home h2 {
+  font-family: var(--font-body);
+  font-weight: 600;
+}
+
+:root[data-theme='github'] #endorsements-home h2 em {
+  color: #a371f7;
+  font-style: normal;
+  font-weight: 600;
+}
