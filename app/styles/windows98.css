@@ -46,3 +46,26 @@
   overflow-x: clip;
   background: var(--win98-desktop);
 }
+
+:root[data-theme='win98'] [data-win98-app] {
+  position: relative;
+  margin: 0 0 16px;
+  border: 2px solid;
+  border-color: var(--win98-highlight) var(--win98-dark) var(--win98-dark) var(--win98-highlight);
+  border-radius: 0;
+  background: var(--win98-surface);
+  box-shadow: inset 1px 1px var(--win98-light), inset -1px -1px var(--win98-shadow);
+}
+
+:root[data-theme='win98'] [data-win98-app]::before {
+  content: attr(data-win98-title);
+  position: absolute;
+  inset: 3px 3px auto;
+  z-index: 25;
+  height: 24px;
+  padding: 3px 7px;
+  background: var(--win98-title);
+  color: #fff;
+  font: bold 12px/18px Arial, Helvetica, sans-serif;
+  pointer-events: none;
+}
