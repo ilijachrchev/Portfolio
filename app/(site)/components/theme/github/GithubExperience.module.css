@@ -61,6 +61,24 @@
   gap: 8px;
 }
 
+.branchMeta {
+  display: inline-flex;
+  min-height: 32px;
+  align-items: center;
+  gap: 6px;
+  padding: 0 9px;
+  border: 1px solid var(--github-border);
+  border-radius: 6px;
+  background: var(--github-canvas-subtle);
+  color: var(--github-fg-default);
+  font: 12px/1 var(--github-mono);
+}
+
+.branchMeta svg {
+  width: 14px;
+  height: 14px;
+}
+
 .treeToggle,
 .profileLink {
   display: inline-flex;

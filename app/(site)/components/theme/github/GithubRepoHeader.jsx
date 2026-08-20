@@ -1,6 +1,6 @@
 'use client'
 
-import { Github, Menu, Repository } from 'lucide-react'
+import { GitBranch, Github, Menu, Repository } from 'lucide-react'
 import { useGithubRepositoryView } from './useGithubRepositoryView'
 import styles from './GithubExperience.module.css'
 
@@ -15,6 +15,10 @@ export default function GithubRepoHeader() {
         <span className={styles.visibility}>Public</span>
       </div>
       <div className={styles.repoActions}>
+        <span className={styles.branchMeta} title="Current portfolio branch">
+          <GitBranch aria-hidden="true" />
+          main
+        </span>
         <button
           type="button"
           onClick={() => setTreeOpen(!treeOpen)}
