@@ -94,3 +94,19 @@
   border-color: #8b949e;
   background: #30363d;
 }
+
+.tabs {
+  display: flex;
+  min-width: 0;
+  gap: 4px;
+  overflow-x: auto;
+  padding: 0 clamp(12px, 3vw, 28px);
+  border-bottom: 1px solid var(--github-border);
+  background: rgb(13 17 23 / 0.96);
+  scrollbar-width: none;
+  pointer-events: auto;
+}
+
+.tabs::-webkit-scrollbar {
+  display: none;
+}
