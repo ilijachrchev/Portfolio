@@ -1,13 +1,34 @@
 'use client'
 
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
 import { WINDOWS98_APPS } from './windows98Apps'
+import { createWindows98WindowState } from './windows98Windows'
 
 const Windows98WorkspaceContext = createContext(null)
 
 export function Windows98WorkspaceProvider({ children }) {
   const [selectedShortcut, setSelectedShortcut] = useState('computer')
   const [activeAppId, setActiveAppId] = useState('computer')
+  const [windows, setWindows] = useState(createWindows98WindowState)
+  const [activeWindowId, setActiveWindowId] = useState(null)
+  const nextZIndex = useRef(42)
+
+  const openWindow = useCallback((windowId) => {
+    if (!windows[windowId]) return false
+    const zIndex = nextZIndex.current++
+    setWindows((current) => ({
+      ...current,
+      [windowId]: {
+        ...current[windowId],
+        open: true,
+        minimized: false,
+        zIndex,
+      },
+    }))
+    setActiveWindowId(windowId)
+    setSelectedShortcut(windowId)
+    return true
+  }, [windows])
 
   useEffect(() => {
     document.documentElement.dataset.win98ActiveApp = activeAppId
@@ -81,7 +102,10 @@ export function Windows98WorkspaceProvider({ children }) {
     activeAppId,
     setActiveAppId,
     navigateToApp,
-  }), [activeAppId, navigateToApp, selectedShortcut])
+    windows,
+    activeWindowId,
+    openWindow,
+  }), [activeAppId, activeWindowId, navigateToApp, openWindow, selectedShortcut, windows])
 
   return (
     <Windows98WorkspaceContext.Provider value={value}>
