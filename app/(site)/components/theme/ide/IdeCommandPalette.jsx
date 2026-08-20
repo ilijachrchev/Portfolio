@@ -5,6 +5,7 @@ import { ArrowRight, Command, File, Search, X } from 'lucide-react'
 import { useTheme } from '../../ThemeProvider'
 import { createPaletteCommands } from './ideCommands'
 import { IDE_FILES } from './ideFiles'
+import { IdeFileIcon } from './IdeIcons'
 import { useIdeWorkspace } from './useIdeWorkspace'
 import styles from './IdeExperience.module.css'
 
@@ -140,7 +141,7 @@ export default function IdeCommandPalette() {
               onMouseEnter={() => setSelectedIndex(index)}
               onClick={() => choose(entry)}
             >
-              <span>{entry.file ? <File aria-hidden="true" /> : <Command aria-hidden="true" />}</span>
+              <span>{entry.file ? <IdeFileIcon file={entry.file} className={styles.paletteFileIcon} /> : <Command aria-hidden="true" />}</span>
               <span className={styles.paletteLabel}>
                 <strong>{entry.label}</strong>
                 {entry.detail && <small>{entry.detail}</small>}

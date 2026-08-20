@@ -31,6 +31,13 @@ export default function IdeTerminal() {
     outputRef.current?.scrollTo({ top: outputRef.current.scrollHeight })
   }, [output])
 
+  useEffect(() => {
+    if (!workspace.terminalClearSignal) return
+    setOutput([])
+    setValue('')
+    setHistoryIndex(-1)
+  }, [workspace.terminalClearSignal])
+
   if (!workspace.terminalOpen) return null
 
   const runCommand = () => {

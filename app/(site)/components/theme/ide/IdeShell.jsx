@@ -5,24 +5,19 @@ import { motion, useTransform } from 'motion/react'
 import {
   ChevronDown,
   ChevronRight,
-  Code2,
   Files,
-  Folder,
-  FolderOpen,
   GitBranch,
   Menu,
-  Palette,
   PanelBottom,
   Search,
+  Settings,
   X,
 } from 'lucide-react'
 import { IDE_ROOT_FILES, IDE_SECTION_FILES, IDE_SOURCE_FILES } from './ideFiles'
+import { IdeFileIcon, IdeFolderIcon } from './IdeIcons'
+import IdeMenuBar from './IdeMenuBar'
 import { useIdeWorkspace } from './useIdeWorkspace'
 import styles from './IdeExperience.module.css'
-
-function FileBadge({ file }) {
-  return <span className={`${styles.fileBadge} ${styles[`accent_${file.accent}`]}`}>{file.badge}</span>
-}
 
 function ExplorerFile({ file, depth = 0 }) {
   const { activeFile, contactModified, navigateToFile, setExplorerOpen } = useIdeWorkspace()
@@ -35,12 +30,12 @@ function ExplorerFile({ file, depth = 0 }) {
       aria-selected={selected}
       onClick={() => {
         navigateToFile(file.id)
-        if (window.matchMedia('(max-width: 1359px)').matches) setExplorerOpen(false)
+        if (window.matchMedia('(max-width: 1179px)').matches) setExplorerOpen(false)
       }}
       className={`${styles.explorerFile} ${selected ? styles.selectedFile : ''}`}
       style={{ '--ide-tree-depth': depth }}
     >
-      <FileBadge file={file} />
+      <IdeFileIcon file={file} className={styles.fileIcon} />
       <span>{file.name}</span>
       {file.id === 'contact' && contactModified && (
         <span className={styles.modifiedDot} aria-label="Modified">●</span>
@@ -55,6 +50,8 @@ function Explorer() {
     setExplorerOpen,
     sourceOpen,
     setSourceOpen,
+    rootOpen,
+    setRootOpen,
   } = useIdeWorkspace()
   const asideRef = useRef(null)
   const previousFocusRef = useRef(null)
@@ -112,28 +109,40 @@ function Explorer() {
         </header>
 
         <div role="tree" aria-label="Portfolio files" className={styles.fileTree}>
-          <div className={styles.folderRow} role="treeitem" aria-expanded="true">
-            <ChevronDown aria-hidden="true" />
-            <FolderOpen aria-hidden="true" />
-            <span>PORTFOLIO</span>
-          </div>
           <button
             type="button"
             className={styles.folderRow}
             role="treeitem"
-            aria-expanded={sourceOpen}
-            onClick={() => setSourceOpen((current) => !current)}
+            aria-expanded={rootOpen}
+            onClick={() => setRootOpen((current) => !current)}
+            style={{ '--ide-tree-depth': 0 }}
           >
-            {sourceOpen ? <ChevronDown aria-hidden="true" /> : <ChevronRight aria-hidden="true" />}
-            {sourceOpen ? <FolderOpen aria-hidden="true" /> : <Folder aria-hidden="true" />}
-            <span>src</span>
+            {rootOpen ? <ChevronDown aria-hidden="true" /> : <ChevronRight aria-hidden="true" />}
+            <IdeFolderIcon kind="root" open={rootOpen} className={styles.folderIcon} />
+            <span>PORTFOLIO</span>
           </button>
-          {sourceOpen && (
-            <div role="group">
-              {IDE_SOURCE_FILES.map((file) => <ExplorerFile key={file.id} file={file} depth={2} />)}
-            </div>
+          {rootOpen && (
+            <>
+              <button
+                type="button"
+                className={styles.folderRow}
+                role="treeitem"
+                aria-expanded={sourceOpen}
+                onClick={() => setSourceOpen((current) => !current)}
+                style={{ '--ide-tree-depth': 1 }}
+              >
+                {sourceOpen ? <ChevronDown aria-hidden="true" /> : <ChevronRight aria-hidden="true" />}
+                <IdeFolderIcon kind="src" open={sourceOpen} className={styles.folderIcon} />
+                <span>src</span>
+              </button>
+              {sourceOpen && (
+                <div role="group">
+                  {IDE_SOURCE_FILES.map((file) => <ExplorerFile key={file.id} file={file} depth={2} />)}
+                </div>
+              )}
+              {IDE_ROOT_FILES.map((file) => <ExplorerFile key={file.id} file={file} depth={1} />)}
+            </>
           )}
-          {IDE_ROOT_FILES.map((file) => <ExplorerFile key={file.id} file={file} depth={1} />)}
         </div>
 
         <div className={styles.explorerHint}>Ctrl/Cmd + P to open a file</div>
@@ -159,7 +168,7 @@ function Tabs() {
               onClick={() => navigateToFile(file.id)}
               className={styles.tabMain}
             >
-              <FileBadge file={file} />
+              <IdeFileIcon file={file} className={styles.fileIcon} />
               <span>{file.name}</span>
               {file.id === 'contact' && contactModified && (
                 <span className={styles.modifiedDot} aria-label="Modified">●</span>
@@ -189,6 +198,7 @@ function Breadcrumbs() {
       {parts.map((part, index) => (
         <span key={`${part}-${index}`}>
           {index > 0 && <ChevronRight aria-hidden="true" />}
+          {index === parts.length - 1 && <IdeFileIcon file={activeFile} className={styles.breadcrumbIcon} />}
           {part}
         </span>
       ))}
@@ -218,9 +228,9 @@ function EditorGutter() {
 }
 
 function Minimap() {
-  const { documentProgress, hasSections } = useIdeWorkspace()
+  const { documentProgress, hasSections, minimapVisible } = useIdeWorkspace()
   const viewportY = useTransform(documentProgress, [0, 1], ['0%', '78%'])
-  if (!hasSections) return null
+  if (!hasSections || !minimapVisible) return null
 
   return (
     <div className={styles.minimap} aria-hidden="true">
@@ -247,7 +257,7 @@ function VirtualPreview() {
   return (
     <section className={styles.virtualPreview} aria-label={`${activeFile.name} preview`}>
       <header>
-        <FileBadge file={activeFile} />
+        <IdeFileIcon file={activeFile} className={styles.fileIcon} />
         <span>{activeFile.path}</span>
         <button type="button" onClick={() => navigateToFile('home')} aria-label="Close file preview">
           <X aria-hidden="true" />
@@ -279,11 +289,17 @@ export default function IdeShell() {
     setExplorerOpen,
     openPalette,
     toggleTerminal,
+    setTerminalOpen,
   } = useIdeWorkspace()
 
   return (
     <div className={styles.shell}>
       <header className={styles.titleBar}>
+        <span className={styles.trafficLights} aria-hidden="true">
+          <i />
+          <i />
+          <i />
+        </span>
         <button
           type="button"
           className={styles.mobileMenu}
@@ -293,21 +309,18 @@ export default function IdeShell() {
         >
           <Menu aria-hidden="true" />
         </button>
-        <span className={styles.workspaceTitle}>
-          <Code2 aria-hidden="true" />
-          <span>portfolio</span>
-          <small>Developer Workspace</small>
-        </span>
+        <span className={styles.mobileBrand}>Code</span>
         <button
           type="button"
           className={styles.commandCenter}
-          onClick={() => openPalette('commands')}
-          aria-label="Open Command Palette"
+          onClick={() => openPalette('files')}
+          aria-label="Open Quick Open"
         >
           <Search aria-hidden="true" />
-          <span>Search files or run a command…</span>
-          <kbd>Ctrl ⇧ P</kbd>
+          <span>portfolio — Ilija Chrchev</span>
+          <kbd>Ctrl P</kbd>
         </button>
+        <span className={styles.windowFile}>{activeFile.name}</span>
         <span className={styles.mobileFile}>{activeFile.name}</span>
         <button
           type="button"
@@ -316,9 +329,11 @@ export default function IdeShell() {
           aria-label="Change theme"
           title="Appearance"
         >
-          <Palette aria-hidden="true" />
+          <Settings aria-hidden="true" />
         </button>
       </header>
+
+      <IdeMenuBar />
 
       <nav className={styles.activityBar} aria-label="Workspace tools">
         <button
@@ -334,11 +349,14 @@ export default function IdeShell() {
         <button type="button" onClick={() => openPalette('files')} aria-label="Quick Open" title="Quick Open · Ctrl/Cmd + P">
           <Search aria-hidden="true" />
         </button>
+        <button type="button" onClick={() => setTerminalOpen(true)} aria-label="Open source control terminal" title="Source Control · git status in Terminal">
+          <GitBranch aria-hidden="true" />
+        </button>
         <button type="button" onClick={toggleTerminal} aria-label="Toggle Terminal" title="Terminal · Ctrl + `">
           <PanelBottom aria-hidden="true" />
         </button>
-        <button type="button" onClick={() => openPalette('commands', 'Change Theme')} aria-label="Change theme" title="Appearance">
-          <Palette aria-hidden="true" />
+        <button className={styles.activitySettings} type="button" onClick={() => openPalette('commands', 'Change Theme')} aria-label="Change theme" title="Appearance">
+          <Settings aria-hidden="true" />
         </button>
       </nav>
 

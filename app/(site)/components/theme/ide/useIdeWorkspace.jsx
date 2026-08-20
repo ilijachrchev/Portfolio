@@ -33,10 +33,14 @@ export function IdeWorkspaceProvider({ children }) {
   const [activeFileId, setActiveFileId] = useState('home')
   const [openFileIds, setOpenFileIds] = useState(['home'])
   const [explorerOpen, setExplorerOpen] = useState(
-    () => typeof window === 'undefined' || !window.matchMedia('(max-width: 1359px)').matches
+    () => typeof window === 'undefined' || !window.matchMedia('(max-width: 1179px)').matches
   )
   const [sourceOpen, setSourceOpen] = useState(true)
+  const [rootOpen, setRootOpen] = useState(true)
   const [terminalOpen, setTerminalOpen] = useState(false)
+  const [terminalClearSignal, setTerminalClearSignal] = useState(0)
+  const [minimapVisible, setMinimapVisible] = useState(true)
+  const [focusMode, setFocusMode] = useState(false)
   const [palette, setPalette] = useState({ open: false, mode: 'commands', query: '' })
   const [virtualLine, setVirtualLine] = useState(1)
   const [contactModified, setContactModified] = useState(false)
@@ -160,6 +164,11 @@ export function IdeWorkspaceProvider({ children }) {
     document.documentElement.dataset.ideExplorer = explorerOpen ? 'open' : 'closed'
   }, [explorerOpen])
 
+  useLayoutEffect(() => {
+    document.documentElement.dataset.ideFocus = focusMode ? 'true' : 'false'
+    return () => delete document.documentElement.dataset.ideFocus
+  }, [focusMode])
+
   useEffect(() => {
     const file = getIdeFile(activeFileId)
     if (file) document.documentElement.dataset.ideActiveFile = file.id
@@ -187,6 +196,11 @@ export function IdeWorkspaceProvider({ children }) {
   const navigateToFile = useCallback((value) => {
     const file = getIdeFile(value)
     if (!file) return false
+
+    if (file.href) {
+      window.open(file.href, '_blank', 'noopener,noreferrer')
+      return true
+    }
 
     activateFile(file.id)
     if (!file.sectionId) return true
@@ -233,6 +247,28 @@ export function IdeWorkspaceProvider({ children }) {
     setTerminalOpen((current) => !current)
   }, [])
 
+  const clearTerminal = useCallback(() => {
+    setTerminalOpen(true)
+    setTerminalClearSignal((current) => current + 1)
+  }, [])
+
+  const toggleFocusMode = useCallback(() => {
+    setFocusMode((current) => {
+      if (!current) setExplorerOpen(false)
+      return !current
+    })
+  }, [])
+
+  const resetWorkspaceLayout = useCallback(() => {
+    setExplorerOpen(!window.matchMedia('(max-width: 1179px)').matches)
+    setSourceOpen(true)
+    setRootOpen(true)
+    setTerminalOpen(false)
+    setMinimapVisible(true)
+    setFocusMode(false)
+    setPalette((current) => ({ ...current, open: false }))
+  }, [])
+
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (hasOpenAppModal()) {
@@ -261,7 +297,7 @@ export function IdeWorkspaceProvider({ children }) {
       if (event.key === 'Escape') {
         if (palette.open) closePalette()
         else if (terminalOpen) setTerminalOpen(false)
-        else if (window.matchMedia('(max-width: 1359px)').matches) setExplorerOpen(false)
+        else if (window.matchMedia('(max-width: 1179px)').matches) setExplorerOpen(false)
       }
     }
 
@@ -281,9 +317,18 @@ export function IdeWorkspaceProvider({ children }) {
     setExplorerOpen,
     sourceOpen,
     setSourceOpen,
+    rootOpen,
+    setRootOpen,
     terminalOpen,
     setTerminalOpen,
     toggleTerminal,
+    terminalClearSignal,
+    clearTerminal,
+    minimapVisible,
+    setMinimapVisible,
+    focusMode,
+    toggleFocusMode,
+    resetWorkspaceLayout,
     palette,
     openPalette,
     closePalette,
@@ -300,8 +345,15 @@ export function IdeWorkspaceProvider({ children }) {
     closeFile,
     explorerOpen,
     sourceOpen,
+    rootOpen,
     terminalOpen,
     toggleTerminal,
+    terminalClearSignal,
+    clearTerminal,
+    minimapVisible,
+    focusMode,
+    toggleFocusMode,
+    resetWorkspaceLayout,
     palette,
     openPalette,
     closePalette,

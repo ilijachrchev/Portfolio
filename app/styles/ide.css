@@ -1,63 +1,81 @@
 :root[data-theme='ide'] {
   --radius: 0.75rem;
-  --background: #0b0f14;
-  --foreground: #d8dee9;
-  --card: #111821;
-  --card-foreground: #d8dee9;
-  --popover: #111821;
-  --popover-foreground: #d8dee9;
-  --primary: #5aa9ff;
-  --primary-foreground: #07101a;
-  --secondary: #151e28;
-  --secondary-foreground: #d8dee9;
-  --muted: #18212b;
-  --muted-foreground: #8c97a7;
-  --accent: #6fd7e8;
-  --accent-foreground: #071014;
-  --destructive: #f07178;
-  --border: #202a35;
-  --input: #2a3643;
-  --ring: #5aa9ff;
+  --background: #1e1e1e;
+  --foreground: #cccccc;
+  --card: #252526;
+  --card-foreground: #cccccc;
+  --popover: #2d2d30;
+  --popover-foreground: #cccccc;
+  --primary: #4fc1ff;
+  --primary-foreground: #191919;
+  --secondary: #2d2d30;
+  --secondary-foreground: #cccccc;
+  --muted: #2a2d2e;
+  --muted-foreground: #858585;
+  --accent: #4ec9b0;
+  --accent-foreground: #151515;
+  --destructive: #e85aad;
+  --border: #3a3a3a;
+  --input: #3c3c3c;
+  --ring: #4fc1ff;
 
-  --hero-overlay-top: rgb(11 15 20 / 0.62);
-  --hero-overlay-mid: rgb(11 15 20 / 0.82);
-  --hero-overlay-bot: rgb(11 15 20 / 0.98);
+  --hero-overlay-top: rgb(30 30 30 / 0.58);
+  --hero-overlay-mid: rgb(30 30 30 / 0.8);
+  --hero-overlay-bot: rgb(30 30 30 / 0.98);
   --glass-blur: 10px;
 
-  --ide-workspace-bg: #0b0f14;
-  --ide-editor-bg: #0d1117;
-  --ide-sidebar-bg: #0a0e13;
-  --ide-activity-bg: #080c11;
-  --ide-panel-bg: #0b1118;
-  --ide-elevated: #111821;
-  --ide-divider: #18212b;
-  --ide-disabled: #566170;
-  --ide-string: #7fd88f;
-  --ide-keyword: #c7a0ff;
-  --ide-function: #6fd7e8;
-  --ide-number: #f0b96a;
-  --ide-comment: #687587;
-  --ide-error: #f07178;
-  --ide-modified: #e2b86b;
-  --ide-success: #70d896;
+  --ide-mac-title: #191925;
+  --ide-menu: #252526;
+  --ide-activity: #2d2d30;
+  --ide-sidebar: #252526;
+  --ide-editor: #1e1e1e;
+  --ide-panel: #181818;
+  --ide-tab-inactive: #252526;
+  --ide-tab-active: #1e1e1e;
+  --ide-selected: #37373d;
+  --ide-hover: #2a2d2e;
+  --ide-border: #3a3a3a;
+  --ide-border-soft: #2b2b2b;
+  --ide-text: #cccccc;
+  --ide-text-bright: #f0f0f0;
+  --ide-muted: #858585;
+  --ide-comment: #6a9955;
+  --ide-cyan: #4ec9b0;
+  --ide-blue: #4fc1ff;
+  --ide-purple: #c586c0;
+  --ide-pink: #e85aad;
+  --ide-yellow: #dcdcaa;
+
+  --ide-workspace-bg: var(--ide-editor);
+  --ide-editor-bg: var(--ide-editor);
+  --ide-sidebar-bg: var(--ide-sidebar);
+  --ide-activity-bg: var(--ide-activity);
+  --ide-panel-bg: var(--ide-panel);
+  --ide-elevated: var(--ide-menu);
+  --ide-divider: var(--ide-border-soft);
+  --ide-disabled: var(--ide-muted);
+  --ide-string: var(--ide-cyan);
+  --ide-keyword: var(--ide-purple);
+  --ide-function: var(--ide-yellow);
+  --ide-number: var(--ide-blue);
+  --ide-error: var(--ide-pink);
+  --ide-modified: #e2c08d;
+  --ide-success: var(--ide-cyan);
   --ide-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
 
-  --ide-titlebar-h: 36px;
-  --ide-tabs-h: 40px;
-  --ide-breadcrumb-h: 30px;
-  --ide-statusbar-h: 25px;
+  --ide-titlebar-h: 27px;
+  --ide-menubar-h: 27px;
+  --ide-tabs-h: 35px;
+  --ide-breadcrumb-h: 27px;
+  --ide-statusbar-h: 23px;
   --ide-activity-w: 48px;
-  --ide-sidebar-w: 236px;
+  --ide-sidebar-w: 220px;
   --ide-panel-h: min(250px, 38vh);
-  --ide-editor-top: calc(var(--ide-titlebar-h) + var(--ide-tabs-h) + var(--ide-breadcrumb-h));
+  --ide-editor-top: calc(var(--ide-titlebar-h) + var(--ide-menubar-h) + var(--ide-tabs-h) + var(--ide-breadcrumb-h));
 }
 
 :root[data-theme='ide'] body {
-  background:
-    linear-gradient(90deg, rgb(90 169 255 / 0.025) 1px, transparent 1px),
-    linear-gradient(rgb(90 169 255 / 0.018) 1px, transparent 1px),
-    var(--ide-editor-bg);
-  background-size: 48px 48px;
+  background: var(--ide-editor);
 }
 
 :root[data-theme='ide'] {
@@ -65,12 +83,12 @@
 }
 
 :root[data-theme='ide'] ::selection {
-  background: rgb(90 169 255 / 0.32);
+  background: rgb(79 193 255 / 0.3);
   color: #eff6ff;
 }
 
 :root[data-theme='ide'] {
-  scrollbar-color: #344252 #0a0e13;
+  scrollbar-color: #4a4a4a #1e1e1e;
 }
 
 :root[data-theme='ide'] ::-webkit-scrollbar {
@@ -79,17 +97,17 @@
 }
 
 :root[data-theme='ide'] ::-webkit-scrollbar-track {
-  background: #0a0e13;
+  background: #1e1e1e;
 }
 
 :root[data-theme='ide'] ::-webkit-scrollbar-thumb {
-  border: 2px solid #0a0e13;
+  border: 2px solid #1e1e1e;
   border-radius: 999px;
-  background: #344252;
+  background: #4a4a4a;
 }
 
 :root[data-theme='ide'] ::-webkit-scrollbar-thumb:hover {
-  background: #4d6073;
+  background: #5e5e5e;
 }
 
 :root[data-theme='ide'] [data-theme-slot='navbar'] {
@@ -107,13 +125,17 @@
   transition: margin-left 180ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@media (min-width: 1360px) {
+@media (min-width: 1180px) {
   :root[data-theme='ide'] main {
     margin-left: var(--ide-activity-w);
   }
 
   :root[data-theme='ide'][data-ide-explorer='open'] main {
     margin-left: calc(var(--ide-activity-w) + var(--ide-sidebar-w));
+  }
+
+  :root[data-theme='ide'][data-ide-focus='true'] main {
+    margin-left: 0;
   }
 }
 
@@ -144,7 +166,7 @@
   padding: 2px 8px;
   border: 1px solid var(--ide-divider);
   border-radius: 4px;
-  background: rgb(10 14 19 / 0.88);
+  background: rgb(37 37 38 / 0.94);
   color: var(--ide-comment);
   font: 10px/1.5 var(--ide-mono);
   letter-spacing: 0.025em;
@@ -163,73 +185,73 @@
 
 :root[data-theme='ide'] [data-ide-kind='entry'] {
   background:
-    radial-gradient(circle at 74% 32%, rgb(90 169 255 / 0.08), transparent 34rem),
+    radial-gradient(circle at 74% 32%, rgb(79 193 255 / 0.055), transparent 34rem),
     var(--ide-editor-bg);
 }
 
 :root[data-theme='ide'] [data-ide-kind='markdown'] {
   background:
-    linear-gradient(90deg, transparent 0 4.5rem, rgb(199 160 255 / 0.045) 4.5rem 4.56rem, transparent 4.56rem),
+    linear-gradient(90deg, transparent 0 4.5rem, rgb(197 134 192 / 0.035) 4.5rem 4.56rem, transparent 4.56rem),
     var(--ide-editor-bg);
 }
 
 :root[data-theme='ide'] [data-ide-kind='collection'] {
-  background: linear-gradient(180deg, #0d1117, #0b1118 50%, #0d1117);
+  background: linear-gradient(180deg, #1e1e1e, #202020 50%, #1e1e1e);
 }
 
 :root[data-theme='ide'] [data-ide-kind='modules'] {
-  background: radial-gradient(circle at 50% 35%, rgb(111 215 232 / 0.045), transparent 34rem), var(--ide-editor-bg);
+  background: radial-gradient(circle at 50% 35%, rgb(78 201 176 / 0.035), transparent 34rem), var(--ide-editor-bg);
 }
 
-:root[data-theme='ide'] [data-ide-kind='log'] {
-  background-image: repeating-linear-gradient(180deg, transparent 0 31px, rgb(104 117 135 / 0.04) 31px 32px);
+:root[data-theme='ide'] [data-ide-kind='data'] {
+  background-image: repeating-linear-gradient(180deg, transparent 0 31px, rgb(133 133 133 / 0.035) 31px 32px);
 }
 
-:root[data-theme='ide'] [data-ide-kind='request'] {
-  background: linear-gradient(145deg, rgb(90 169 255 / 0.035), transparent 34rem), var(--ide-editor-bg);
+:root[data-theme='ide'] [data-ide-kind='markup'] {
+  background: linear-gradient(145deg, rgb(232 90 173 / 0.025), transparent 34rem), var(--ide-editor-bg);
 }
 
 :root[data-theme='ide'] [data-theme-slot='portrait'] {
   border-radius: 6px;
-  border-color: #354252;
-  box-shadow: 0 0 0 1px rgb(90 169 255 / 0.06), 0 24px 60px rgb(0 0 0 / 0.26);
+  border-color: var(--ide-border);
+  box-shadow: 0 0 0 1px rgb(79 193 255 / 0.04), 0 24px 60px rgb(0 0 0 / 0.26);
 }
 
 :root[data-theme='ide'] [data-theme-slot='project-card'] {
-  border-color: #2b3947;
+  border-color: var(--ide-border);
   border-radius: 7px;
-  background: linear-gradient(145deg, rgb(111 215 232 / 0.025), transparent 45%), var(--ide-elevated);
+  background: linear-gradient(145deg, rgb(78 201 176 / 0.022), transparent 45%), var(--ide-elevated);
   box-shadow: 0 14px 34px rgb(0 0 0 / 0.28);
 }
 
 :root[data-theme='ide'] [data-theme-slot='project-card']:is(:hover, :focus-within) {
-  border-color: rgb(90 169 255 / 0.66);
-  box-shadow: 0 16px 40px rgb(0 0 0 / 0.34), inset 0 0 0 1px rgb(90 169 255 / 0.08);
+  border-color: rgb(79 193 255 / 0.58);
+  box-shadow: 0 16px 40px rgb(0 0 0 / 0.34), inset 0 0 0 1px rgb(79 193 255 / 0.06);
 }
 
 /* Visual-only decoration: the Motion card remains the sole transform/size/position owner. */
 :root[data-theme='ide'] [data-theme-slot='volunteering-card'] {
-  border-color: #2a3744;
-  background: linear-gradient(155deg, rgb(127 216 143 / 0.035), transparent 45%), var(--ide-elevated);
-  box-shadow: 0 16px 38px rgb(0 0 0 / 0.28), inset 0 1px rgb(127 216 143 / 0.06);
+  border-color: var(--ide-border);
+  background: linear-gradient(155deg, rgb(106 153 85 / 0.028), transparent 45%), var(--ide-elevated);
+  box-shadow: 0 16px 38px rgb(0 0 0 / 0.28), inset 0 1px rgb(106 153 85 / 0.05);
 }
 
 :root[data-theme='ide'] #endorsements-home [data-theme-slot='card'] {
   border-radius: 6px;
   border-left: 3px solid rgb(240 185 106 / 0.58);
-  background: #0f151d;
+  background: #252526;
   box-shadow: 0 12px 30px rgb(0 0 0 / 0.22);
 }
 
 :root[data-theme='ide'] [data-theme-slot='contact-form'] {
   position: relative;
   border-radius: 7px;
-  background: #0e151d;
-  box-shadow: 0 18px 48px rgb(0 0 0 / 0.28), inset 3px 0 rgb(90 169 255 / 0.34);
+  background: #252526;
+  box-shadow: 0 18px 48px rgb(0 0 0 / 0.28), inset 3px 0 rgb(79 193 255 / 0.3);
 }
 
 :root[data-theme='ide'] [data-theme-slot='contact-form']::before {
-  content: 'POST /contact HTTP/1.1   ·   Content-Type: application/json';
+  content: '<form action="/contact" method="post">';
   display: block;
   margin-bottom: 1.25rem;
   color: var(--ide-function);
@@ -240,7 +262,7 @@
 :root[data-theme='ide'] [data-theme-slot='footer'] {
   margin-top: 0;
   border-top: 1px solid var(--ide-divider);
-  background: #090d12;
+  background: #181818;
 }
 
 :root[data-theme='ide'] [data-theme-slot='footer']::before {
@@ -252,8 +274,8 @@
 }
 
 :root[data-theme='ide'] .liquid-glass {
-  border-color: #2a3643;
-  background: rgb(17 24 33 / 0.88);
+  border-color: var(--ide-border);
+  background: rgb(45 45 48 / 0.9);
   box-shadow: inset 0 1px rgb(216 222 233 / 0.04), 0 8px 24px rgb(0 0 0 / 0.24);
   backdrop-filter: blur(10px);
 }
@@ -275,6 +297,7 @@
 @media (max-width: 1179px) {
   :root[data-theme='ide'] {
     --ide-titlebar-h: calc(42px + env(safe-area-inset-top));
+    --ide-menubar-h: 0px;
     --ide-tabs-h: 38px;
     --ide-breadcrumb-h: 25px;
   }
@@ -296,7 +319,7 @@
   }
 
   :root[data-theme='ide'] [data-theme-slot='contact-form']::before {
-    content: 'POST /contact HTTP/1.1';
+    content: '<form action="/contact">';
   }
 }
 
