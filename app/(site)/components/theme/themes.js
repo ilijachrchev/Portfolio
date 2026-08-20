@@ -59,6 +59,18 @@ export const THEMES = {
     icon: 'monitor',
     preview: ['#008080', '#c0c0c0', '#000080'],
   },
+  github: {
+    id: 'github',
+    label: 'GitHub',
+    shortLabel: 'GitHub',
+    description: 'Repository Explorer',
+    colorScheme: 'dark',
+    experience: 'github',
+    transition: 'repository',
+    heroMedia: false,
+    icon: 'repository',
+    preview: ['#0d1117', '#58a6ff', '#3fb950'],
+  },
 }
 
 export const THEME_IDS = Object.keys(THEMES)
