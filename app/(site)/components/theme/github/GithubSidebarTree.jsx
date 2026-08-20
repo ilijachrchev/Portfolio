@@ -31,13 +31,15 @@ export default function GithubSidebarTree() {
   const previousFocusRef = useRef(null)
 
   useLayoutEffect(() => {
-    if (!window.matchMedia('(max-width: 899px)').matches) return
-    if (treeOpen) {
+    const mobile = window.matchMedia('(max-width: 899px)').matches
+    if (treeOpen && mobile) {
       previousFocusRef.current = document.activeElement
       asideRef.current?.querySelector('button')?.focus()
     } else if (previousFocusRef.current instanceof HTMLElement) {
       previousFocusRef.current.focus()
       previousFocusRef.current = null
+    } else if (!treeOpen && asideRef.current?.contains(document.activeElement)) {
+      document.getElementById('github-tree-toggle')?.focus()
     }
   }, [treeOpen])
 

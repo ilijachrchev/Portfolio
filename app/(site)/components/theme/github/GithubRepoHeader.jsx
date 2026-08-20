@@ -24,6 +24,7 @@ export default function GithubRepoHeader() {
           main
         </span>
         <button
+          id="github-tree-toggle"
           type="button"
           onClick={() => setTreeOpen(!treeOpen)}
           aria-label={treeOpen ? 'Close repository tree' : 'Open repository tree'}
