@@ -267,3 +267,22 @@
   background: var(--win98-light);
   font-size: 12px;
 }
+
+@media (max-width: 760px) {
+  :root[data-theme='win98'] main {
+    margin-left: 0;
+    padding: 104px 6px 48px;
+  }
+
+  :root[data-theme='win98'] [data-win98-app] {
+    margin-bottom: 8px;
+  }
+
+  :root[data-theme='win98'] [data-win98-app]:not([data-win98-app='computer']) {
+    padding-inline: 16px;
+  }
+
+  :root[data-theme='win98'] [data-theme-slot='hero'] h1 {
+    font-size: clamp(32px, 10vw, 48px);
+  }
+}
