@@ -422,3 +422,31 @@
     transition: none !important;
   }
 }
+
+@media (max-width: 640px) {
+  :root[data-theme='github'] [data-theme-slot='hero'] > :last-child {
+    padding-inline: 20px;
+  }
+
+  :root[data-theme='github'] [data-theme-slot='hero'] h1 {
+    font-size: clamp(34px, 11vw, 48px);
+  }
+
+  :root[data-theme='github'] #about {
+    padding-inline: 12px;
+  }
+
+  :root[data-theme='github'] #about > div > :not(:first-child),
+  :root[data-theme='github'] #about > div > span:first-of-type {
+    margin-inline: 18px;
+  }
+
+  :root[data-theme='github'] [data-theme-slot='portrait'] {
+    width: min(78vw, 260px);
+  }
+
+  :root[data-theme='github'] [data-theme-slot='project-card']::after {
+    padding-inline: 12px;
+    overflow-wrap: anywhere;
+  }
+}
