@@ -77,6 +77,16 @@ export function Windows98WorkspaceProvider({ children }) {
     }))
   }, [focusWindow])
 
+  const moveWindow = useCallback((windowId, position) => {
+    setWindows((current) => ({
+      ...current,
+      [windowId]: {
+        ...current[windowId],
+        position,
+      },
+    }))
+  }, [])
+
   useEffect(() => {
     document.documentElement.dataset.win98ActiveApp = activeAppId
     return () => delete document.documentElement.dataset.win98ActiveApp
@@ -156,7 +166,8 @@ export function Windows98WorkspaceProvider({ children }) {
     focusWindow,
     minimizeWindow,
     toggleMaximizeWindow,
-  }), [activeAppId, activeWindowId, closeWindow, focusWindow, minimizeWindow, navigateToApp, openWindow, selectedShortcut, toggleMaximizeWindow, windows])
+    moveWindow,
+  }), [activeAppId, activeWindowId, closeWindow, focusWindow, minimizeWindow, moveWindow, navigateToApp, openWindow, selectedShortcut, toggleMaximizeWindow, windows])
 
   return (
     <Windows98WorkspaceContext.Provider value={value}>
