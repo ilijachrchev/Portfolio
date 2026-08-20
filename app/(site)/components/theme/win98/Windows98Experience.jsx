@@ -1,9 +1,11 @@
 'use client'
 
+import styles from './Windows98Experience.module.css'
+
 export default function Windows98Experience() {
   return (
-    <div data-win98-desktop aria-label="Windows 98 portfolio desktop">
-      <span>Portfolio desktop</span>
+    <div className={styles.desktop} data-win98-desktop aria-label="Windows 98 portfolio desktop">
+      <div className={styles.desktopSurface} aria-hidden="true" />
     </div>
   )
 }

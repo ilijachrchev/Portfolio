@@ -1,0 +1,23 @@
+.desktop {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  overflow: hidden;
+  pointer-events: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  line-height: 1.25;
+}
+
+.desktopSurface {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--win98-desktop);
+}
+
+@media (max-width: 640px) {
+  .desktop {
+    font-size: 13px;
+  }
+}
