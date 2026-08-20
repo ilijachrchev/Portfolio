@@ -4,11 +4,22 @@ import { useTheme } from '../ThemeProvider'
 import SpiderTransition from './spider/SpiderTransition'
 import IdeTransition from './ide/IdeTransition'
 import Windows98Transition from './win98/Windows98Transition'
+import GithubTransition from './github/GithubTransition'
 
 export default function ThemeTransitionLayer() {
   const { transition, commitPendingTheme, finishThemeTransition } = useTheme()
 
   if (!transition) return null
+
+  if (transition.kind === 'repository') {
+    return (
+      <GithubTransition
+        direction={transition.to === 'github' ? 'enter' : 'exit'}
+        onCovered={commitPendingTheme}
+        onComplete={finishThemeTransition}
+      />
+    )
+  }
 
   if (transition.kind === 'workspace') {
     return (
