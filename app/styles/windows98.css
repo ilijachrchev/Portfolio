@@ -247,3 +247,23 @@
   outline-offset: -4px;
   box-shadow: inset 1px 1px #000;
 }
+
+:root[data-theme='win98'] [data-theme-slot='footer'] {
+  margin-top: 0;
+  padding: 18px 8px 8px;
+  border: 2px solid;
+  border-color: var(--win98-highlight) var(--win98-dark) var(--win98-dark) var(--win98-highlight);
+  background: var(--win98-surface);
+  color: #000;
+}
+
+:root[data-theme='win98'] [data-theme-slot='footer']::before {
+  content: 'Portfolio status: Ready';
+  display: block;
+  margin: 0 10% 18px;
+  padding: 3px 7px;
+  border: 2px solid;
+  border-color: var(--win98-shadow) var(--win98-highlight) var(--win98-highlight) var(--win98-shadow);
+  background: var(--win98-light);
+  font-size: 12px;
+}
