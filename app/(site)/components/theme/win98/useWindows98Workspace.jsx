@@ -14,7 +14,8 @@ function raiseWindow(current, windowId, patch = {}) {
   ordered.forEach((window, index) => {
     next[window.id] = { ...window, zIndex: 41 + index }
   })
-  next[windowId] = { ...current[windowId], ...patch, zIndex: 41 + ordered.length }
+  const zIndex = current[windowId].modal ? 56 : 41 + ordered.length
+  next[windowId] = { ...current[windowId], ...patch, zIndex }
   return next
 }
 
