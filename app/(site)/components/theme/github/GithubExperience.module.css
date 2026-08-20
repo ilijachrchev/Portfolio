@@ -478,6 +478,25 @@
   .tabs {
     padding-inline: 6px;
   }
+
+  .insights {
+    padding: 16px;
+  }
+
+  .contributionGrid {
+    grid-template-rows: repeat(7, 9px);
+    grid-auto-columns: 9px;
+    gap: 2px;
+  }
+
+  .activityList li {
+    grid-template-columns: 20px minmax(0, 1fr);
+  }
+
+  .activityList small {
+    grid-column: 2;
+    white-space: normal;
+  }
 }
 
 @media (max-width: 899px) {
