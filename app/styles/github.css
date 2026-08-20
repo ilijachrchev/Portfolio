@@ -297,3 +297,27 @@
   font-style: normal;
   font-weight: 600;
 }
+
+:root[data-theme='github'] #endorsements-home [data-theme-slot='card'] {
+  border-color: var(--github-border);
+  border-radius: 6px;
+  border-left: 3px solid #a371f7;
+  background: var(--github-canvas-subtle);
+  box-shadow: 0 8px 24px rgb(1 4 9 / 0.26);
+}
+
+:root[data-theme='github'] #endorsements-home [data-theme-slot='card']::before {
+  content: '✓ ' attr(data-github-review);
+  width: max-content;
+  border: 1px solid rgb(63 185 80 / 0.4);
+  border-radius: 999px;
+  padding: 2px 7px;
+  background: rgb(35 134 54 / 0.14);
+  color: #56d364;
+  font: 600 10px/1.4 var(--github-mono);
+}
+
+:root[data-theme='github'] #endorsements-home [data-theme-slot='card'] > header {
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--github-border-muted);
+}
