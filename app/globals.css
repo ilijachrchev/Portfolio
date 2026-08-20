@@ -2,6 +2,7 @@
 @import "./styles/spiderman.css";
 @import "./styles/ide.css";
 @import "./styles/windows98.css";
+@import "./styles/github.css";
 
 @custom-variant dark (&:is(.dark *));
 
