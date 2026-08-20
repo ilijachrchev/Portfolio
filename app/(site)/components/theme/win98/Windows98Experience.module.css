@@ -729,4 +729,35 @@
   .windowTitleBar {
     height: 30px;
   }
+
+  .taskbar {
+    height: calc(42px + env(safe-area-inset-bottom));
+    padding-bottom: calc(3px + env(safe-area-inset-bottom));
+  }
+
+  .startButton {
+    min-width: 70px;
+    height: 31px;
+  }
+
+  .taskbarApp {
+    width: 92px;
+  }
+
+  .tray {
+    min-width: 58px;
+    height: 31px;
+    padding-inline: 3px;
+  }
+
+  .trayStatus {
+    display: none;
+  }
+
+  .startMenu {
+    bottom: calc(42px + env(safe-area-inset-bottom));
+    width: min(300px, calc(100vw - 8px));
+    max-height: calc(100dvh - 110px);
+    overflow-y: auto;
+  }
 }
