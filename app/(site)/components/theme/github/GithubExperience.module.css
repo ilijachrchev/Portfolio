@@ -74,3 +74,23 @@
   color: var(--github-fg-default);
   font-size: 12px;
 }
+
+.treeToggle {
+  width: 34px;
+}
+
+.treeToggle svg,
+.profileLink svg {
+  width: 15px;
+  height: 15px;
+}
+
+.profileLink {
+  padding: 0 10px;
+}
+
+.treeToggle:hover,
+.profileLink:hover {
+  border-color: #8b949e;
+  background: #30363d;
+}
