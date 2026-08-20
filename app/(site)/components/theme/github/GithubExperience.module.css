@@ -445,3 +445,33 @@
     transition: none;
   }
 }
+
+@media (max-width: 640px) {
+  .repoBar {
+    min-height: 64px;
+    gap: 8px;
+    padding-inline: 12px;
+  }
+
+  .repoIdentity {
+    gap: 6px;
+  }
+
+  .visibility,
+  .branchMeta {
+    display: none;
+  }
+
+  .profileLink {
+    width: 34px;
+    padding: 0;
+  }
+
+  .profileLink span {
+    display: none;
+  }
+
+  .tabs {
+    padding-inline: 6px;
+  }
+}
