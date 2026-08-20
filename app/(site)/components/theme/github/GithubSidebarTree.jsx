@@ -1,6 +1,8 @@
 'use client'
 
+import { X } from 'lucide-react'
 import GithubFileIcon from './GithubFileIcon'
+import { GITHUB_SECTIONS } from './githubRepository'
 import { useGithubRepositoryView } from './useGithubRepositoryView'
 import styles from './GithubExperience.module.css'
 
@@ -19,5 +21,28 @@ export function GithubTreeItem({ section }) {
       <GithubFileIcon kind={section.kind} />
       <span>{section.label}</span>
     </button>
+  )
+}
+
+export default function GithubSidebarTree() {
+  const { activeSection, treeOpen, setTreeOpen } = useGithubRepositoryView()
+
+  return (
+    <aside className={`${styles.tree} ${treeOpen ? styles.treeOpen : ''}`} aria-label="Repository files">
+      <header className={styles.treeHeader}>
+        <span>portfolio</span>
+        <button type="button" onClick={() => setTreeOpen(false)} aria-label="Close repository tree">
+          <X aria-hidden="true" />
+        </button>
+      </header>
+      <div className={styles.treeList} role="tree" aria-label="Portfolio repository tree">
+        {GITHUB_SECTIONS.map((section) => (
+          <GithubTreeItem key={section.id} section={section} />
+        ))}
+      </div>
+      <p className={styles.treePath} aria-live="polite">
+        active: {activeSection.path}
+      </p>
+    </aside>
   )
 }
