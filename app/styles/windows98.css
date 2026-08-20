@@ -148,3 +148,22 @@
   background: var(--win98-light);
   box-shadow: inset 1px 1px var(--win98-highlight), inset -1px -1px var(--win98-shadow);
 }
+
+/* Visual decoration only: Motion remains the sole owner of carousel geometry. */
+:root[data-theme='win98'] [data-theme-slot='volunteering-card'] {
+  border-color: var(--win98-dark);
+  border-radius: 0;
+  background: var(--win98-light);
+  box-shadow:
+    inset 1px 1px var(--win98-highlight),
+    inset -1px -1px var(--win98-shadow),
+    3px 3px 0 rgb(0 0 0 / 0.35);
+}
+
+:root[data-theme='win98'] #service [class*='rounded-full'] {
+  border-radius: 0;
+}
+
+:root[data-theme='win98'] #service [class*='bg-primary'] {
+  background-color: var(--win98-title);
+}
