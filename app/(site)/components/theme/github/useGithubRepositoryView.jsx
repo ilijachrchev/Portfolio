@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
 import { GITHUB_SECTIONS, getGithubSection, getGithubTab } from './githubRepository'
 
 const GithubRepositoryContext = createContext(null)
@@ -24,6 +24,7 @@ export function GithubRepositoryProvider({ children }) {
   const [treeOpen, setTreeOpen] = useState(
     () => typeof window !== 'undefined' && !window.matchMedia('(max-width: 899px)').matches
   )
+  const navigationLockRef = useRef(null)
   const activeSection = getGithubSection(activeSectionId) || getGithubSection('home')
   const activeTab = getGithubTab(activeSection.sectionId)
 
@@ -55,6 +56,8 @@ export function GithubRepositoryProvider({ children }) {
         .filter((entry) => entry.isIntersecting)
         .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]
       if (!visible) return
+      if (navigationLockRef.current?.until > Date.now()) return
+      navigationLockRef.current = null
       setActiveSectionId(visible.target.id)
     }, {
       rootMargin: '-28% 0px -56% 0px',
@@ -97,6 +100,10 @@ export function GithubRepositoryProvider({ children }) {
 
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     const top = element.getBoundingClientRect().top + window.scrollY - 146
+    navigationLockRef.current = {
+      sectionId: section.sectionId,
+      until: Date.now() + (reduceMotion ? 100 : 1500),
+    }
     window.scrollTo({
       top: Math.max(0, top),
       behavior: reduceMotion ? 'auto' : 'smooth',
