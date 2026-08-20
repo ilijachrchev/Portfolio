@@ -10,6 +10,7 @@ export default function About() {
   return (
     <section
       id="about"
+      data-theme-slot="section"
       className="relative w-full scroll-m-20 bg-background px-[8%] py-24 md:py-32 lg:px-[12%]"
     >
       <motion.div
@@ -49,6 +50,7 @@ export default function About() {
           className="mt-16 flex w-full flex-col items-center gap-12 md:gap-16 lg:flex-row lg:items-start lg:gap-20"
         >
           <motion.div
+            data-theme-slot="portrait"
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}

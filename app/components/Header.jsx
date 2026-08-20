@@ -2,11 +2,14 @@
 
 import { motion, useReducedMotion } from 'motion/react'
 import { ArrowRight, Download, ChevronDown } from 'lucide-react'
+import { useTheme } from '../(site)/components/ThemeProvider'
 
 const ease = [0.16, 1, 0.3, 1]
 
 export default function Header() {
   const reduceMotion = useReducedMotion()
+  const { theme, isHydrated } = useTheme()
+  const showVideo = isHydrated && theme !== 'spiderman' && !reduceMotion
 
   const rise = (delay = 0) => ({
     initial: reduceMotion ? false : { opacity: 0, y: 24 },
@@ -17,19 +20,22 @@ export default function Header() {
   return (
     <section
       id="home"
+      data-theme-slot="hero"
       className="relative isolate flex min-h-screen w-full flex-col overflow-hidden"
     >
-      <video
-        className="absolute inset-0 z-0 h-full w-full object-cover saturate-90 contrast-[1.02] dark:saturate-75 dark:contrast-[1.05] dark:brightness-95 motion-reduce:hidden"
-        src="/videos/hero.mp4"
-        poster="/videos/hero-poster.jpg"
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="metadata"
-        aria-hidden="true"
-      />
+      {showVideo && (
+        <video
+          className="absolute inset-0 z-0 h-full w-full object-cover saturate-90 contrast-[1.02] dark:saturate-75 dark:contrast-[1.05] dark:brightness-95"
+          src="/videos/hero.mp4"
+          poster="/videos/hero-poster.jpg"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="metadata"
+          aria-hidden="true"
+        />
+      )}
 
       <div
         className="absolute inset-0 z-[5] hidden motion-reduce:block bg-[radial-gradient(ellipse_at_50%_40%,color-mix(in_oklch,var(--primary)_22%,transparent),transparent_55%),linear-gradient(180deg,var(--background),var(--card))]"
@@ -95,6 +101,7 @@ export default function Header() {
           >
             <a
               href="#work"
+              data-theme-slot="primary-cta"
               className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3.5 text-[13.5px] font-medium tracking-[0.005em] text-primary-foreground transition-[transform,opacity] duration-200 hover:-translate-y-px hover:opacity-90"
             >
               See my work

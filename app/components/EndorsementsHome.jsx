@@ -44,7 +44,7 @@ function Card({ row }) {
   }, [code])
 
   return (
-    <article className="flex h-full flex-col gap-3 rounded-2xl border border-border bg-card p-5 shadow-sm">
+    <article data-theme-slot="card" className="flex h-full flex-col gap-3 rounded-2xl border border-border bg-card p-5 shadow-sm">
       <header className="flex items-start justify-between">
         <div className="flex items-center gap-3">
           <div className="flex h-10 w-10 items-center justify-center rounded-full bg-muted text-xs font-bold text-foreground select-none">
@@ -150,6 +150,7 @@ export default function EndorsementsHome() {
   return (
     <motion.section
       id="endorsements-home"
+      data-theme-slot="section"
       className="scroll-m-24 px-5 pb-24 pt-32 lg:px-8 md:pb-32 md:pt-40 xl:px-[8%]"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}

@@ -10,7 +10,7 @@ const Footer = () => {
   const { isDarkScheme } = useTheme()
 
   return (
-    <div className='mt-20'>
+    <footer id="footer" data-theme-slot="footer" className='relative mt-20 overflow-hidden pt-12'>
         <div className='text-center'>
             <Image src={isDarkScheme ? assets.logo_dark : assets.logo} alt='' className='w-36 mx-auto mb-2' />
 
@@ -20,7 +20,7 @@ const Footer = () => {
             </div>
         </div>
 
-        <div className=' text-center sm:flex items-center justify-between border-t border-gray-400 mx-[10%] mt-12 py-6'>
+        <div className='mx-[10%] mt-12 border-t border-border py-6 text-center sm:flex sm:items-center sm:justify-between'>
             <p>© 2026 Ilija Chrchev. All rights reserved.</p>
             <ul className="flex items-center gap-10 justify-center mt-4 sm:mt-0">
                 <li>
@@ -67,7 +67,7 @@ const Footer = () => {
             </ul>
 
         </div>
-    </div>
+    </footer>
   )
 }
 

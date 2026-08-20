@@ -60,6 +60,7 @@ export default function Contact() {
   return (
     <motion.section
       id="contact"
+      data-theme-slot="section"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, amount: 0.2 }}
@@ -105,6 +106,7 @@ export default function Contact() {
         </motion.p>
 
         <motion.form
+          data-theme-slot="contact-form"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -175,6 +177,7 @@ export default function Contact() {
 
           <div className="mt-6 flex justify-center">
             <motion.button
+              data-theme-slot="primary-cta"
               whileHover={!isSending ? { y: -2 } : undefined}
               whileTap={!isSending ? { scale: 0.98 } : undefined}
               transition={{ duration: 0.2 }}

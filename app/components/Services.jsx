@@ -401,6 +401,7 @@ const Services = () => {
     return (
         <>
             <motion.section
+                data-theme-slot="section"
                 role="region"
                 aria-label="Volunteering carousel"
                 tabIndex={0}
@@ -593,6 +594,7 @@ const Services = () => {
 
                                     return (
                                         <motion.article
+                                            data-theme-slot="volunteering-card"
                                             key={`${title}-${index}`}
                                             initial={{
                                                 opacity: 0,

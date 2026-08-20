@@ -55,6 +55,7 @@ export default function Navbar() {
   return (
     <>
       <nav
+        data-theme-slot="navbar"
         className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
           scrolled ? 'liquid-glass' : ''
         }`}
