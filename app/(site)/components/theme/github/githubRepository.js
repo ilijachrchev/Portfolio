@@ -75,3 +75,19 @@ export const GITHUB_TABS = [
     sectionIds: ['contact'],
   },
 ]
+
+export function getGithubSection(value) {
+  return GITHUB_SECTIONS.find((section) => (
+    section.id === value || section.sectionId === value || section.path === value
+  )) || null
+}
+
+export function getGithubTab(sectionId) {
+  return GITHUB_TABS.find((tab) => tab.sectionIds.includes(sectionId)) || GITHUB_TABS[0]
+}
+
+export function isGithubEditableTarget(target) {
+  return target instanceof HTMLElement && Boolean(
+    target.closest('input, textarea, select, [contenteditable="true"], [role="textbox"]')
+  )
+}
