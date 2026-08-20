@@ -126,3 +126,25 @@
   box-shadow: none;
   border-radius: 0;
 }
+
+:root[data-theme='win98'] [data-win98-app]:not([data-win98-app='computer']) {
+  padding-top: max(52px, 4rem);
+}
+
+:root[data-theme='win98'] [data-win98-app] h2 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: normal;
+}
+
+:root[data-theme='win98'] [data-theme-slot='portrait'] {
+  border: 2px solid;
+  border-color: var(--win98-shadow) var(--win98-highlight) var(--win98-highlight) var(--win98-shadow);
+  border-radius: 0;
+  box-shadow: inset 1px 1px #000;
+}
+
+:root[data-theme='win98'] #about li {
+  border-radius: 0;
+  background: var(--win98-light);
+  box-shadow: inset 1px 1px var(--win98-highlight), inset -1px -1px var(--win98-shadow);
+}
