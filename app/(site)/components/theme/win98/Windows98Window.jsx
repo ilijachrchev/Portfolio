@@ -12,7 +12,10 @@ export default function Windows98Window({ active, children, onClose, onFocus, on
   useEffect(() => {
     if (!window.modal || !window.open || window.minimized) return
     const previousFocus = document.activeElement
-    requestAnimationFrame(() => frameRef.current?.querySelector('button, input, [href]')?.focus())
+    requestAnimationFrame(() => {
+      const bodyControl = frameRef.current?.lastElementChild?.querySelector('button, input, [href]')
+      bodyControl?.focus()
+    })
     return () => {
       if (previousFocus instanceof HTMLElement && previousFocus.isConnected) previousFocus.focus()
       else document.querySelector('button[aria-haspopup="menu"]')?.focus()
