@@ -9,6 +9,25 @@
   line-height: 1.25;
 }
 
+.raised {
+  border: 2px solid;
+  border-color: var(--win98-highlight) var(--win98-dark) var(--win98-dark) var(--win98-highlight);
+  box-shadow: inset 1px 1px var(--win98-light), inset -1px -1px var(--win98-shadow);
+  background: var(--win98-surface);
+}
+
+.sunken {
+  border: 2px solid;
+  border-color: var(--win98-shadow) var(--win98-highlight) var(--win98-highlight) var(--win98-shadow);
+  box-shadow: inset 1px 1px var(--win98-dark), inset -1px -1px var(--win98-light);
+  background: var(--win98-highlight);
+}
+
+.pressed {
+  border-color: var(--win98-dark) var(--win98-highlight) var(--win98-highlight) var(--win98-dark);
+  box-shadow: inset 1px 1px var(--win98-shadow);
+}
+
 @media (max-width: 640px) {
   .desktop {
     font-size: 13px;
