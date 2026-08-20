@@ -143,8 +143,33 @@
 }
 
 .taskbarApps {
+  display: flex;
   min-width: 0;
   flex: 1;
+  gap: 3px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.taskbarApps::-webkit-scrollbar {
+  display: none;
+}
+
+.taskbarApp {
+  width: clamp(88px, 13vw, 160px);
+  min-width: 76px;
+  height: 28px;
+  overflow: hidden;
+  padding-inline: 7px;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.taskbarApp:focus-visible {
+  outline: 1px dotted #000;
+  outline-offset: -5px;
+  border-radius: 0;
 }
 
 .tray {
