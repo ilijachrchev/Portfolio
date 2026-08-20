@@ -321,3 +321,23 @@
   padding-bottom: 10px;
   border-bottom: 1px solid var(--github-border-muted);
 }
+
+:root[data-theme='github'] #contact {
+  background: var(--github-canvas);
+}
+
+:root[data-theme='github'] #contact h2 {
+  font-family: var(--font-body);
+  font-weight: 600;
+}
+
+:root[data-theme='github'] #contact h2 em {
+  color: var(--github-accent);
+  font-style: normal;
+  font-weight: 600;
+}
+
+:root[data-theme='github'] #contact > div > span:first-child {
+  color: #56d364;
+  font-family: var(--github-mono);
+}
