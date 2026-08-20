@@ -324,3 +324,21 @@
   display: grid;
   gap: 2px;
 }
+
+.activityList strong {
+  color: var(--github-fg-default);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.activityList span {
+  color: var(--github-fg-muted);
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.activityList small {
+  color: #7d8590;
+  font: 10px/1.5 var(--github-mono);
+  white-space: nowrap;
+}
