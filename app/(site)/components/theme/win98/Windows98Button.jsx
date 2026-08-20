@@ -1,6 +1,7 @@
+import { forwardRef } from 'react'
 import styles from './Windows98Experience.module.css'
 
-export default function Windows98Button({ active = false, className = '', children, ...props }) {
+const Windows98Button = forwardRef(function Windows98Button({ active = false, className = '', children, ...props }, ref) {
   const classes = [
     styles.button,
     styles.raised,
@@ -9,8 +10,10 @@ export default function Windows98Button({ active = false, className = '', childr
   ].filter(Boolean).join(' ')
 
   return (
-    <button type="button" className={classes} {...props}>
+    <button ref={ref} type="button" className={classes} {...props}>
       {children}
     </button>
   )
-}
+})
+
+export default Windows98Button
