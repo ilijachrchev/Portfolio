@@ -197,6 +197,35 @@
   text-align: center;
 }
 
+.windowTitleBar {
+  display: flex;
+  height: 24px;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 3px;
+  background: var(--win98-shadow);
+  color: #fff;
+  touch-action: none;
+  user-select: none;
+}
+
+.windowTitleBarActive {
+  background: var(--win98-title);
+}
+
+.windowTitleBar > img {
+  flex: 0 0 auto;
+  image-rendering: pixelated;
+}
+
+.windowTitleBar > strong {
+  min-width: 0;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 @media (max-width: 640px) {
   .desktop {
     font-size: 13px;
