@@ -312,6 +312,38 @@
 .startMenuBrand strong { color: #fff; }
 .startMenuItems { flex: 1; }
 
+.menuItem {
+  display: grid;
+  width: 100%;
+  min-height: 42px;
+  grid-template-columns: 30px minmax(0, 1fr) 14px;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border: 0;
+  background: transparent;
+  color: #000;
+  font: inherit;
+  text-align: left;
+}
+
+.menuItem:hover,
+.menuItem:focus-visible {
+  background: var(--win98-title);
+  color: #fff;
+  outline: none;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.menuItemIcon {
+  font-size: 21px;
+  line-height: 1;
+  text-align: center;
+}
+
+.submenuArrow { justify-self: end; font-size: 9px; }
+
 .networkList {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
