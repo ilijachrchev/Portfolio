@@ -3,11 +3,11 @@ import {
   CircleDot,
   FileText,
   Folder,
-  Repository,
+  FolderGit2,
 } from 'lucide-react'
 
 const ICONS = {
-  repository: Repository,
+  repository: FolderGit2,
   readme: FileText,
   directory: Folder,
   json: Braces,

@@ -1,6 +1,6 @@
 'use client'
 
-import { GitBranch, Github, Menu, Repository } from 'lucide-react'
+import { FolderGit2, GitBranch, Github, Menu } from 'lucide-react'
 import { useGithubRepositoryView } from './useGithubRepositoryView'
 import styles from './GithubExperience.module.css'
 
@@ -10,7 +10,7 @@ export default function GithubRepoHeader() {
   return (
     <header className={styles.repoBar}>
       <div className={styles.repoIdentity}>
-        <Repository aria-hidden="true" />
+        <FolderGit2 aria-hidden="true" />
         <strong>ilijachrchev / portfolio</strong>
         <span className={styles.visibility}>Public</span>
       </div>
