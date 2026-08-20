@@ -130,3 +130,17 @@
   width: 15px;
   height: 15px;
 }
+
+.tabActive {
+  color: var(--github-fg-default);
+  font-weight: 600;
+}
+
+.tabActive::after {
+  content: '';
+  position: absolute;
+  inset: auto 8px -1px;
+  height: 2px;
+  border-radius: 2px;
+  background: #f78166;
+}
