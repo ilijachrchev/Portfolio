@@ -78,6 +78,7 @@ export default function Navbar() {
                 key={link.id}
                 href={link.href}
                 data-nav={link.id}
+                aria-current={active === link.id ? 'page' : undefined}
                 className={`text-foreground transition-opacity duration-200 ${
                   active === link.id ? 'opacity-100' : 'opacity-60 hover:opacity-100'
                 }`}

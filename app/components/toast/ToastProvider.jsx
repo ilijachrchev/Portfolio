@@ -1,6 +1,7 @@
 'use client'
 import { formatDuration } from "date-fns";
 import React, { createContext, useContext, useMemo, useRef, useState } from "react";
+import { motion } from "motion/react";
 
 
 const ToastCtx = createContext(null)
@@ -77,7 +78,7 @@ function ToastItem({ t, dismiss, mobile }) {
       ? 'bg-green-600 text-white'
       : t.type === 'error'
         ? 'bg-red-600 text-white'
-        : 'bg-white text-black dark:bg-neutral-900 dark:text-white'
+        : 'border border-border bg-popover text-popover-foreground'
 
   const icon = t.type === 'success' ? '✓' : t.type === 'error' ? '!' : 'ℹ︎'
 

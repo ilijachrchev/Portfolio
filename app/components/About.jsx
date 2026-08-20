@@ -1,12 +1,14 @@
 'use client'
 
 import Image from 'next/image'
-import { motion } from 'motion/react'
+import { motion, useReducedMotion } from 'motion/react'
 import { assets, duplicatedTools } from '@/assets/assets'
 
 const ease = [0.16, 1, 0.3, 1]
 
 export default function About() {
+  const reduceMotion = useReducedMotion()
+
   return (
     <section
       id="about"
@@ -125,9 +127,11 @@ export default function About() {
                 viewport={{ once: true }}
                 transition={{
                   opacity: { duration: 0.6, delay: 1 },
-                  x: { duration: 20, ease: 'linear', repeat: Infinity },
+                  x: reduceMotion
+                    ? { duration: 0 }
+                    : { duration: 20, ease: 'linear', repeat: Infinity },
                 }}
-                animate={{ x: ['0%', '-50%'] }}
+                animate={{ x: reduceMotion ? '0%' : ['0%', '-50%'] }}
                 className="flex items-center gap-3 will-change-transform sm:gap-5"
                 style={{ width: 'max-content' }}
               >
