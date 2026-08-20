@@ -282,6 +282,38 @@
   background: var(--win98-surface);
 }
 
+.networkList {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.networkList > p,
+.networkList > .statusBox {
+  grid-column: 1 / -1;
+}
+
+.networkList a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  color: #000;
+  text-decoration: none;
+}
+
+.networkList a:hover,
+.networkList a:focus-visible {
+  background: var(--win98-title);
+  color: #fff;
+  border-radius: 0;
+}
+
+.networkList svg {
+  width: 22px;
+  height: 22px;
+}
+
 @media (max-width: 640px) {
   .desktop {
     font-size: 13px;
