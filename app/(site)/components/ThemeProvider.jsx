@@ -22,7 +22,18 @@ function applyThemeToDocument(theme) {
 export function ThemeProvider({ children }) {
   const [theme, setThemeState] = useState(DEFAULT_THEME)
   const [isHydrated, setIsHydrated] = useState(false)
+  const [transition, setTransition] = useState(null)
   const hasExplicitChoice = useRef(false)
+
+  const commitTheme = useCallback((nextTheme, persist = true) => {
+    applyThemeToDocument(nextTheme)
+    setThemeState(nextTheme)
+
+    if (!persist) return
+    try {
+      localStorage.setItem('theme', nextTheme)
+    } catch {}
+  }, [])
 
   useEffect(() => {
     let storedTheme = null
@@ -41,16 +52,15 @@ export function ThemeProvider({ children }) {
     const handleSystemChange = () => {
       if (hasExplicitChoice.current) return
       const nextTheme = getSystemTheme()
-      applyThemeToDocument(nextTheme)
-      setThemeState(nextTheme)
+      commitTheme(nextTheme, false)
     }
 
     const handleStorage = (event) => {
       if (event.key !== 'theme') return
       hasExplicitChoice.current = isThemeId(event.newValue)
       const nextTheme = hasExplicitChoice.current ? event.newValue : getSystemTheme()
-      applyThemeToDocument(nextTheme)
-      setThemeState(nextTheme)
+      setTransition(null)
+      commitTheme(nextTheme, false)
     }
 
     media.addEventListener?.('change', handleSystemChange)
@@ -60,18 +70,37 @@ export function ThemeProvider({ children }) {
       media.removeEventListener?.('change', handleSystemChange)
       window.removeEventListener('storage', handleStorage)
     }
-  }, [])
+  }, [commitTheme])
 
   const setTheme = useCallback((nextTheme) => {
-    if (!isThemeId(nextTheme)) return
+    if (!isThemeId(nextTheme) || transition) return
 
     hasExplicitChoice.current = true
-    applyThemeToDocument(nextTheme)
-    setThemeState(nextTheme)
+    if (nextTheme === theme) {
+      try {
+        localStorage.setItem('theme', nextTheme)
+      } catch {}
+      return
+    }
 
-    try {
-      localStorage.setItem('theme', nextTheme)
-    } catch {}
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const usesSpiderTransition = theme === 'spiderman' || nextTheme === 'spiderman'
+
+    if (usesSpiderTransition && !reduceMotion) {
+      setTransition({ from: theme, to: nextTheme })
+      return
+    }
+
+    commitTheme(nextTheme)
+  }, [commitTheme, theme, transition])
+
+  const commitPendingTheme = useCallback(() => {
+    if (!transition) return
+    commitTheme(transition.to)
+  }, [commitTheme, transition])
+
+  const finishThemeTransition = useCallback(() => {
+    setTransition(null)
   }, [])
 
   const themeDefinition = getThemeDefinition(theme)
@@ -85,6 +114,9 @@ export function ThemeProvider({ children }) {
         setTheme,
         isDarkScheme: themeDefinition.colorScheme === 'dark',
         isHydrated,
+        transition,
+        commitPendingTheme,
+        finishThemeTransition,
       }}
     >
       <MotionConfig reducedMotion="user">{children}</MotionConfig>
