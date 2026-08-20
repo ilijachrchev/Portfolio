@@ -398,6 +398,39 @@
   margin-left: auto;
 }
 
+.runDialog {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+}
+
+.runDialog > p,
+.runDialog > .dialogButtons {
+  grid-column: 1 / -1;
+}
+
+.runDialog input {
+  width: 100%;
+  min-height: 27px;
+  padding: 3px 6px;
+  border-radius: 0;
+  color: #000;
+  font: inherit;
+}
+
+.runDialog input:focus {
+  outline: 1px dotted var(--win98-title);
+  outline-offset: -4px;
+}
+
+.errorDialog {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+}
+
 .programsMenu {
   position: absolute;
   left: calc(100% - 4px);
