@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useContext, useEffect, useMemo, useState } from 'react'
+import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { GITHUB_SECTIONS, getGithubSection, getGithubTab } from './githubRepository'
 
 const GithubRepositoryContext = createContext(null)
@@ -70,13 +70,35 @@ export function GithubRepositoryProvider({ children }) {
     document.documentElement.dataset.githubActiveSection = activeSection.id
   }, [activeSection.id])
 
+  const navigateToSection = useCallback((value) => {
+    const section = getGithubSection(value)
+    if (!section) return false
+    setActiveSectionId(section.sectionId)
+
+    const element = document.getElementById(section.sectionId)
+    if (!element) {
+      window.location.assign(`/#${section.sectionId}`)
+      return true
+    }
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const top = element.getBoundingClientRect().top + window.scrollY - 146
+    window.scrollTo({
+      top: Math.max(0, top),
+      behavior: reduceMotion ? 'auto' : 'smooth',
+    })
+    if (window.matchMedia('(max-width: 899px)').matches) setTreeOpen(false)
+    return true
+  }, [])
+
   const value = useMemo(() => ({
     activeSection,
     activeTab,
     treeOpen,
     setTreeOpen,
     setActiveSectionId,
-  }), [activeSection, activeTab, treeOpen])
+    navigateToSection,
+  }), [activeSection, activeTab, navigateToSection, treeOpen])
 
   return (
     <GithubRepositoryContext.Provider value={value}>
