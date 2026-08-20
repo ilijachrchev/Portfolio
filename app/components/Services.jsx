@@ -5,6 +5,8 @@ import Image from 'next/image'
 import { createPortal } from 'react-dom'
 import React, { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
+import GithubInsights from '../(site)/components/theme/github/GithubInsights'
+import { useTheme } from '../(site)/components/ThemeProvider'
 import {
     X,
     ArrowUpRight,
@@ -288,6 +290,7 @@ const getCircularOffset = (
 // ============================================================
 
 const Services = () => {
+    const { theme } = useTheme()
     const [selected, setSelected] = useState(null)
     const [activeIndex, setActiveIndex] = useState(0)
     const [viewportWidth, setViewportWidth] =
@@ -490,6 +493,12 @@ const Services = () => {
                         of community.
                     </motion.p>
                 </div>
+
+                {theme === 'github' && (
+                    <div className="relative z-10 mx-auto mt-10 max-w-6xl px-6">
+                        <GithubInsights />
+                    </div>
+                )}
 
 
                 {/* ==================================================
