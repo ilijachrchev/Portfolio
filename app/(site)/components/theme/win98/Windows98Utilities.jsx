@@ -1,5 +1,7 @@
+import Windows98Help from './Windows98Help'
 import Windows98Network from './Windows98Network'
 import Windows98RecycleBin from './Windows98RecycleBin'
+import Windows98Winver from './Windows98Winver'
 import Windows98Window from './Windows98Window'
 import { useWindows98Workspace } from './useWindows98Workspace'
 
@@ -9,11 +11,16 @@ const CONTENT = {
 }
 
 export default function Windows98Utilities() {
-  const { activeWindowId, closeWindow, focusWindow, minimizeWindow, moveWindow, toggleMaximizeWindow, windows } = useWindows98Workspace()
+  const { activeWindowId, closeWindow, focusWindow, minimizeWindow, moveWindow, navigateToApp, openWindow, toggleMaximizeWindow, windows } = useWindows98Workspace()
 
   return Object.values(windows).map((window) => {
     const Content = CONTENT[window.id]
-    if (!Content) return null
+    if (!Content && !['help', 'winver'].includes(window.id)) return null
+    const content = window.id === 'help'
+      ? <Windows98Help navigateToApp={navigateToApp} onOpenWinver={() => openWindow('winver')} />
+      : window.id === 'winver'
+        ? <Windows98Winver onClose={() => closeWindow('winver')} />
+        : <Content />
     return (
       <Windows98Window
         key={window.id}
@@ -25,7 +32,7 @@ export default function Windows98Utilities() {
         onMinimize={() => minimizeWindow(window.id)}
         onMove={moveWindow}
       >
-        <Content />
+        {content}
       </Windows98Window>
     )
   })
