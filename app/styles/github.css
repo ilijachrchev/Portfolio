@@ -128,3 +128,29 @@
   max-width: 42rem;
   color: var(--github-fg-muted);
 }
+
+:root[data-theme='github'] #about {
+  position: relative;
+  padding: 78px clamp(18px, 5vw, 64px);
+  background: var(--github-canvas);
+}
+
+:root[data-theme='github'] #about > div {
+  max-width: 980px;
+  align-items: stretch;
+  overflow: hidden;
+  border: 1px solid var(--github-border);
+  border-radius: 6px;
+  background: var(--github-canvas);
+}
+
+:root[data-theme='github'] #about > div::before {
+  content: 'README.md';
+  display: block;
+  margin: 0 -1px 34px;
+  padding: 13px 18px;
+  border-bottom: 1px solid var(--github-border);
+  background: var(--github-canvas-subtle);
+  color: var(--github-fg-default);
+  font: 600 12px/1.4 var(--github-mono);
+}
