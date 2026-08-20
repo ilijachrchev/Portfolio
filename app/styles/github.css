@@ -178,3 +178,24 @@
 :root[data-theme='github'] #about > div > div:last-child {
   margin-bottom: clamp(26px, 5vw, 48px);
 }
+
+:root[data-theme='github'] [data-theme-slot='portrait'] {
+  width: min(100%, 288px);
+  border-color: var(--github-border);
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px var(--github-canvas), 0 0 0 5px var(--github-border);
+}
+
+:root[data-theme='github'] #about h4 {
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--github-border-muted);
+  color: var(--github-fg-default);
+  font-family: var(--font-body) !important;
+  font-weight: 600;
+}
+
+:root[data-theme='github'] #about li {
+  border-color: var(--github-border-muted);
+  border-radius: 6px;
+  background: var(--github-canvas-subtle);
+}
