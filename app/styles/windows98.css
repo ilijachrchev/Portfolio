@@ -64,8 +64,17 @@
   z-index: 25;
   height: 24px;
   padding: 3px 7px;
-  background: var(--win98-title);
+  background: var(--win98-shadow);
   color: #fff;
   font: bold 12px/18px Arial, Helvetica, sans-serif;
   pointer-events: none;
+}
+
+:root[data-theme='win98'][data-win98-active-app='computer'] [data-win98-app='computer']::before,
+:root[data-theme='win98'][data-win98-active-app='documents'] [data-win98-app='documents']::before,
+:root[data-theme='win98'][data-win98-active-app='community'] [data-win98-app='community']::before,
+:root[data-theme='win98'][data-win98-active-app='projects'] [data-win98-app='projects']::before,
+:root[data-theme='win98'][data-win98-active-app='guestbook'] [data-win98-app='guestbook']::before,
+:root[data-theme='win98'][data-win98-active-app='contact'] [data-win98-app='contact']::before {
+  background: var(--win98-title);
 }

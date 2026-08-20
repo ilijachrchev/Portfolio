@@ -10,6 +10,11 @@ export function Windows98WorkspaceProvider({ children }) {
   const [activeAppId, setActiveAppId] = useState('computer')
 
   useEffect(() => {
+    document.documentElement.dataset.win98ActiveApp = activeAppId
+    return () => delete document.documentElement.dataset.win98ActiveApp
+  }, [activeAppId])
+
+  useEffect(() => {
     const sections = WINDOWS98_APPS.map((app) => {
       const element = document.getElementById(app.sectionId)
       if (!element) return null
