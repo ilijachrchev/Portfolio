@@ -344,6 +344,35 @@
 
 .submenuArrow { justify-self: end; font-size: 9px; }
 
+.menuSeparator {
+  height: 2px;
+  margin: 3px 5px;
+  border-top: 1px solid var(--win98-shadow);
+  border-bottom: 1px solid var(--win98-highlight);
+}
+
+.helpContent h2,
+.aboutDialog h2 {
+  margin: 0 0 8px;
+  font-size: 16px;
+}
+
+.helpContent ul {
+  margin: 12px 0;
+  padding-left: 22px;
+}
+
+.helpContent li {
+  margin-block: 4px;
+}
+
+.dialogButtons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+  margin-top: 16px;
+}
+
 .programsMenu {
   position: absolute;
   left: calc(100% - 4px);
