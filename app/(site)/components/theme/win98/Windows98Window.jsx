@@ -8,12 +8,12 @@ export default function Windows98Window({ active, children, onClose, onFocus, on
   const drag = useWindows98Drag({ focusWindow: onFocus, moveWindow: onMove, window })
   if (!window.open || window.minimized) return null
 
-  const frameStyle = window.maximized ? undefined : {
-    left: window.position.x,
-    top: window.position.y,
-    width: window.size.width,
-    height: window.size.height,
+  const frameStyle = {
     zIndex: window.zIndex,
+    ...(window.maximized ? {} : {
+      left: window.position.x, top: window.position.y,
+      width: window.size.width, height: window.size.height,
+    }),
   }
 
   return (
