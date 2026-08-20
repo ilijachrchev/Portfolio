@@ -79,3 +79,26 @@
     margin-left: 250px;
   }
 }
+
+:root[data-theme='github'] [data-theme-slot='hero'] {
+  min-height: calc(100dvh - 110px);
+  border-bottom: 1px solid var(--github-border);
+  background:
+    radial-gradient(circle at 72% 18%, rgb(35 134 54 / 0.09), transparent 30rem),
+    var(--github-canvas);
+}
+
+:root[data-theme='github'] [data-theme-slot='hero'] > [aria-hidden='true'] {
+  display: none;
+}
+
+:root[data-theme='github'] [data-theme-slot='hero'] > :last-child {
+  max-width: 920px;
+  align-items: flex-start;
+  padding-top: clamp(74px, 10vh, 112px);
+  text-align: left;
+}
+
+:root[data-theme='github'] [data-theme-slot='hero'] > :last-child > * {
+  align-items: flex-start;
+}
