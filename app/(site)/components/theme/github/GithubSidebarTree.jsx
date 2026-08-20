@@ -64,14 +64,20 @@ export default function GithubSidebarTree() {
 
   return (
     <>
-    <button
-      type="button"
-      className={`${styles.treeBackdrop} ${treeOpen ? styles.treeBackdropOpen : ''}`}
-      onClick={() => setTreeOpen(false)}
-      aria-label="Close repository tree"
-      tabIndex={treeOpen ? 0 : -1}
-    />
-    <aside ref={asideRef} className={`${styles.tree} ${treeOpen ? styles.treeOpen : styles.treeClosed}`} aria-label="Repository files" onKeyDown={handleDrawerKeyDown}>
+      <button
+        type="button"
+        className={`${styles.treeBackdrop} ${treeOpen ? styles.treeBackdropOpen : ''}`}
+        onClick={() => setTreeOpen(false)}
+        aria-label="Close repository tree"
+        tabIndex={treeOpen ? 0 : -1}
+      />
+      <aside
+        ref={asideRef}
+        className={`${styles.tree} ${treeOpen ? styles.treeOpen : styles.treeClosed}`}
+        aria-label="Repository files"
+        aria-hidden={!treeOpen}
+        onKeyDown={handleDrawerKeyDown}
+      >
       <header className={styles.treeHeader}>
         <span>portfolio</span>
         <button type="button" onClick={() => setTreeOpen(false)} aria-label="Close repository tree">
@@ -86,7 +92,7 @@ export default function GithubSidebarTree() {
       <p className={styles.treePath} aria-live="polite">
         active: {activeSection.path}
       </p>
-    </aside>
+      </aside>
     </>
   )
 }
