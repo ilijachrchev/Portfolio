@@ -2,9 +2,17 @@
 
 import { usePathname } from 'next/navigation'
 import SpiderAtmosphere from './SpiderAtmosphere'
+import SpiderScrollCharacter from './SpiderScrollCharacter'
 
 export default function SpiderExperience() {
   const pathname = usePathname()
 
-  return <SpiderAtmosphere showCity={pathname === '/'} />
+  const isHomepage = pathname === '/'
+
+  return (
+    <>
+      <SpiderAtmosphere showCity={isHomepage} />
+      {isHomepage && <SpiderScrollCharacter />}
+    </>
+  )
 }
