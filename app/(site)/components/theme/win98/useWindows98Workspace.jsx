@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useCallback, useContext, useMemo, useState } from 'react'
+import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { WINDOWS98_APPS } from './windows98Apps'
 
 const Windows98WorkspaceContext = createContext(null)
@@ -8,6 +8,25 @@ const Windows98WorkspaceContext = createContext(null)
 export function Windows98WorkspaceProvider({ children }) {
   const [selectedShortcut, setSelectedShortcut] = useState('computer')
   const [activeAppId, setActiveAppId] = useState('computer')
+
+  useEffect(() => {
+    const sections = WINDOWS98_APPS.map((app) => {
+      const element = document.getElementById(app.sectionId)
+      if (!element) return null
+      element.dataset.win98App = app.id
+      element.dataset.win98Title = app.label
+      return element
+    }).filter(Boolean)
+
+    document.documentElement.dataset.win98Workspace = 'true'
+    return () => {
+      delete document.documentElement.dataset.win98Workspace
+      sections.forEach((element) => {
+        delete element.dataset.win98App
+        delete element.dataset.win98Title
+      })
+    }
+  }, [])
 
   const navigateToApp = useCallback((appId) => {
     const app = WINDOWS98_APPS.find((candidate) => candidate.id === appId)
