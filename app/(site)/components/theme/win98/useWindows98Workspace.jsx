@@ -66,6 +66,17 @@ export function Windows98WorkspaceProvider({ children }) {
     setActiveWindowId((current) => current === windowId ? null : current)
   }, [])
 
+  const toggleMaximizeWindow = useCallback((windowId) => {
+    focusWindow(windowId)
+    setWindows((current) => ({
+      ...current,
+      [windowId]: {
+        ...current[windowId],
+        maximized: !current[windowId].maximized,
+      },
+    }))
+  }, [focusWindow])
+
   useEffect(() => {
     document.documentElement.dataset.win98ActiveApp = activeAppId
     return () => delete document.documentElement.dataset.win98ActiveApp
@@ -144,7 +155,8 @@ export function Windows98WorkspaceProvider({ children }) {
     closeWindow,
     focusWindow,
     minimizeWindow,
-  }), [activeAppId, activeWindowId, closeWindow, focusWindow, minimizeWindow, navigateToApp, openWindow, selectedShortcut, windows])
+    toggleMaximizeWindow,
+  }), [activeAppId, activeWindowId, closeWindow, focusWindow, minimizeWindow, navigateToApp, openWindow, selectedShortcut, toggleMaximizeWindow, windows])
 
   return (
     <Windows98WorkspaceContext.Provider value={value}>
