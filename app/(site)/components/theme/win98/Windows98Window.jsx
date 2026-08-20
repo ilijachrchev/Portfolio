@@ -1,11 +1,23 @@
 'use client'
 
+import { useEffect, useRef } from 'react'
 import Windows98TitleBar from './Windows98TitleBar'
 import useWindows98Drag from './useWindows98Drag'
 import styles from './Windows98Experience.module.css'
 
 export default function Windows98Window({ active, children, onClose, onFocus, onMaximize, onMinimize, onMove, window }) {
   const drag = useWindows98Drag({ focusWindow: onFocus, moveWindow: onMove, window })
+  const frameRef = useRef(null)
+
+  useEffect(() => {
+    if (!window.modal || !window.open || window.minimized) return
+    const previousFocus = document.activeElement
+    requestAnimationFrame(() => frameRef.current?.querySelector('button, input, [href]')?.focus())
+    return () => {
+      if (previousFocus instanceof HTMLElement) previousFocus.focus()
+    }
+  }, [window.minimized, window.modal, window.open])
+
   if (!window.open || window.minimized) return null
 
   const frameStyle = {
@@ -19,6 +31,7 @@ export default function Windows98Window({ active, children, onClose, onFocus, on
   return <>
     {window.modal && <div className={styles.windowBackdrop} style={{ zIndex: window.zIndex - 1 }} aria-hidden="true" />}
     <section
+      ref={frameRef}
       className={`${styles.windowFrame} ${styles.raised} ${window.maximized ? styles.windowMaximized : ''}`}
       style={frameStyle}
       role="dialog"
