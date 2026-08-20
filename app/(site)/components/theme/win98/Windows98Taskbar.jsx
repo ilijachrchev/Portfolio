@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Windows98Button from './Windows98Button'
 import Windows98Clock from './Windows98Clock'
 import Windows98StartMenu from './Windows98StartMenu'
@@ -11,10 +11,31 @@ import styles from './Windows98Experience.module.css'
 export default function Windows98Taskbar() {
   const [startOpen, setStartOpen] = useState(false)
   const [programsOpen, setProgramsOpen] = useState(false)
+  const rootRef = useRef(null)
   const { activeAppId, activeWindowId, focusWindow, navigateToApp, openWindow, windows } = useWindows98Workspace()
   const openUtilities = Object.values(windows).filter((window) => window.open)
 
-  return <>
+  useEffect(() => {
+    if (!startOpen) return
+    const close = () => {
+      setStartOpen(false)
+      setProgramsOpen(false)
+    }
+    const handlePointerDown = (event) => {
+      if (!rootRef.current?.contains(event.target)) close()
+    }
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') close()
+    }
+    document.addEventListener('pointerdown', handlePointerDown)
+    document.addEventListener('keydown', handleKeyDown)
+    return () => {
+      document.removeEventListener('pointerdown', handlePointerDown)
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [startOpen])
+
+  return <div ref={rootRef} className={styles.taskbarLayer}>
     {startOpen && (
       <Windows98StartMenu
         navigateToApp={navigateToApp} onOpenUtility={openWindow}
@@ -58,5 +79,5 @@ export default function Windows98Taskbar() {
       </div>
       <Windows98Clock />
     </footer>
-  </>
+  </div>
 }
