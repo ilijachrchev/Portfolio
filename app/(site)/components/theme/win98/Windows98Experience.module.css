@@ -282,6 +282,36 @@
   background: var(--win98-surface);
 }
 
+.startMenu {
+  position: absolute;
+  bottom: 38px;
+  left: 0;
+  z-index: 52;
+  display: flex;
+  width: 260px;
+  min-height: 250px;
+  padding: 3px;
+  pointer-events: auto;
+}
+
+.startMenuBrand {
+  display: flex;
+  width: 28px;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 8px 3px;
+  background: var(--win98-shadow);
+  color: var(--win98-light);
+  font-size: 18px;
+  letter-spacing: 1px;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+.startMenuBrand strong { color: #fff; }
+.startMenuItems { flex: 1; }
+
 .networkList {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
