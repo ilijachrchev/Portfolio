@@ -256,6 +256,32 @@
   border-radius: 0;
 }
 
+.windowFrame {
+  position: absolute;
+  display: flex;
+  min-width: 280px;
+  min-height: 150px;
+  flex-direction: column;
+  padding: 3px;
+  pointer-events: auto;
+  color: var(--win98-dark);
+}
+
+.windowMaximized {
+  inset: 0 0 38px;
+  width: auto;
+  height: auto;
+  z-index: 49;
+}
+
+.windowBody {
+  min-height: 0;
+  flex: 1;
+  overflow: auto;
+  padding: 14px;
+  background: var(--win98-surface);
+}
+
 @media (max-width: 640px) {
   .desktop {
     font-size: 13px;
