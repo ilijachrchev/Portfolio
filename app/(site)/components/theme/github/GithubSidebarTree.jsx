@@ -28,7 +28,7 @@ export default function GithubSidebarTree() {
   const { activeSection, treeOpen, setTreeOpen } = useGithubRepositoryView()
 
   return (
-    <aside className={`${styles.tree} ${treeOpen ? styles.treeOpen : ''}`} aria-label="Repository files">
+    <aside className={`${styles.tree} ${treeOpen ? styles.treeOpen : styles.treeClosed}`} aria-label="Repository files">
       <header className={styles.treeHeader}>
         <span>portfolio</span>
         <button type="button" onClick={() => setTreeOpen(false)} aria-label="Close repository tree">

@@ -155,6 +155,12 @@
   background: var(--github-canvas);
   color: var(--github-fg-default);
   pointer-events: auto;
+  transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1), visibility 180ms;
+}
+
+.treeClosed {
+  visibility: hidden;
+  transform: translateX(-100%);
 }
 
 .treeHeader {
@@ -165,6 +171,22 @@
   padding: 0 14px;
   border-bottom: 1px solid var(--github-border-muted);
   font: 600 12px/1 var(--github-mono);
+}
+
+.treeHeader button {
+  display: inline-grid;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--github-fg-muted);
+}
+
+.treeHeader svg {
+  width: 15px;
+  height: 15px;
 }
 
 .treeList {
