@@ -53,7 +53,7 @@ export const THEMES = {
     shortLabel: 'Win98',
     description: 'Retro Desktop',
     colorScheme: 'light',
-    experience: null,
+    experience: 'win98',
     transition: 'color',
     heroMedia: false,
     icon: 'monitor',

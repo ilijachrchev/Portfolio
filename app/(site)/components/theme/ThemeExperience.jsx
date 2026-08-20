@@ -11,6 +11,10 @@ const IdeExperience = dynamic(() => import('./ide/IdeExperience'), {
   ssr: false,
 })
 
+const Windows98Experience = dynamic(() => import('./win98/Windows98Experience'), {
+  ssr: false,
+})
+
 export default function ThemeExperience() {
   const { themeDefinition, isHydrated } = useTheme()
 
@@ -18,6 +22,7 @@ export default function ThemeExperience() {
 
   if (themeDefinition.experience === 'spider') return <SpiderExperience />
   if (themeDefinition.experience === 'ide') return <IdeExperience />
+  if (themeDefinition.experience === 'win98') return <Windows98Experience />
 
   return null
 }
