@@ -226,6 +226,36 @@
   white-space: nowrap;
 }
 
+.windowControls {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 2px;
+}
+
+.windowControls button {
+  display: grid;
+  width: 19px;
+  height: 18px;
+  place-items: center;
+  padding: 0;
+  border: 2px solid;
+  border-color: var(--win98-highlight) var(--win98-dark) var(--win98-dark) var(--win98-highlight);
+  background: var(--win98-surface);
+  color: #000;
+  font: bold 12px/12px Arial, sans-serif;
+}
+
+.windowControls button:active {
+  border-color: var(--win98-dark) var(--win98-highlight) var(--win98-highlight) var(--win98-dark);
+}
+
+.windowControls button:focus-visible {
+  outline: 1px dotted #000;
+  outline-offset: -4px;
+  box-shadow: none;
+  border-radius: 0;
+}
+
 @media (max-width: 640px) {
   .desktop {
     font-size: 13px;
