@@ -254,3 +254,29 @@
   font: 10px/1.5 var(--github-mono);
   overflow-wrap: anywhere;
 }
+
+.contributionRegion {
+  min-width: 0;
+}
+
+.contributionGrid {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(7, 10px);
+  grid-auto-columns: 10px;
+  gap: 3px;
+  overflow: hidden;
+}
+
+.contributionGrid i {
+  display: block;
+  border: 1px solid rgb(240 246 252 / 0.04);
+  border-radius: 2px;
+  background: #161b22;
+}
+
+.contributionRegion p {
+  margin-top: 10px;
+  color: var(--github-fg-muted);
+  font-size: 11px;
+}
