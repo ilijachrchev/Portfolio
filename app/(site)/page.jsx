@@ -1,5 +1,3 @@
-'use client'
-import { useTheme } from './components/ThemeProvider'
 import About from '../components/About'
 import Contact from '../components/Contact'
 import Footer from '../components/Footer.jsx'
@@ -9,17 +7,15 @@ import Work from '../components/Work.jsx'
 import EndorsementsHome from '../components/EndorsementsHome'
 
 export default function Home() {
-  const { isDarkMode } = useTheme()
-
   return (
     <>
       <Header />
-      <About isDarkMode={isDarkMode} />
-      <Services isDarkMode={isDarkMode} />
-      <Work isDarkMode={isDarkMode} />
+      <About />
+      <Services />
+      <Work />
       <EndorsementsHome />
       <Contact />
-      <Footer isDarkMode={isDarkMode} />
+      <Footer />
     </>
   )
 }

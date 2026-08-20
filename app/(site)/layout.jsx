@@ -1,5 +1,3 @@
-'use client'
-
 import { ThemeProvider } from './components/ThemeProvider'
 import Navbar from '../components/Navbar'
 

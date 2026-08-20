@@ -7,13 +7,13 @@
   --color-darkHover: #2a004a;
   --color-darkTheme: #11001F;
 
-  --font-display: var(--font-fraunces), Georgia, serif;
-  --font-body: var(--font-inter), system-ui, sans-serif;
+  --font-display: var(--font-ovo-raw), Georgia, serif;
+  --font-body: var(--font-outfit-raw), system-ui, sans-serif;
 
-  --font-outfit: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-ovo: var(--font-fraunces), serif;
-  --font-Ovo: var(--font-fraunces), serif;
-  --font-Outfit: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-outfit: var(--font-outfit-raw), ui-sans-serif, system-ui, sans-serif;
+  --font-ovo: var(--font-ovo-raw), serif;
+  --font-Ovo: var(--font-ovo-raw), serif;
+  --font-Outfit: var(--font-outfit-raw), ui-sans-serif, system-ui, sans-serif;
 
   --shadow-black: 4px 4px 0 #000;
   --shadow-white: 4px 4px 0 #fff;
@@ -46,7 +46,8 @@
   --color-ring: var(--ring);
 }
 
-:root {
+:root,
+:root[data-theme='light'] {
   --radius: 1.25rem;           
 
   --background: oklch(0.957 0.012 80);
@@ -76,7 +77,7 @@
   --hover-lift: -4px;
 }
 
-.dark {
+:root[data-theme='dark'] {
   --background: oklch(0.198 0.008 60);
   --foreground: oklch(0.92 0.018 80);
   --card: oklch(0.235 0.008 60);
@@ -123,24 +124,24 @@
     scroll-margin-top: 100px;
   }
 
-  :root.dark select,
-  :root.dark input,
-  :root.dark textarea {
+  :root[data-color-scheme='dark'] select,
+  :root[data-color-scheme='dark'] input,
+  :root[data-color-scheme='dark'] textarea {
     color-scheme: dark;
   }
 
-  :root.dark :where(input, select, textarea) {
+  :root[data-color-scheme='dark'] :where(input, select, textarea) {
     background-color: var(--popover);
     color: var(--popover-foreground);
     border-color: var(--input);
   }
 
-  :root.dark ::-webkit-input-placeholder { color: oklch(0.85 0 0 / 0.72); }
-  :root.dark ::-moz-placeholder         { color: oklch(0.85 0 0 / 0.72); opacity: 1; }
-  :root.dark :-ms-input-placeholder     { color: oklch(0.85 0 0 / 0.72); }
-  :root.dark ::placeholder              { color: oklch(0.85 0 0 / 0.72); }
+  :root[data-color-scheme='dark'] ::-webkit-input-placeholder { color: oklch(0.85 0 0 / 0.72); }
+  :root[data-color-scheme='dark'] ::-moz-placeholder         { color: oklch(0.85 0 0 / 0.72); opacity: 1; }
+  :root[data-color-scheme='dark'] :-ms-input-placeholder     { color: oklch(0.85 0 0 / 0.72); }
+  :root[data-color-scheme='dark'] ::placeholder              { color: oklch(0.85 0 0 / 0.72); }
 
-  :root.dark select option {
+  :root[data-color-scheme='dark'] select option {
     background-color: var(--popover);
     color: var(--popover-foreground);
   }
