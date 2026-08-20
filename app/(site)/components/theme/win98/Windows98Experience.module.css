@@ -572,6 +572,28 @@
   font-size: 13px;
 }
 
+.transitionScreen > i {
+  display: block;
+  width: min(260px, 70vw);
+  height: 16px;
+  padding: 2px;
+  border: 1px solid #fff;
+  background: #000;
+}
+
+.transitionScreen > i > b {
+  display: block;
+  width: 42%;
+  height: 100%;
+  background: repeating-linear-gradient(90deg, #008080 0 8px, #00b0b0 8px 12px);
+  animation: win98-progress 560ms steps(6, end) infinite alternate;
+}
+
+@keyframes win98-progress {
+  from { transform: translateX(0); }
+  to { transform: translateX(138%); }
+}
+
 .programsMenu {
   position: absolute;
   left: calc(100% - 4px);
