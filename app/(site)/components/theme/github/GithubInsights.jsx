@@ -22,6 +22,11 @@ export function GithubContributionGrid() {
           />
         ))}
       </div>
+      <div className={styles.contributionLegend} aria-hidden="true">
+        <span>Less</span>
+        {[0, 1, 2, 3, 4].map((level) => <i key={level} data-level={level} />)}
+        <span>More</span>
+      </div>
       <p>Representative portfolio activity, not account analytics.</p>
     </div>
   )
