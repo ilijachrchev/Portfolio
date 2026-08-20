@@ -66,8 +66,11 @@ function measureTimeline() {
   const measuredScenes = scenes.map((scene) => {
     const from = elements.get(scene.from)
     const to = elements.get(scene.to)
-    const start = from.top + from.height * scene.range[0]
-    const end = Math.max(start + 1, to.top + to.height * scene.range[1])
+    const maxScroll = Math.max(1, document.documentElement.scrollHeight - height)
+    const rawStart = from.top + from.height * scene.range[0]
+    const rawEnd = to.top + to.height * scene.range[1]
+    const end = Math.min(maxScroll, Math.max(rawStart + 1, rawEnd))
+    const start = Math.min(rawStart, end - 1)
     return { ...scene, start, end }
   })
 

@@ -23,6 +23,8 @@ export default function Header() {
       data-theme-slot="hero"
       className="relative isolate flex min-h-screen w-full flex-col overflow-hidden"
     >
+      <div className="hero-poster absolute inset-0 z-0 bg-cover bg-center" aria-hidden="true" />
+
       {showVideo && (
         <video
           className="absolute inset-0 z-0 h-full w-full object-cover saturate-90 contrast-[1.02] dark:saturate-75 dark:contrast-[1.05] dark:brightness-95"

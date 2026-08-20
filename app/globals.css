@@ -170,6 +170,14 @@
 }
 
 @layer components {
+  .hero-poster {
+    background-image: url('/videos/hero-poster.jpg');
+  }
+
+  :root[data-theme='spiderman'] .hero-poster {
+    background-image: none;
+  }
+
   .liquid-glass {
     background: color-mix(in oklch, var(--background) 15%, transparent);
     backdrop-filter: blur(var(--glass-blur)) saturate(1.4);
