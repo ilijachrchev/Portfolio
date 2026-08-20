@@ -78,3 +78,26 @@
 :root[data-theme='win98'][data-win98-active-app='contact'] [data-win98-app='contact']::before {
   background: var(--win98-title);
 }
+
+:root[data-theme='win98'] [data-theme-slot='hero'] {
+  min-height: calc(100dvh - 66px);
+  padding-top: 30px;
+  background: var(--win98-surface);
+}
+
+:root[data-theme='win98'] [data-theme-slot='hero'] > [aria-hidden='true'] {
+  display: none;
+}
+
+:root[data-theme='win98'] [data-theme-slot='hero'] h1 {
+  max-width: 48rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(34px, 6vw, 68px);
+  font-style: normal;
+  letter-spacing: -0.025em;
+}
+
+:root[data-theme='win98'] [data-theme-slot='hero'] em {
+  color: var(--win98-title);
+  font-style: normal;
+}
