@@ -340,6 +340,8 @@ export default function Work() {
                 key={project.title}
                 data-rail-item
                 data-theme-slot="project-card"
+                data-github-repository={project.github ? 'linked repository' : 'portfolio project'}
+                data-github-language={project.stack[0]}
                 className={[
                   'flex w-[85vw] shrink-0 snap-start flex-col overflow-hidden rounded-2xl bg-card shadow-lg transition-all duration-300',
                   'sm:w-[60vw] md:w-[400px] lg:w-[420px]',
