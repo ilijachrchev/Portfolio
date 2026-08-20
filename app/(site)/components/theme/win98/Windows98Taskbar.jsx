@@ -9,7 +9,8 @@ import styles from './Windows98Experience.module.css'
 
 export default function Windows98Taskbar() {
   const [startOpen, setStartOpen] = useState(false)
-  const { activeAppId, navigateToApp } = useWindows98Workspace()
+  const { activeAppId, activeWindowId, focusWindow, navigateToApp, windows } = useWindows98Workspace()
+  const openUtilities = Object.values(windows).filter((window) => window.open)
 
   return (
     <footer className={`${styles.taskbar} ${styles.raised}`} aria-label="Windows taskbar">
@@ -33,6 +34,17 @@ export default function Windows98Taskbar() {
             onClick={() => navigateToApp(app.id)}
           >
             {app.label}
+          </Windows98Button>
+        ))}
+        {openUtilities.map((window) => (
+          <Windows98Button
+            key={window.id}
+            className={styles.taskbarApp}
+            active={activeWindowId === window.id && !window.minimized}
+            aria-pressed={activeWindowId === window.id && !window.minimized}
+            onClick={() => focusWindow(window.id)}
+          >
+            {window.title}
           </Windows98Button>
         ))}
       </div>
