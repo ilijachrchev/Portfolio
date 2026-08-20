@@ -18,7 +18,9 @@ export default function Windows98TitleBar({ window, active, onClose, onMaximize,
       <Image src={window.icon} alt="" width={16} height={16} aria-hidden="true" />
       <strong>{window.title}</strong>
       <span className={styles.windowControls}>
-        <button type="button" onClick={onMinimize} aria-label={`Minimize ${window.title}`}>_</button>
+        {window.minimizable !== false && (
+          <button type="button" onClick={onMinimize} aria-label={`Minimize ${window.title}`}>_</button>
+        )}
         {window.maximizable !== false && (
           <button type="button" onClick={onMaximize} aria-label={`${window.maximized ? 'Restore' : 'Maximize'} ${window.title}`}>
             {window.maximized ? '❐' : '□'}
