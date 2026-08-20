@@ -181,6 +181,10 @@
   transform: translateX(-100%);
 }
 
+.treeBackdrop {
+  display: none;
+}
+
 .treeHeader {
   display: flex;
   min-height: 48px;
@@ -473,5 +477,24 @@
 
   .tabs {
     padding-inline: 6px;
+  }
+}
+
+@media (max-width: 899px) {
+  .treeBackdrop {
+    position: fixed;
+    inset: 110px 0 0;
+    z-index: 43;
+    display: block;
+    border: 0;
+    background: rgb(1 4 9 / 0.68);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 180ms ease;
+  }
+
+  .treeBackdropOpen {
+    opacity: 1;
+    pointer-events: auto;
   }
 }
