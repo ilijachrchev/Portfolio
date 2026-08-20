@@ -4,7 +4,7 @@ import { useWindows98Workspace } from './useWindows98Workspace'
 import styles from './Windows98Experience.module.css'
 
 export default function Windows98Desktop() {
-  const { selectedShortcut, setActiveAppId, setSelectedShortcut } = useWindows98Workspace()
+  const { navigateToApp, selectedShortcut, setActiveAppId, setSelectedShortcut } = useWindows98Workspace()
 
   return (
     <div className={styles.iconGrid} aria-label="Desktop shortcuts">
@@ -16,7 +16,7 @@ export default function Windows98Desktop() {
           onSelect={() => setSelectedShortcut(shortcut.id)}
           onLaunch={() => {
             setSelectedShortcut(shortcut.id)
-            setActiveAppId(shortcut.id)
+            if (!navigateToApp(shortcut.id)) setActiveAppId(shortcut.id)
           }}
         />
       ))}
