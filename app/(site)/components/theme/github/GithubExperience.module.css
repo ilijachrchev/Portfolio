@@ -23,3 +23,34 @@
   background: rgb(13 17 23 / 0.96);
   backdrop-filter: blur(12px);
 }
+
+.repoIdentity {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 8px;
+  color: var(--github-accent);
+  font-size: 14px;
+}
+
+.repoIdentity svg {
+  width: 17px;
+  height: 17px;
+  flex: 0 0 auto;
+  color: var(--github-fg-muted);
+}
+
+.repoIdentity strong {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+.visibility {
+  border: 1px solid var(--github-border);
+  border-radius: 999px;
+  padding: 0 7px;
+  color: var(--github-fg-muted);
+  font: 500 11px/20px var(--font-body);
+}
