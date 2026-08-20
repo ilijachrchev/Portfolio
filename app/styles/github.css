@@ -238,3 +238,27 @@
   color: var(--github-accent);
   -webkit-text-fill-color: currentColor;
 }
+
+:root[data-theme='github'] [data-theme-slot='project-card'] {
+  position: relative;
+  border-color: var(--github-border);
+  border-radius: 6px;
+  background: var(--github-canvas-subtle);
+  box-shadow: 0 8px 24px rgb(1 4 9 / 0.3);
+}
+
+:root[data-theme='github'] [data-theme-slot='project-card']::after {
+  content: attr(data-github-language) ' · ' attr(data-github-repository);
+  position: absolute;
+  right: 16px;
+  bottom: 12px;
+  color: #7d8590;
+  font: 10px/1.4 var(--github-mono);
+  pointer-events: none;
+}
+
+:root[data-theme='github'] [data-theme-slot='project-card'] h3 {
+  color: var(--github-accent);
+  font-family: var(--font-body);
+  font-weight: 600;
+}
