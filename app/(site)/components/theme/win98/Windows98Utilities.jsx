@@ -1,3 +1,4 @@
+import Windows98Appearance from './Windows98Appearance'
 import Windows98Error from './Windows98Error'
 import Windows98Find from './Windows98Find'
 import Windows98Help from './Windows98Help'
@@ -31,8 +32,10 @@ export default function Windows98Utilities() {
 
   return Object.values(windows).map((window) => {
     const Content = CONTENT[window.id]
-    if (!Content && !['error', 'find', 'help', 'run', 'winver'].includes(window.id)) return null
-    const content = window.id === 'error'
+    if (!Content && !['appearance', 'error', 'find', 'help', 'run', 'winver'].includes(window.id)) return null
+    const content = window.id === 'appearance'
+      ? <Windows98Appearance onClose={() => closeWindow('appearance')} />
+      : window.id === 'error'
       ? <Windows98Error message={errorMessage} onClose={() => closeWindow('error')} />
       : window.id === 'find'
         ? <Windows98Find onNavigate={(appId) => { closeWindow('find'); navigateToApp(appId) }} />
