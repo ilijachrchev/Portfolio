@@ -387,3 +387,24 @@
   color: var(--github-fg-muted);
   font: 10px/1.4 var(--github-mono);
 }
+
+.transitionRoot {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: var(--github-canvas-inset);
+  color: var(--github-fg-default);
+}
+
+.transitionPanel {
+  width: min(88vw, 460px);
+  padding: 24px;
+  border: 1px solid var(--github-border);
+  border-radius: 6px;
+  background: var(--github-canvas-subtle);
+  box-shadow: 0 24px 80px rgb(0 0 0 / 0.55);
+  font-family: var(--github-mono);
+}
