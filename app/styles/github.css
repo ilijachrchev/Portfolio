@@ -367,3 +367,26 @@
     margin: -32px -32px 28px;
   }
 }
+
+:root[data-theme='github'] [data-theme-slot='contact-form'] :where(input, textarea) {
+  border-color: var(--github-border);
+  border-radius: 6px;
+  background: var(--github-canvas-inset);
+  color: var(--github-fg-default);
+}
+
+:root[data-theme='github'] [data-theme-slot='contact-form'] :where(input, textarea):focus {
+  border-color: var(--github-accent);
+  box-shadow: 0 0 0 3px rgb(88 166 255 / 0.2);
+}
+
+:root[data-theme='github'] [data-theme-slot='contact-form'] button[type='submit'] {
+  border: 1px solid rgb(240 246 252 / 0.1);
+  border-radius: 6px;
+  background: var(--github-success-muted);
+  color: #fff;
+}
+
+:root[data-theme='github'] [data-theme-slot='contact-form'] button[type='submit']:hover {
+  background: #2ea043;
+}
