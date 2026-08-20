@@ -1,5 +1,5 @@
 'use client'
-import React, { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react'
+import React, { createContext, useCallback, useContext, useLayoutEffect, useRef, useState } from 'react'
 import { MotionConfig } from 'motion/react'
 import { DEFAULT_THEME, THEMES, getThemeDefinition, isThemeId } from './theme/themes'
 
@@ -19,6 +19,22 @@ function applyThemeToDocument(theme) {
   root.style.colorScheme = definition.colorScheme
 }
 
+function getAppliedDocumentTheme() {
+  const root = document.documentElement
+  const theme = root.dataset.theme
+
+  if (!isThemeId(theme)) return null
+
+  const definition = getThemeDefinition(theme)
+  const isDark = definition.colorScheme === 'dark'
+  const matchesBootstrapState =
+    root.dataset.colorScheme === definition.colorScheme &&
+    root.classList.contains('dark') === isDark &&
+    root.style.colorScheme === definition.colorScheme
+
+  return matchesBootstrapState ? theme : null
+}
+
 export function ThemeProvider({ children }) {
   const [theme, setThemeState] = useState(DEFAULT_THEME)
   const [isHydrated, setIsHydrated] = useState(false)
@@ -35,7 +51,7 @@ export function ThemeProvider({ children }) {
     } catch {}
   }, [])
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     let storedTheme = null
 
     try {
@@ -43,7 +59,12 @@ export function ThemeProvider({ children }) {
     } catch {}
 
     hasExplicitChoice.current = isThemeId(storedTheme)
-    const resolvedTheme = hasExplicitChoice.current ? storedTheme : getSystemTheme()
+    const documentTheme = getAppliedDocumentTheme()
+    const resolvedTheme = hasExplicitChoice.current
+      ? storedTheme
+      : isThemeId(documentTheme)
+        ? documentTheme
+        : getSystemTheme()
     applyThemeToDocument(resolvedTheme)
     setThemeState(resolvedTheme)
     setIsHydrated(true)

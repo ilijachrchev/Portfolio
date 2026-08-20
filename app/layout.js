@@ -36,7 +36,11 @@ export default function RootLayout({ children }) {
       suppressHydrationWarning
     >
       <head>
-        <script dangerouslySetInnerHTML={{ __html: themeBootstrap }} />
+        <script
+          id="theme-bootstrap"
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{ __html: themeBootstrap }}
+        />
       </head>
       <body
         className={`${outfit.variable} ${ovo.variable} antialiased leading-8 overflow-x-hidden`}
