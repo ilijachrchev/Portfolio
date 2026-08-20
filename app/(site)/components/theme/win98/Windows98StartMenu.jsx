@@ -11,11 +11,20 @@ export default function Windows98StartMenu({ navigateToApp, onOpenUtility, onTog
         <Windows98MenuItem icon="▣" submenu aria-expanded={programsOpen} onClick={onTogglePrograms}>
           <strong>Programs</strong>
         </Windows98MenuItem>
-        <Windows98MenuItem icon="▤" submenu onClick={() => navigateToApp('documents')}>
+        <Windows98MenuItem icon="▤" onClick={() => navigateToApp('documents')}>
           <strong>Documents</strong>
         </Windows98MenuItem>
-        <Windows98MenuItem icon="⚙" submenu onClick={() => onOpenUtility('appearance')}>
+        <Windows98MenuItem icon="⚙" onClick={() => onOpenUtility('appearance')}>
           <strong>Settings</strong>
+        </Windows98MenuItem>
+        <Windows98MenuItem icon="⌕" onClick={() => onOpenUtility('find')}>
+          <strong>Find</strong>
+        </Windows98MenuItem>
+        <Windows98MenuItem icon="?" onClick={() => onOpenUtility('help')}>Help</Windows98MenuItem>
+        <Windows98MenuItem icon="▸" onClick={() => onOpenUtility('run')}>Run...</Windows98MenuItem>
+        <div className={styles.menuSeparator} role="separator" />
+        <Windows98MenuItem icon="◉" onClick={() => onOpenUtility('shutdown')}>
+          Shut Down...
         </Windows98MenuItem>
       </div>
       {programsOpen && (
