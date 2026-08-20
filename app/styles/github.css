@@ -198,6 +198,15 @@
   margin-bottom: clamp(26px, 5vw, 48px);
 }
 
+:root[data-theme='github'] #about [class~='flex-1'] {
+  min-width: 0;
+}
+
+:root[data-theme='github'] #about p,
+:root[data-theme='github'] #about p a {
+  overflow-wrap: anywhere;
+}
+
 :root[data-theme='github'] [data-theme-slot='portrait'] {
   width: min(100%, 288px);
   border-color: var(--github-border);
