@@ -2,6 +2,10 @@ import Image from 'next/image'
 import styles from './Windows98Experience.module.css'
 
 export default function Windows98TitleBar({ window, active, onClose, onMaximize, onMinimize, onPointerDown, onPointerMove, onPointerUp }) {
+  const handleDoubleClick = (event) => {
+    if (!event.target.closest('button')) onMaximize()
+  }
+
   return (
     <header
       className={`${styles.windowTitleBar} ${active ? styles.windowTitleBarActive : ''}`}
@@ -9,7 +13,7 @@ export default function Windows98TitleBar({ window, active, onClose, onMaximize,
       onPointerMove={onPointerMove}
       onPointerUp={onPointerUp}
       onPointerCancel={onPointerUp}
-      onDoubleClick={onMaximize}
+      onDoubleClick={handleDoubleClick}
     >
       <Image src={window.icon} alt="" width={16} height={16} aria-hidden="true" />
       <strong>{window.title}</strong>

@@ -7,6 +7,7 @@ export default function useWindows98Drag({ focusWindow, moveWindow, window }) {
     if (event.button !== 0 || event.target.closest('button') || window.maximized) return
     if (matchMedia('(max-width: 640px)').matches) return
 
+    event.stopPropagation()
     focusWindow(window.id)
     dragRef.current = {
       pointerId: event.pointerId,
