@@ -41,6 +41,27 @@ export default function GithubSidebarTree() {
     }
   }, [treeOpen])
 
+  const handleDrawerKeyDown = (event) => {
+    if (!window.matchMedia('(max-width: 899px)').matches) return
+    if (event.key === 'Escape') {
+      event.preventDefault()
+      setTreeOpen(false)
+      return
+    }
+    if (event.key !== 'Tab') return
+    const focusable = Array.from(asideRef.current?.querySelectorAll('button:not(:disabled)') || [])
+    if (!focusable.length) return
+    const first = focusable[0]
+    const last = focusable[focusable.length - 1]
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault()
+      last.focus()
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault()
+      first.focus()
+    }
+  }
+
   return (
     <>
     <button
@@ -50,7 +71,7 @@ export default function GithubSidebarTree() {
       aria-label="Close repository tree"
       tabIndex={treeOpen ? 0 : -1}
     />
-    <aside ref={asideRef} className={`${styles.tree} ${treeOpen ? styles.treeOpen : styles.treeClosed}`} aria-label="Repository files">
+    <aside ref={asideRef} className={`${styles.tree} ${treeOpen ? styles.treeOpen : styles.treeClosed}`} aria-label="Repository files" onKeyDown={handleDrawerKeyDown}>
       <header className={styles.treeHeader}>
         <span>portfolio</span>
         <button type="button" onClick={() => setTreeOpen(false)} aria-label="Close repository tree">
