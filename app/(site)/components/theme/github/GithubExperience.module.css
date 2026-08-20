@@ -144,3 +144,25 @@
   border-radius: 2px;
   background: #f78166;
 }
+
+.tree {
+  position: fixed;
+  inset: 110px auto 0 0;
+  z-index: 44;
+  width: 250px;
+  overflow-y: auto;
+  border-right: 1px solid var(--github-border);
+  background: var(--github-canvas);
+  color: var(--github-fg-default);
+  pointer-events: auto;
+}
+
+.treeHeader {
+  display: flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 14px;
+  border-bottom: 1px solid var(--github-border-muted);
+  font: 600 12px/1 var(--github-mono);
+}
