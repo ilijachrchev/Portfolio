@@ -5,6 +5,20 @@ import { getGithubSection, getGithubTab } from './githubRepository'
 
 const GithubRepositoryContext = createContext(null)
 
+export function findActiveGithubSection(metrics, scrollTop, viewportHeight) {
+  if (!metrics.length) return null
+  const activationY = scrollTop + Math.min(320, Math.max(150, viewportHeight * 0.32))
+  let active = metrics[0]
+
+  for (const metric of metrics) {
+    if (metric.top <= activationY) active = metric
+    else break
+  }
+
+  const scrollRange = document.documentElement.scrollHeight - viewportHeight
+  return scrollTop >= scrollRange - 3 ? metrics[metrics.length - 1] : active
+}
+
 export function GithubRepositoryProvider({ children }) {
   const [activeSectionId, setActiveSectionId] = useState('home')
   const [treeOpen, setTreeOpen] = useState(false)
