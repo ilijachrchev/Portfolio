@@ -701,4 +701,32 @@
     width: 36px;
     height: 36px;
   }
+
+  .windowFrame:not(.windowMaximized) {
+    left: 4px !important;
+    right: 4px;
+    top: 100px !important;
+    width: auto !important;
+    height: min(430px, calc(100dvh - 146px)) !important;
+    min-width: 0;
+    max-height: calc(100dvh - 146px);
+  }
+
+  .windowMaximized {
+    inset: 0 0 42px;
+  }
+
+  .windowBody {
+    padding: 12px;
+  }
+
+  .windowControls button {
+    width: 25px;
+    height: 24px;
+    font-size: 14px;
+  }
+
+  .windowTitleBar {
+    height: 30px;
+  }
 }
