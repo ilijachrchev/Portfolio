@@ -95,6 +95,18 @@ export function Windows98WorkspaceProvider({ children }) {
   const restartPortfolio = useCallback(() => setIsShutdown(false), [])
 
   useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key !== 'Escape' || !activeWindowId) return
+      if (document.querySelector('[data-app-modal="true"]')) return
+      if (document.querySelector('[role="menu"][aria-label="Start menu"]')) return
+      event.preventDefault()
+      closeWindow(activeWindowId)
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [activeWindowId, closeWindow])
+
+  useEffect(() => {
     document.documentElement.dataset.win98ActiveApp = activeAppId
     return () => delete document.documentElement.dataset.win98ActiveApp
   }, [activeAppId])
