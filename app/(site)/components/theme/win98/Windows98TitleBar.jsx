@@ -1,11 +1,14 @@
 import Image from 'next/image'
 import styles from './Windows98Experience.module.css'
 
-export default function Windows98TitleBar({ window, active, onClose, onMaximize, onMinimize, onPointerDown }) {
+export default function Windows98TitleBar({ window, active, onClose, onMaximize, onMinimize, onPointerDown, onPointerMove, onPointerUp }) {
   return (
     <header
       className={`${styles.windowTitleBar} ${active ? styles.windowTitleBarActive : ''}`}
       onPointerDown={onPointerDown}
+      onPointerMove={onPointerMove}
+      onPointerUp={onPointerUp}
+      onPointerCancel={onPointerUp}
       onDoubleClick={onMaximize}
     >
       <Image src={window.icon} alt="" width={16} height={16} aria-hidden="true" />

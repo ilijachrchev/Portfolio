@@ -9,7 +9,7 @@ const CONTENT = {
 }
 
 export default function Windows98Utilities() {
-  const { activeWindowId, closeWindow, focusWindow, minimizeWindow, toggleMaximizeWindow, windows } = useWindows98Workspace()
+  const { activeWindowId, closeWindow, focusWindow, minimizeWindow, moveWindow, toggleMaximizeWindow, windows } = useWindows98Workspace()
 
   return Object.values(windows).map((window) => {
     const Content = CONTENT[window.id]
@@ -23,6 +23,7 @@ export default function Windows98Utilities() {
         onFocus={() => focusWindow(window.id)}
         onMaximize={() => toggleMaximizeWindow(window.id)}
         onMinimize={() => minimizeWindow(window.id)}
+        onMove={moveWindow}
       >
         <Content />
       </Windows98Window>
