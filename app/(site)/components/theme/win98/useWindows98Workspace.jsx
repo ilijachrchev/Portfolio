@@ -11,6 +11,7 @@ export function Windows98WorkspaceProvider({ children }) {
   const [activeAppId, setActiveAppId] = useState('computer')
   const [windows, setWindows] = useState(createWindows98WindowState)
   const [activeWindowId, setActiveWindowId] = useState(null)
+  const [errorMessage, setErrorMessage] = useState('The requested operation could not be completed.')
   const nextZIndex = useRef(42)
 
   const openWindow = useCallback((windowId) => {
@@ -86,6 +87,11 @@ export function Windows98WorkspaceProvider({ children }) {
       },
     }))
   }, [])
+
+  const showError = useCallback((message) => {
+    setErrorMessage(message)
+    openWindow('error')
+  }, [openWindow])
 
   useEffect(() => {
     document.documentElement.dataset.win98ActiveApp = activeAppId
@@ -167,7 +173,9 @@ export function Windows98WorkspaceProvider({ children }) {
     minimizeWindow,
     toggleMaximizeWindow,
     moveWindow,
-  }), [activeAppId, activeWindowId, closeWindow, focusWindow, minimizeWindow, moveWindow, navigateToApp, openWindow, selectedShortcut, toggleMaximizeWindow, windows])
+    errorMessage,
+    showError,
+  }), [activeAppId, activeWindowId, closeWindow, errorMessage, focusWindow, minimizeWindow, moveWindow, navigateToApp, openWindow, selectedShortcut, showError, toggleMaximizeWindow, windows])
 
   return (
     <Windows98WorkspaceContext.Provider value={value}>
