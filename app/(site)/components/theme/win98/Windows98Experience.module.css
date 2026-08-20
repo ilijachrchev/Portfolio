@@ -760,4 +760,26 @@
     max-height: calc(100dvh - 110px);
     overflow-y: auto;
   }
+
+  .networkList {
+    grid-template-columns: 1fr;
+  }
+
+  .aboutDialog {
+    grid-template-columns: 48px minmax(0, 1fr);
+    gap: 8px;
+  }
+
+  .aboutDialog > img {
+    width: 44px;
+    height: 44px;
+  }
+
+  .dialogButtons {
+    flex-wrap: wrap;
+  }
+
+  .runDialog .button {
+    min-width: 64px;
+  }
 }
