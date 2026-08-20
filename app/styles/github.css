@@ -390,3 +390,24 @@
 :root[data-theme='github'] [data-theme-slot='contact-form'] button[type='submit']:hover {
   background: #2ea043;
 }
+
+:root[data-theme='github'] [data-theme-slot='footer'] {
+  margin-top: 0;
+  border-top: 1px solid var(--github-border);
+  background: var(--github-canvas-inset);
+  color: var(--github-fg-muted);
+}
+
+:root[data-theme='github'] [data-theme-slot='footer']::before {
+  content: 'ilijachrchev / portfolio · main';
+  display: block;
+  margin: 0 10% 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--github-border-muted);
+  color: var(--github-fg-muted);
+  font: 11px/1.5 var(--github-mono);
+}
+
+:root[data-theme='github'] [data-theme-slot='footer'] a:hover {
+  color: var(--github-accent);
+}
