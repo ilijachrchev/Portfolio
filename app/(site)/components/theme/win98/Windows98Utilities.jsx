@@ -5,6 +5,7 @@ import Windows98Help from './Windows98Help'
 import Windows98Network from './Windows98Network'
 import Windows98RecycleBin from './Windows98RecycleBin'
 import Windows98Run from './Windows98Run'
+import Windows98ShutdownDialog from './Windows98ShutdownDialog'
 import Windows98Winver from './Windows98Winver'
 import Windows98Window from './Windows98Window'
 import { useWindows98Workspace } from './useWindows98Workspace'
@@ -16,7 +17,17 @@ const CONTENT = {
 }
 
 export default function Windows98Utilities() {
-  const { activeWindowId, closeWindow, errorMessage, focusWindow, minimizeWindow, moveWindow, navigateToApp, openWindow, showError, toggleMaximizeWindow, windows } = useWindows98Workspace()
+  const { activeWindowId, closeWindow, errorMessage, focusWindow, minimizeWindow, moveWindow, navigateToApp, openWindow, restartPortfolio, showError, shutdownPortfolio, toggleMaximizeWindow, windows } = useWindows98Workspace()
+
+  const confirmShutdown = (choice) => {
+    closeWindow('shutdown')
+    if (choice === 'shutdown') shutdownPortfolio()
+    if (choice === 'restart') {
+      restartPortfolio()
+      navigateToApp('computer')
+    }
+    if (choice === 'appearance') openWindow('appearance')
+  }
 
   const executeCommand = (input) => {
     const { command, action } = getWindows98Command(input)
@@ -32,7 +43,7 @@ export default function Windows98Utilities() {
 
   return Object.values(windows).map((window) => {
     const Content = CONTENT[window.id]
-    if (!Content && !['appearance', 'error', 'find', 'help', 'run', 'winver'].includes(window.id)) return null
+    if (!Content && !['appearance', 'error', 'find', 'help', 'run', 'shutdown', 'winver'].includes(window.id)) return null
     const content = window.id === 'appearance'
       ? <Windows98Appearance onClose={() => closeWindow('appearance')} />
       : window.id === 'error'
@@ -45,6 +56,8 @@ export default function Windows98Utilities() {
         ? <Windows98Winver onClose={() => closeWindow('winver')} />
         : window.id === 'run'
           ? <Windows98Run onCancel={() => closeWindow('run')} onExecute={executeCommand} />
+        : window.id === 'shutdown'
+          ? <Windows98ShutdownDialog onCancel={() => closeWindow('shutdown')} onConfirm={confirmShutdown} />
         : <Content />
     return (
       <Windows98Window
