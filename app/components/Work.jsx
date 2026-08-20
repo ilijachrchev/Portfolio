@@ -126,7 +126,8 @@ function ProjectModal({ project, onClose }) {
 
   return createPortal(
     <motion.div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6"
+      data-app-modal="true"
+      className="fixed inset-0 z-[70] flex items-center justify-center p-4 sm:p-6"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -136,6 +137,9 @@ function ProjectModal({ project, onClose }) {
       <div className="absolute inset-0 bg-background/75 backdrop-blur-md" />
 
       <motion.div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="project-modal-title"
         className="relative z-10 w-full max-w-2xl max-h-[85vh] overflow-y-auto rounded-2xl bg-card border border-border shadow-2xl"
         initial={{ scale: 0.96, opacity: 0, y: 14 }}
         animate={{ scale: 1, opacity: 1, y: 0 }}
@@ -160,7 +164,7 @@ function ProjectModal({ project, onClose }) {
                   {project.type}
                 </span>
               </div>
-              <h2 className="font-display text-2xl text-foreground">{project.title}</h2>
+              <h2 id="project-modal-title" className="font-display text-2xl text-foreground">{project.title}</h2>
               <p className="mt-0.5 text-sm text-muted-foreground">{project.event}</p>
             </div>
             <button

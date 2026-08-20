@@ -49,7 +49,7 @@ function ToastViewport({ toasts, dismiss }) {
   const visible = toasts.slice(0, 2) // show at most 2, queue the rest
 
   return (
-    <div className="pointer-events-none fixed inset-0 z-[70]">
+    <div className="pointer-events-none fixed inset-0 z-[80]">
       {/* Desktop: top-right */}
       <div className="absolute right-6 top-6 hidden w-[min(92vw,360px)] space-y-3 sm:block">
         {visible.map(t => <ToastItem key={t.id} t={t} dismiss={dismiss} />)}
