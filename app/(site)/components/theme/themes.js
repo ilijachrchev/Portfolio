@@ -54,7 +54,7 @@ export const THEMES = {
     description: 'Retro Desktop',
     colorScheme: 'light',
     experience: 'win98',
-    transition: 'color',
+    transition: 'system',
     heroMedia: false,
     icon: 'monitor',
     preview: ['#008080', '#c0c0c0', '#000080'],
@@ -81,6 +81,7 @@ export function getThemeTransition(fromTheme, toTheme) {
     getThemeDefinition(toTheme).transition,
   ]
 
+  if (transitions.includes('system')) return 'system'
   if (transitions.includes('workspace')) return 'workspace'
   if (transitions.includes('web')) return 'web'
   return 'color'
