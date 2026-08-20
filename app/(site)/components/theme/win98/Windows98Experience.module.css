@@ -77,6 +77,27 @@
   background: transparent;
 }
 
+.desktopIcon img {
+  image-rendering: pixelated;
+}
+
+.desktopIcon span {
+  padding: 1px 3px;
+}
+
+.desktopIconSelected span {
+  background: var(--win98-title);
+  outline: 1px dotted #fff;
+  outline-offset: -2px;
+}
+
+.desktopIcon:focus-visible {
+  outline: 1px dotted #fff;
+  outline-offset: -2px;
+  box-shadow: none;
+  border-radius: 0;
+}
+
 @media (max-width: 640px) {
   .desktop {
     font-size: 13px;
