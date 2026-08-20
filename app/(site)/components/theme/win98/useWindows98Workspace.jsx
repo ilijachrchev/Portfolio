@@ -28,6 +28,27 @@ export function Windows98WorkspaceProvider({ children }) {
     }
   }, [])
 
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]
+      if (!visible) return
+
+      const app = WINDOWS98_APPS.find((candidate) => candidate.sectionId === visible.target.id)
+      if (app) setActiveAppId(app.id)
+    }, {
+      rootMargin: '-32% 0px -52% 0px',
+      threshold: [0, 0.05, 0.2],
+    })
+
+    WINDOWS98_APPS.forEach((app) => {
+      const section = document.getElementById(app.sectionId)
+      if (section) observer.observe(section)
+    })
+    return () => observer.disconnect()
+  }, [])
+
   const navigateToApp = useCallback((appId) => {
     const app = WINDOWS98_APPS.find((candidate) => candidate.id === appId)
     if (!app) return false
