@@ -362,45 +362,19 @@ const Services = () => {
     }
 
 
-    // ========================================================
-    // KEYBOARD NAVIGATION
-    // ========================================================
+    const handleKeyboard = (event) => {
+        if (selected) return
 
-    useEffect(() => {
-        const handleKeyboard = (event) => {
-            // Don't navigate carousel while modal is open
-            if (selected) {
-                return
-            }
-
-            if (event.key === 'ArrowLeft') {
-                setActiveIndex(
-                    (current) =>
-                        (current - 1 + total) %
-                        total
-                )
-            }
-
-            if (event.key === 'ArrowRight') {
-                setActiveIndex(
-                    (current) =>
-                        (current + 1) % total
-                )
-            }
+        if (event.key === 'ArrowLeft') {
+            event.preventDefault()
+            goPrevious()
         }
 
-        window.addEventListener(
-            'keydown',
-            handleKeyboard
-        )
-
-        return () => {
-            window.removeEventListener(
-                'keydown',
-                handleKeyboard
-            )
+        if (event.key === 'ArrowRight') {
+            event.preventDefault()
+            goNext()
         }
-    }, [selected, total])
+    }
 
 
     // ========================================================
@@ -427,6 +401,10 @@ const Services = () => {
     return (
         <>
             <motion.section
+                role="region"
+                aria-label="Volunteering carousel"
+                tabIndex={0}
+                onKeyDown={handleKeyboard}
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{

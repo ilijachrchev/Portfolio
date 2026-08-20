@@ -2,8 +2,8 @@
 
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
-import { Sun, Moon, Menu, X, ArrowUpRight } from 'lucide-react'
-import { useTheme } from '../(site)/components/ThemeProvider'
+import { Menu, X, ArrowUpRight } from 'lucide-react'
+import ThemeSelector from '../(site)/components/theme/ThemeSelector'
 
 const NAV_LINKS = [
   { id: 'home',              label: 'Home',         href: '/#home' },
@@ -14,10 +14,10 @@ const NAV_LINKS = [
 ]
 
 export default function Navbar() {
-  const { isDarkMode, setIsDarkMode } = useTheme()
   const [scrolled, setScrolled] = useState(false)
   const [active, setActive] = useState('home')
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [themeOpen, setThemeOpen] = useState(false)
   const drawerRef = useRef(null)
 
   useEffect(() => {
@@ -88,19 +88,13 @@ export default function Navbar() {
           </div>
 
           <div className="flex items-center gap-2.5">
-            <button
-              type="button"
-              onClick={() => setIsDarkMode((v) => !v)}
-              aria-label="Toggle theme"
-              aria-pressed={isDarkMode}
-              className="liquid-glass inline-flex h-9 w-9 items-center justify-center rounded-full text-foreground transition-transform duration-200 hover:-translate-y-px"
-            >
-              {isDarkMode ? (
-                <Sun className="h-4 w-4" aria-hidden="true" />
-              ) : (
-                <Moon className="h-4 w-4" aria-hidden="true" />
-              )}
-            </button>
+            <ThemeSelector
+              open={themeOpen}
+              onOpenChange={(nextOpen) => {
+                setThemeOpen(nextOpen)
+                if (nextOpen) setMobileOpen(false)
+              }}
+            />
 
             <Link
               href="/#contact"
@@ -113,7 +107,10 @@ export default function Navbar() {
 
             <button
               type="button"
-              onClick={() => setMobileOpen(true)}
+              onClick={() => {
+                setThemeOpen(false)
+                setMobileOpen(true)
+              }}
               aria-label="Open menu"
               aria-expanded={mobileOpen}
               className="liquid-glass inline-flex h-9 w-9 items-center justify-center rounded-full text-foreground md:hidden"

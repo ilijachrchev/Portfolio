@@ -19,14 +19,8 @@ function applyThemeToDocument(theme) {
   root.style.colorScheme = definition.colorScheme
 }
 
-function getInitialClientTheme() {
-  if (typeof document === 'undefined') return DEFAULT_THEME
-  const theme = document.documentElement.dataset.theme
-  return isThemeId(theme) ? theme : DEFAULT_THEME
-}
-
 export function ThemeProvider({ children }) {
-  const [theme, setThemeState] = useState(getInitialClientTheme)
+  const [theme, setThemeState] = useState(DEFAULT_THEME)
   const [isHydrated, setIsHydrated] = useState(false)
   const hasExplicitChoice = useRef(false)
 
