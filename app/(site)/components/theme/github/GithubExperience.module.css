@@ -408,3 +408,31 @@
   box-shadow: 0 24px 80px rgb(0 0 0 / 0.55);
   font-family: var(--github-mono);
 }
+
+.transitionPanel header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--github-fg-default);
+  font-size: 13px;
+}
+
+.transitionPanel header svg {
+  width: 18px;
+  height: 18px;
+  color: var(--github-success);
+}
+
+.transitionPanel p {
+  margin: 14px 0 0;
+  color: var(--github-fg-muted);
+  font-size: 11px;
+}
+
+.transitionTrack {
+  height: 4px;
+  margin-top: 16px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--github-border-muted);
+}
