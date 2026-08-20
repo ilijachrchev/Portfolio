@@ -373,6 +373,31 @@
   margin-top: 16px;
 }
 
+.aboutDialog {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  gap: 14px;
+}
+
+.aboutDialog > img {
+  image-rendering: pixelated;
+}
+
+.aboutDialog p {
+  margin-bottom: 12px;
+}
+
+.licenseBox {
+  margin-bottom: 16px;
+  padding: 8px;
+  line-height: 1.5;
+}
+
+.aboutDialog .button {
+  display: block;
+  margin-left: auto;
+}
+
 .programsMenu {
   position: absolute;
   left: calc(100% - 4px);
