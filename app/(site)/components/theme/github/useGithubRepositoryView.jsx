@@ -41,6 +41,7 @@ export function GithubRepositoryProvider({ children }) {
     return () => {
       delete root.dataset.githubRepository
       delete root.dataset.githubActiveSection
+      delete root.dataset.githubTree
       elements.forEach((element) => {
         delete element.dataset.githubSection
         delete element.dataset.githubPath
@@ -75,6 +76,13 @@ export function GithubRepositoryProvider({ children }) {
   useEffect(() => {
     document.documentElement.dataset.githubTree = treeOpen ? 'open' : 'closed'
   }, [treeOpen])
+
+  useEffect(() => {
+    const media = window.matchMedia('(max-width: 899px)')
+    const handleLayoutChange = (event) => setTreeOpen(!event.matches)
+    media.addEventListener?.('change', handleLayoutChange)
+    return () => media.removeEventListener?.('change', handleLayoutChange)
+  }, [])
 
   const navigateToSection = useCallback((value) => {
     const section = getGithubSection(value)
