@@ -14,6 +14,7 @@ export default function useWindows98Drag({ focusWindow, moveWindow, window }) {
       startY: event.clientY,
       originX: window.position.x,
       originY: window.position.y,
+      lastPosition: window.position,
     }
     event.currentTarget.setPointerCapture(event.pointerId)
   }, [focusWindow, window])
@@ -26,14 +27,20 @@ export default function useWindows98Drag({ focusWindow, moveWindow, window }) {
     const maxY = Math.max(0, innerHeight - 62)
     const nextX = Math.min(maxX, Math.max(0, drag.originX + event.clientX - drag.startX))
     const nextY = Math.min(maxY, Math.max(0, drag.originY + event.clientY - drag.startY))
-    moveWindow(window.id, { x: nextX, y: nextY })
-  }, [moveWindow, window.id, window.size.width])
+    drag.lastPosition = { x: nextX, y: nextY }
+    const frame = event.currentTarget.closest('[role="dialog"]')
+    if (frame instanceof HTMLElement) {
+      frame.style.left = `${nextX}px`
+      frame.style.top = `${nextY}px`
+    }
+  }, [window.size.width])
 
   const finishDrag = useCallback((event) => {
     if (event.pointerId !== dragRef.current?.pointerId) return
+    moveWindow(window.id, dragRef.current.lastPosition)
     dragRef.current = null
     event.currentTarget.releasePointerCapture?.(event.pointerId)
-  }, [])
+  }, [moveWindow, window.id])
 
   return {
     dragWindow,
