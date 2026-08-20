@@ -675,4 +675,30 @@
   .desktop {
     font-size: 13px;
   }
+
+  .iconGrid {
+    inset: 4px 4px auto;
+    display: flex;
+    width: auto;
+    gap: 2px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .iconGrid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .desktopIcon {
+    width: 76px;
+    min-width: 76px;
+    min-height: 92px;
+    justify-content: flex-start;
+    font-size: 11px;
+  }
+
+  .desktopIcon img {
+    width: 36px;
+    height: 36px;
+  }
 }
