@@ -14,16 +14,22 @@ export default function GithubRepoHeader() {
         <strong>ilijachrchev / portfolio</strong>
         <span className={styles.visibility}>Public</span>
       </div>
-      <div>
+      <div className={styles.repoActions}>
         <button
           type="button"
           onClick={() => setTreeOpen(!treeOpen)}
           aria-label={treeOpen ? 'Close repository tree' : 'Open repository tree'}
           aria-expanded={treeOpen}
+          className={styles.treeToggle}
         >
           <Menu aria-hidden="true" />
         </button>
-        <a href="https://github.com/ilijachrchev" target="_blank" rel="noreferrer">
+        <a
+          href="https://github.com/ilijachrchev"
+          target="_blank"
+          rel="noreferrer"
+          className={styles.profileLink}
+        >
           <Github aria-hidden="true" />
           <span>Profile</span>
         </a>
