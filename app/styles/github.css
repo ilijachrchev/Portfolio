@@ -102,3 +102,29 @@
 :root[data-theme='github'] [data-theme-slot='hero'] > :last-child > * {
   align-items: flex-start;
 }
+
+:root[data-theme='github'] [data-theme-slot='hero'] h1 {
+  max-width: 52rem;
+  font-family: var(--font-body);
+  font-size: clamp(36px, 5.5vw, 68px);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+}
+
+:root[data-theme='github'] [data-theme-slot='hero'] h1 em {
+  color: var(--github-accent);
+  font-style: normal;
+  font-weight: 600;
+}
+
+:root[data-theme='github'] [data-theme-slot='hero'] .liquid-glass,
+:root[data-theme='github'] [data-theme-slot='primary-cta'] {
+  border: 1px solid var(--github-border);
+  border-radius: 6px;
+  box-shadow: none;
+}
+
+:root[data-theme='github'] [data-theme-slot='hero'] p {
+  max-width: 42rem;
+  color: var(--github-fg-muted);
+}
