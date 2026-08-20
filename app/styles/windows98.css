@@ -101,3 +101,28 @@
   color: var(--win98-title);
   font-style: normal;
 }
+
+:root[data-theme='win98'] .liquid-glass,
+:root[data-theme='win98'] [data-theme-slot='primary-cta'] {
+  border: 2px solid;
+  border-color: var(--win98-highlight) var(--win98-dark) var(--win98-dark) var(--win98-highlight);
+  border-radius: 0;
+  background: var(--win98-surface);
+  color: #000;
+  box-shadow: inset 1px 1px var(--win98-light), inset -1px -1px var(--win98-shadow);
+  backdrop-filter: none;
+  transform: none;
+}
+
+:root[data-theme='win98'] .liquid-glass:active,
+:root[data-theme='win98'] [data-theme-slot='primary-cta']:active {
+  border-color: var(--win98-dark) var(--win98-highlight) var(--win98-highlight) var(--win98-dark);
+  box-shadow: inset 1px 1px var(--win98-shadow);
+}
+
+:root[data-theme='win98'] :where(a, button):focus-visible {
+  outline: 1px dotted #000;
+  outline-offset: -4px;
+  box-shadow: none;
+  border-radius: 0;
+}
