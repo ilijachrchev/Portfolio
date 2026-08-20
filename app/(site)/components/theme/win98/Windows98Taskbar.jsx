@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Windows98Button from './Windows98Button'
+import Windows98Clock from './Windows98Clock'
 import styles from './Windows98Experience.module.css'
 
 export default function Windows98Taskbar() {
@@ -20,6 +21,7 @@ export default function Windows98Taskbar() {
         <strong>Start</strong>
       </Windows98Button>
       <div className={styles.taskbarApps} aria-label="Open applications" />
+      <Windows98Clock />
     </footer>
   )
 }
