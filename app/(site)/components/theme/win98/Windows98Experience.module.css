@@ -522,6 +522,26 @@
   color: #fff;
 }
 
+.shutdownDialog {
+  display: grid;
+  gap: 8px;
+}
+
+.shutdownDialog > p {
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+.shutdownDialog label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.shutdownDialog input {
+  accent-color: var(--win98-title);
+}
+
 .programsMenu {
   position: absolute;
   left: calc(100% - 4px);
