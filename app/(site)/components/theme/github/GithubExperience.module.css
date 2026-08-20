@@ -192,3 +192,25 @@
   flex: 0 0 auto;
   color: #7d8590;
 }
+
+.treeItem:hover {
+  background: var(--github-canvas-subtle);
+  color: var(--github-fg-default);
+}
+
+.treeItemActive {
+  background: #1f2937;
+  color: var(--github-fg-default);
+  box-shadow: inset 2px 0 var(--github-accent);
+}
+
+.treeItemActive svg {
+  color: var(--github-accent);
+}
+
+.treePath {
+  margin: 14px 16px;
+  color: #7d8590;
+  font: 10px/1.5 var(--github-mono);
+  overflow-wrap: anywhere;
+}
