@@ -68,6 +68,20 @@
   gap: 8px;
 }
 
+.repoActions :global(.liquid-glass) {
+  height: 32px;
+  min-width: 34px;
+  border-radius: 6px;
+  background: var(--github-canvas-subtle);
+  box-shadow: none;
+}
+
+.repoActions :global(.theme-palette) {
+  border-radius: 6px;
+  border-color: var(--github-border);
+  background: var(--github-canvas-subtle);
+}
+
 .branchMeta {
   display: inline-flex;
   min-height: 32px;
