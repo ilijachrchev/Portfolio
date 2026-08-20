@@ -206,3 +206,20 @@
 :root[data-theme='win98'] #work [data-rail-item] {
   scroll-margin-left: 8px;
 }
+
+:root[data-theme='win98'] #endorsements-home [data-theme-slot='card'] {
+  border: 2px solid;
+  border-color: var(--win98-shadow) var(--win98-highlight) var(--win98-highlight) var(--win98-shadow);
+  border-radius: 0;
+  background: #fff;
+  box-shadow: inset 1px 1px #000;
+}
+
+:root[data-theme='win98'] #endorsements-home [data-theme-slot='card'] > header {
+  padding-bottom: 5px;
+  border-bottom: 1px dotted var(--win98-shadow);
+}
+
+:root[data-theme='win98'] #endorsements-home [class*='rounded-full'] {
+  border-radius: 0;
+}
