@@ -411,3 +411,14 @@
 :root[data-theme='github'] [data-theme-slot='footer'] a:hover {
   color: var(--github-accent);
 }
+
+@media (prefers-reduced-motion: reduce) {
+  :root[data-theme='github'],
+  :root[data-theme='github'] * {
+    scroll-behavior: auto !important;
+  }
+
+  :root[data-theme='github'] main {
+    transition: none !important;
+  }
+}

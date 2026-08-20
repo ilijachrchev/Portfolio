@@ -436,3 +436,12 @@
   border-radius: 999px;
   background: var(--github-border-muted);
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .tree,
+  .tab,
+  .treeToggle,
+  .profileLink {
+    transition: none;
+  }
+}
