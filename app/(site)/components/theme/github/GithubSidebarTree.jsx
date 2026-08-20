@@ -1,6 +1,6 @@
 'use client'
 
-import { useLayoutEffect, useRef } from 'react'
+import { useEffect, useLayoutEffect, useRef } from 'react'
 import { X } from 'lucide-react'
 import GithubFileIcon from './GithubFileIcon'
 import { GITHUB_SECTIONS } from './githubRepository'
@@ -34,7 +34,7 @@ export default function GithubSidebarTree() {
     const mobile = window.matchMedia('(max-width: 899px)').matches
     if (treeOpen && mobile) {
       previousFocusRef.current = document.activeElement
-      asideRef.current?.querySelector('button')?.focus()
+      requestAnimationFrame(() => asideRef.current?.querySelector('button')?.focus())
     } else if (previousFocusRef.current instanceof HTMLElement) {
       previousFocusRef.current.focus()
       previousFocusRef.current = null
@@ -42,6 +42,19 @@ export default function GithubSidebarTree() {
       document.getElementById('github-tree-toggle')?.focus()
     }
   }, [treeOpen])
+
+  useEffect(() => {
+    if (!treeOpen) return
+    const closeOnEscape = (event) => {
+      if (event.key !== 'Escape') return
+      if (!window.matchMedia('(max-width: 899px)').matches) return
+      if (document.querySelector('[data-app-modal="true"]')) return
+      event.preventDefault()
+      setTreeOpen(false)
+    }
+    window.addEventListener('keydown', closeOnEscape)
+    return () => window.removeEventListener('keydown', closeOnEscape)
+  }, [setTreeOpen, treeOpen])
 
   const handleDrawerKeyDown = (event) => {
     if (!window.matchMedia('(max-width: 899px)').matches) return
