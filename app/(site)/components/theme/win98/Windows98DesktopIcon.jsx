@@ -10,8 +10,11 @@ export default function Windows98DesktopIcon({ shortcut, selected, onSelect, onL
       aria-pressed={selected}
       onClick={onSelect}
       onDoubleClick={onLaunch}
+      onPointerUp={(event) => {
+        if (event.pointerType !== 'mouse') onLaunch()
+      }}
       onKeyDown={(event) => {
-        if (event.key !== 'Enter') return
+        if (event.key !== 'Enter' && event.key !== ' ') return
         event.preventDefault()
         onLaunch()
       }}
