@@ -467,6 +467,37 @@
   border-radius: 0;
 }
 
+.appearanceList {
+  display: grid;
+  margin-top: 10px;
+  padding: 5px;
+}
+
+.appearanceList button {
+  display: flex;
+  min-height: 34px;
+  align-items: center;
+  gap: 9px;
+  padding: 4px 7px;
+  border: 0;
+  background: transparent;
+  color: #000;
+  text-align: left;
+}
+
+.appearanceList button > span {
+  width: 30px;
+  height: 18px;
+  border: 1px solid #000;
+}
+
+.appearanceSelected,
+.appearanceList button:is(:hover, :focus-visible) {
+  background: var(--win98-title) !important;
+  color: #fff !important;
+  border-radius: 0;
+}
+
 .programsMenu {
   position: absolute;
   left: calc(100% - 4px);
