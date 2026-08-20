@@ -11,10 +11,13 @@ function raiseWindow(current, windowId, patch = {}) {
     .filter((window) => window.open && window.id !== windowId)
     .sort((a, b) => a.zIndex - b.zIndex)
   const next = { ...current }
-  ordered.forEach((window, index) => {
-    next[window.id] = { ...window, zIndex: 41 + index }
+  let normalIndex = 0
+  let modalIndex = 0
+  ordered.forEach((window) => {
+    const zIndex = window.modal ? 56 + modalIndex++ : 41 + normalIndex++
+    next[window.id] = { ...window, zIndex }
   })
-  const zIndex = current[windowId].modal ? 56 : 41 + ordered.length
+  const zIndex = current[windowId].modal ? 56 + modalIndex : 41 + normalIndex
   next[windowId] = { ...current[windowId], ...patch, zIndex }
   return next
 }

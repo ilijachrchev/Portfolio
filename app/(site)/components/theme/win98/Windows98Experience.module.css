@@ -267,6 +267,13 @@
   color: var(--win98-dark);
 }
 
+.windowBackdrop {
+  position: absolute;
+  inset: 0 0 38px;
+  pointer-events: auto;
+  background: rgb(0 0 0 / 0.22);
+}
+
 .windowMaximized {
   inset: 0 0 38px;
   width: auto;

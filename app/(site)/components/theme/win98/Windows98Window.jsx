@@ -16,12 +16,13 @@ export default function Windows98Window({ active, children, onClose, onFocus, on
     }),
   }
 
-  return (
+  return <>
+    {window.modal && <div className={styles.windowBackdrop} style={{ zIndex: window.zIndex - 1 }} aria-hidden="true" />}
     <section
       className={`${styles.windowFrame} ${styles.raised} ${window.maximized ? styles.windowMaximized : ''}`}
       style={frameStyle}
       role="dialog"
-      aria-modal="false"
+      aria-modal={window.modal ? 'true' : 'false'}
       aria-label={window.title}
       onPointerDown={onFocus}
     >
@@ -31,5 +32,5 @@ export default function Windows98Window({ active, children, onClose, onFocus, on
       />
       <div className={styles.windowBody}>{children}</div>
     </section>
-  )
+  </>
 }
