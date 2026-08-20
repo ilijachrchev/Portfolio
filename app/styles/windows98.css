@@ -223,3 +223,27 @@
 :root[data-theme='win98'] #endorsements-home [class*='rounded-full'] {
   border-radius: 0;
 }
+
+:root[data-theme='win98'] [data-theme-slot='contact-form'] {
+  border: 2px solid;
+  border-color: var(--win98-highlight) var(--win98-dark) var(--win98-dark) var(--win98-highlight);
+  border-radius: 0;
+  background: var(--win98-surface);
+  box-shadow: inset 1px 1px var(--win98-light), inset -1px -1px var(--win98-shadow);
+}
+
+:root[data-theme='win98'] [data-theme-slot='contact-form'] :where(input, textarea) {
+  border: 2px solid;
+  border-color: var(--win98-shadow) var(--win98-highlight) var(--win98-highlight) var(--win98-shadow);
+  border-radius: 0;
+  background: #fff;
+  color: #000;
+  box-shadow: inset 1px 1px #000;
+}
+
+:root[data-theme='win98'] [data-theme-slot='contact-form'] :where(input, textarea):focus {
+  border-color: var(--win98-shadow) var(--win98-highlight) var(--win98-highlight) var(--win98-shadow);
+  outline: 1px dotted var(--win98-title);
+  outline-offset: -4px;
+  box-shadow: inset 1px 1px #000;
+}
