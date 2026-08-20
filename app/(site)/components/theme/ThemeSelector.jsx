@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import { useEffect, useMemo, useRef } from 'react'
 import { AnimatePresence, motion } from 'motion/react'
-import { Check, ChevronDown, Code2, Moon, Palette, Sun } from 'lucide-react'
+import { Check, ChevronDown, Code2, Monitor, Moon, Palette, Sun } from 'lucide-react'
 import spiderMask from '@/app/icon.png'
 import { useTheme } from '../ThemeProvider'
 
@@ -11,6 +11,7 @@ const ICONS = {
   light: Sun,
   dark: Moon,
   ide: Code2,
+  win98: Monitor,
 }
 
 export default function ThemeSelector({ open, onOpenChange }) {

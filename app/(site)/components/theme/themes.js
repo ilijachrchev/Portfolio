@@ -47,6 +47,18 @@ export const THEMES = {
     icon: 'code',
     preview: ['#0b0f14', '#5aa9ff', '#7fd88f'],
   },
+  win98: {
+    id: 'win98',
+    label: 'Windows 98',
+    shortLabel: 'Win98',
+    description: 'Retro Desktop',
+    colorScheme: 'light',
+    experience: null,
+    transition: 'color',
+    heroMedia: false,
+    icon: 'monitor',
+    preview: ['#008080', '#c0c0c0', '#000080'],
+  },
 }
 
 export const THEME_IDS = Object.keys(THEMES)
