@@ -32,15 +32,17 @@ export default function GithubSidebarTree() {
 
   useLayoutEffect(() => {
     const mobile = window.matchMedia('(max-width: 899px)').matches
+    let focusTimer
     if (treeOpen && mobile) {
       previousFocusRef.current = document.activeElement
-      requestAnimationFrame(() => asideRef.current?.querySelector('button')?.focus())
+      focusTimer = window.setTimeout(() => asideRef.current?.querySelector('button')?.focus(), 200)
     } else if (previousFocusRef.current instanceof HTMLElement) {
       previousFocusRef.current.focus()
       previousFocusRef.current = null
     } else if (!treeOpen && asideRef.current?.contains(document.activeElement)) {
       document.getElementById('github-tree-toggle')?.focus()
     }
+    return () => window.clearTimeout(focusTimer)
   }, [treeOpen])
 
   useEffect(() => {
