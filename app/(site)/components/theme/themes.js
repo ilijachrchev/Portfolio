@@ -93,6 +93,7 @@ export function getThemeTransition(fromTheme, toTheme) {
     getThemeDefinition(toTheme).transition,
   ]
 
+  if (transitions.includes('repository')) return 'repository'
   if (transitions.includes('system')) return 'system'
   if (transitions.includes('workspace')) return 'workspace'
   if (transitions.includes('web')) return 'web'
