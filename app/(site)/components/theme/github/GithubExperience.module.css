@@ -365,3 +365,25 @@
   display: grid;
   gap: 3px;
 }
+
+.insights > header span:first-child {
+  color: var(--github-fg-muted);
+  font: 10px/1.4 var(--github-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.insights h3 {
+  margin: 0;
+  color: var(--github-fg-default);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.insightsBadge {
+  border: 1px solid var(--github-border);
+  border-radius: 999px;
+  padding: 3px 8px;
+  color: var(--github-fg-muted);
+  font: 10px/1.4 var(--github-mono);
+}
