@@ -43,3 +43,19 @@ export function GithubActivityList() {
     </ol>
   )
 }
+
+export default function GithubInsights() {
+  return (
+    <aside className={styles.insights} aria-labelledby="github-insights-title">
+      <header>
+        <div>
+          <span>Insights</span>
+          <h3 id="github-insights-title">Contribution activity</h3>
+        </div>
+        <span className={styles.insightsBadge}>portfolio</span>
+      </header>
+      <GithubContributionGrid />
+      <GithubActivityList />
+    </aside>
+  )
+}
