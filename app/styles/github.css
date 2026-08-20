@@ -341,3 +341,29 @@
   color: #56d364;
   font-family: var(--github-mono);
 }
+
+:root[data-theme='github'] [data-theme-slot='contact-form'] {
+  position: relative;
+  overflow: hidden;
+  border-color: var(--github-border);
+  border-radius: 6px;
+  background: var(--github-canvas-subtle);
+  box-shadow: 0 12px 36px rgb(1 4 9 / 0.3);
+}
+
+:root[data-theme='github'] [data-theme-slot='contact-form']::before {
+  content: 'New issue · Contact request';
+  display: block;
+  margin: -24px -24px 24px;
+  padding: 13px 18px;
+  border-bottom: 1px solid var(--github-border);
+  background: var(--github-canvas-inset);
+  color: var(--github-fg-default);
+  font: 600 12px/1.4 var(--github-mono);
+}
+
+@media (min-width: 768px) {
+  :root[data-theme='github'] [data-theme-slot='contact-form']::before {
+    margin: -32px -32px 28px;
+  }
+}
