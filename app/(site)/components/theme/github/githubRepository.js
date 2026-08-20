@@ -62,4 +62,16 @@ export const GITHUB_TABS = [
     sectionId: 'work',
     sectionIds: ['work'],
   },
+  {
+    id: 'pull-requests',
+    label: 'Pull requests',
+    sectionId: 'endorsements-home',
+    sectionIds: ['endorsements-home'],
+  },
+  {
+    id: 'issues',
+    label: 'Issues',
+    sectionId: 'contact',
+    sectionIds: ['contact'],
+  },
 ]
