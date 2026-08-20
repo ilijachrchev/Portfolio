@@ -20,4 +20,18 @@ export const WINDOWS98_WINDOWS = {
     position: { x: 210, y: 100 },
     size: { width: 440, height: 300 },
   },
+  run: {
+    id: 'run',
+    title: 'Run',
+    icon: '/themes/win98/icons/computer.svg',
+    position: { x: 260, y: 170 },
+    size: { width: 410, height: 190 },
+  },
+  winver: {
+    id: 'winver',
+    title: 'About Windows 98 Portfolio',
+    icon: '/themes/win98/icons/info.svg',
+    position: { x: 230, y: 110 },
+    size: { width: 430, height: 270 },
+  },
 }
