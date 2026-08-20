@@ -1,5 +1,6 @@
 'use client'
 
+import { useLayoutEffect, useRef } from 'react'
 import { X } from 'lucide-react'
 import GithubFileIcon from './GithubFileIcon'
 import { GITHUB_SECTIONS } from './githubRepository'
@@ -26,6 +27,19 @@ export function GithubTreeItem({ section }) {
 
 export default function GithubSidebarTree() {
   const { activeSection, treeOpen, setTreeOpen } = useGithubRepositoryView()
+  const asideRef = useRef(null)
+  const previousFocusRef = useRef(null)
+
+  useLayoutEffect(() => {
+    if (!window.matchMedia('(max-width: 899px)').matches) return
+    if (treeOpen) {
+      previousFocusRef.current = document.activeElement
+      asideRef.current?.querySelector('button')?.focus()
+    } else if (previousFocusRef.current instanceof HTMLElement) {
+      previousFocusRef.current.focus()
+      previousFocusRef.current = null
+    }
+  }, [treeOpen])
 
   return (
     <>
@@ -36,7 +50,7 @@ export default function GithubSidebarTree() {
       aria-label="Close repository tree"
       tabIndex={treeOpen ? 0 : -1}
     />
-    <aside className={`${styles.tree} ${treeOpen ? styles.treeOpen : styles.treeClosed}`} aria-label="Repository files">
+    <aside ref={asideRef} className={`${styles.tree} ${treeOpen ? styles.treeOpen : styles.treeClosed}`} aria-label="Repository files">
       <header className={styles.treeHeader}>
         <span>portfolio</span>
         <button type="button" onClick={() => setTreeOpen(false)} aria-label="Close repository tree">
