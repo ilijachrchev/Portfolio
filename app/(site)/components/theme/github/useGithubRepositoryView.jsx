@@ -1,7 +1,7 @@
 'use client'
 
-import { createContext, useContext, useMemo, useState } from 'react'
-import { getGithubSection, getGithubTab } from './githubRepository'
+import { createContext, useContext, useEffect, useMemo, useState } from 'react'
+import { GITHUB_SECTIONS, getGithubSection, getGithubTab } from './githubRepository'
 
 const GithubRepositoryContext = createContext(null)
 
@@ -24,6 +24,27 @@ export function GithubRepositoryProvider({ children }) {
   const [treeOpen, setTreeOpen] = useState(false)
   const activeSection = getGithubSection(activeSectionId) || getGithubSection('home')
   const activeTab = getGithubTab(activeSection.sectionId)
+
+  useEffect(() => {
+    const root = document.documentElement
+    root.dataset.githubRepository = 'true'
+    const elements = GITHUB_SECTIONS.map((section) => {
+      const element = document.getElementById(section.sectionId)
+      if (!element) return null
+      element.dataset.githubSection = section.id
+      element.dataset.githubPath = section.path
+      return element
+    }).filter(Boolean)
+
+    return () => {
+      delete root.dataset.githubRepository
+      delete root.dataset.githubActiveSection
+      elements.forEach((element) => {
+        delete element.dataset.githubSection
+        delete element.dataset.githubPath
+      })
+    }
+  }, [])
 
   const value = useMemo(() => ({
     activeSection,
