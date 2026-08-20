@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import { useEffect, useMemo, useRef } from 'react'
 import { AnimatePresence, motion } from 'motion/react'
-import { Check, ChevronDown, Code2, Monitor, Moon, Palette, Sun } from 'lucide-react'
+import { Check, ChevronDown, Code2, Github, Monitor, Moon, Palette, Sun } from 'lucide-react'
 import spiderMask from '@/app/icon.png'
 import { useTheme } from '../ThemeProvider'
 
@@ -12,6 +12,7 @@ const ICONS = {
   dark: Moon,
   ide: Code2,
   win98: Monitor,
+  github: Github,
 }
 
 export default function ThemeSelector({ open, onOpenChange }) {
@@ -147,7 +148,17 @@ export default function ThemeSelector({ open, onOpenChange }) {
                       </span>
                       <span className="mt-0.5 block text-xs text-muted-foreground">{item.description}</span>
                       <span className="mt-2 flex gap-1.5" aria-hidden="true">
-                        {item.id === 'win98' ? (
+                        {item.id === 'github' ? (
+                          <span className="relative h-6 w-16 overflow-hidden rounded-sm border border-[#30363d] bg-[#0d1117]">
+                            <span className="absolute inset-x-1 top-1 h-1 border-b border-[#30363d]" />
+                            <span className="absolute bottom-1 left-1 top-3 w-3 border-r border-[#30363d]" />
+                            <span className="absolute bottom-1 left-5 right-1 grid grid-cols-4 gap-px">
+                              {[0.25, 0.55, 0.8, 0.4].map((opacity) => (
+                                <i key={opacity} className="bg-[#3fb950]" style={{ opacity }} />
+                              ))}
+                            </span>
+                          </span>
+                        ) : item.id === 'win98' ? (
                           <span className="relative h-5 w-14 overflow-hidden border border-black bg-[#008080]">
                             <span className="absolute left-2 top-1 h-3 w-8 bg-[#c0c0c0] shadow-[1px_1px_0_#000]">
                               <span className="block h-1 bg-[#000080]" />
