@@ -9,13 +9,6 @@
   line-height: 1.25;
 }
 
-.desktopSurface {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: var(--win98-desktop);
-}
-
 @media (max-width: 640px) {
   .desktop {
     font-size: 13px;

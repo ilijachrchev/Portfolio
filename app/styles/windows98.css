@@ -27,3 +27,22 @@
   --win98-title: #000080;
   --win98-desktop: #008080;
 }
+
+:root[data-theme='win98'] body {
+  background: var(--win98-desktop);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+:root[data-theme='win98'] [data-theme-slot='navbar'] {
+  visibility: hidden;
+  pointer-events: none;
+  opacity: 0;
+}
+
+:root[data-theme='win98'] main {
+  min-width: 0;
+  margin-left: 112px;
+  padding: 14px 14px 48px;
+  overflow-x: clip;
+  background: var(--win98-desktop);
+}
