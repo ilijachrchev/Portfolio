@@ -12,6 +12,7 @@ export function Windows98WorkspaceProvider({ children }) {
   const [windows, setWindows] = useState(createWindows98WindowState)
   const [activeWindowId, setActiveWindowId] = useState(null)
   const [errorMessage, setErrorMessage] = useState('The requested operation could not be completed.')
+  const [isShutdown, setIsShutdown] = useState(false)
   const nextZIndex = useRef(42)
 
   const openWindow = useCallback((windowId) => {
@@ -92,6 +93,9 @@ export function Windows98WorkspaceProvider({ children }) {
     setErrorMessage(message)
     openWindow('error')
   }, [openWindow])
+
+  const shutdownPortfolio = useCallback(() => setIsShutdown(true), [])
+  const restartPortfolio = useCallback(() => setIsShutdown(false), [])
 
   useEffect(() => {
     document.documentElement.dataset.win98ActiveApp = activeAppId
@@ -175,7 +179,10 @@ export function Windows98WorkspaceProvider({ children }) {
     moveWindow,
     errorMessage,
     showError,
-  }), [activeAppId, activeWindowId, closeWindow, errorMessage, focusWindow, minimizeWindow, moveWindow, navigateToApp, openWindow, selectedShortcut, showError, toggleMaximizeWindow, windows])
+    isShutdown,
+    shutdownPortfolio,
+    restartPortfolio,
+  }), [activeAppId, activeWindowId, closeWindow, errorMessage, focusWindow, isShutdown, minimizeWindow, moveWindow, navigateToApp, openWindow, restartPortfolio, selectedShortcut, showError, shutdownPortfolio, toggleMaximizeWindow, windows])
 
   return (
     <Windows98WorkspaceContext.Provider value={value}>
