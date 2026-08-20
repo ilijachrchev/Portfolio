@@ -1,4 +1,5 @@
-import { createPortfolioActivityGrid } from './githubRepository'
+import { GitCommitHorizontal } from 'lucide-react'
+import { GITHUB_ACTIVITY, createPortfolioActivityGrid } from './githubRepository'
 import styles from './GithubExperience.module.css'
 
 const LEVEL_LABELS = ['No marker', 'Low', 'Moderate', 'Strong', 'High']
@@ -23,5 +24,22 @@ export function GithubContributionGrid() {
       </div>
       <p>Representative portfolio activity, not account analytics.</p>
     </div>
+  )
+}
+
+export function GithubActivityList() {
+  return (
+    <ol className={styles.activityList} aria-label="Portfolio activity summary">
+      {GITHUB_ACTIVITY.map((activity) => (
+        <li key={activity.label}>
+          <GitCommitHorizontal aria-hidden="true" />
+          <div>
+            <strong>{activity.label}</strong>
+            <span>{activity.detail}</span>
+          </div>
+          <small>{activity.period}</small>
+        </li>
+      ))}
+    </ol>
   )
 }
