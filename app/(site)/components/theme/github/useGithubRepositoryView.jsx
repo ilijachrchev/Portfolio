@@ -21,7 +21,9 @@ export function findActiveGithubSection(metrics, scrollTop, viewportHeight) {
 
 export function GithubRepositoryProvider({ children }) {
   const [activeSectionId, setActiveSectionId] = useState('home')
-  const [treeOpen, setTreeOpen] = useState(false)
+  const [treeOpen, setTreeOpen] = useState(
+    () => typeof window !== 'undefined' && !window.matchMedia('(max-width: 899px)').matches
+  )
   const activeSection = getGithubSection(activeSectionId) || getGithubSection('home')
   const activeTab = getGithubTab(activeSection.sectionId)
 
@@ -69,6 +71,10 @@ export function GithubRepositoryProvider({ children }) {
   useEffect(() => {
     document.documentElement.dataset.githubActiveSection = activeSection.id
   }, [activeSection.id])
+
+  useEffect(() => {
+    document.documentElement.dataset.githubTree = treeOpen ? 'open' : 'closed'
+  }, [treeOpen])
 
   const navigateToSection = useCallback((value) => {
     const section = getGithubSection(value)
