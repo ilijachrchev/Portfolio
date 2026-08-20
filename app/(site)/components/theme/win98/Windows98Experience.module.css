@@ -344,6 +344,27 @@
 
 .submenuArrow { justify-self: end; font-size: 9px; }
 
+.programsMenu {
+  position: absolute;
+  left: calc(100% - 4px);
+  top: 2px;
+  width: 190px;
+  padding: 3px;
+  background: var(--win98-surface);
+}
+
+.programsMenu .menuItem {
+  min-height: 38px;
+}
+
+@media (max-width: 520px) {
+  .programsMenu {
+    left: 32px;
+    top: auto;
+    bottom: 42px;
+  }
+}
+
 .networkList {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
