@@ -314,6 +314,31 @@
   height: 22px;
 }
 
+.statusBox {
+  min-height: 24px;
+  margin-top: 8px;
+  padding: 3px 6px;
+  color: #000;
+}
+
+.emptyUtility {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 18px;
+}
+
+.emptyUtility img {
+  image-rendering: pixelated;
+}
+
+.emptyUtility p {
+  margin-top: 5px;
+  color: #404040;
+}
+
 @media (max-width: 640px) {
   .desktop {
     font-size: 13px;
