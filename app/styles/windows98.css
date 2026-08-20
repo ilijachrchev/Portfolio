@@ -167,3 +167,22 @@
 :root[data-theme='win98'] #service [class*='bg-primary'] {
   background-color: var(--win98-title);
 }
+
+:root[data-theme='win98'] #work::after {
+  content: 'Address  C:\\Portfolio\\Projects';
+  position: absolute;
+  inset: 32px 4px auto;
+  z-index: 24;
+  height: 25px;
+  padding: 3px 8px;
+  border: 2px solid;
+  border-color: var(--win98-shadow) var(--win98-highlight) var(--win98-highlight) var(--win98-shadow);
+  background: #fff;
+  color: #000;
+  font: 12px/15px Arial, Helvetica, sans-serif;
+  pointer-events: none;
+}
+
+:root[data-theme='win98'] #work {
+  padding-top: 76px;
+}
