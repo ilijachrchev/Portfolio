@@ -1,7 +1,7 @@
 'use client'
 import React, { createContext, useCallback, useContext, useLayoutEffect, useRef, useState } from 'react'
 import { MotionConfig } from 'motion/react'
-import { DEFAULT_THEME, THEMES, getThemeDefinition, isThemeId } from './theme/themes'
+import { DEFAULT_THEME, THEMES, getThemeDefinition, getThemeTransition, isThemeId } from './theme/themes'
 
 const ThemeCtx = createContext(null)
 
@@ -105,10 +105,10 @@ export function ThemeProvider({ children }) {
     }
 
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    const usesSpiderTransition = theme === 'spiderman' || nextTheme === 'spiderman'
+    const transitionKind = getThemeTransition(theme, nextTheme)
 
-    if (usesSpiderTransition && !reduceMotion) {
-      setTransition({ from: theme, to: nextTheme })
+    if (transitionKind !== 'color' && !reduceMotion) {
+      setTransition({ from: theme, to: nextTheme, kind: transitionKind })
       return
     }
 

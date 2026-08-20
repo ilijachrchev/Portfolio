@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "./styles/spiderman.css";
+@import "./styles/ide.css";
 
 @custom-variant dark (&:is(.dark *));
 

@@ -8,8 +8,8 @@ const ease = [0.16, 1, 0.3, 1]
 
 export default function Header() {
   const reduceMotion = useReducedMotion()
-  const { theme, isHydrated } = useTheme()
-  const showVideo = isHydrated && theme !== 'spiderman' && !reduceMotion
+  const { themeDefinition, isHydrated } = useTheme()
+  const showVideo = isHydrated && themeDefinition.heroMedia !== false && !reduceMotion
 
   const rise = (delay = 0) => ({
     initial: reduceMotion ? false : { opacity: 0, y: 24 },

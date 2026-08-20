@@ -7,10 +7,17 @@ const SpiderExperience = dynamic(() => import('./spider/SpiderExperience'), {
   ssr: false,
 })
 
+const IdeExperience = dynamic(() => import('./ide/IdeExperience'), {
+  ssr: false,
+})
+
 export default function ThemeExperience() {
   const { themeDefinition, isHydrated } = useTheme()
 
-  if (!isHydrated || themeDefinition.experience !== 'spider') return null
+  if (!isHydrated) return null
 
-  return <SpiderExperience />
+  if (themeDefinition.experience === 'spider') return <SpiderExperience />
+  if (themeDefinition.experience === 'ide') return <IdeExperience />
+
+  return null
 }

@@ -1,7 +1,7 @@
 import { Outfit, Ovo } from "next/font/google";
 import "./globals.css";
 import { ToastProvider } from "./components/toast/ToastProvider";
-import { THEME_IDS } from "./(site)/components/theme/themes";
+import { DARK_THEME_IDS, THEME_IDS } from "./(site)/components/theme/themes";
 
 const outfit = Outfit({
   subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--font-outfit-raw"
@@ -12,7 +12,7 @@ const ovo = Ovo({
   subsets: ["latin"], weight: ["400"], variable: "--font-ovo-raw",
 });
 
-const themeBootstrap = `(()=>{try{const v=${JSON.stringify(THEME_IDS)},s=localStorage.getItem('theme'),t=v.includes(s)?s:(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'),d=t==='dark'||t==='spiderman',r=document.documentElement;r.dataset.theme=t;r.dataset.colorScheme=d?'dark':'light';r.classList.toggle('dark',d);r.style.colorScheme=d?'dark':'light'}catch{}})()`;
+const themeBootstrap = `(()=>{try{const v=${JSON.stringify(THEME_IDS)},x=${JSON.stringify(DARK_THEME_IDS)},s=localStorage.getItem('theme'),t=v.includes(s)?s:(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'),d=x.includes(t),r=document.documentElement;r.dataset.theme=t;r.dataset.colorScheme=d?'dark':'light';r.classList.toggle('dark',d);r.style.colorScheme=d?'dark':'light'}catch{}})()`;
 
 
 export const metadata = {
