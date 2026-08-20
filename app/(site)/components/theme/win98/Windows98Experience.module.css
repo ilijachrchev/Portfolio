@@ -98,6 +98,33 @@
   border-radius: 0;
 }
 
+.taskbar {
+  position: absolute;
+  inset: auto 0 0;
+  display: flex;
+  height: 38px;
+  align-items: center;
+  gap: 4px;
+  padding: 3px;
+  pointer-events: auto;
+}
+
+.startButton {
+  display: inline-flex;
+  min-width: 76px;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding-inline: 5px;
+  font-size: 13px;
+}
+
+.taskbarApps {
+  min-width: 0;
+  flex: 1;
+}
+
 @media (max-width: 640px) {
   .desktop {
     font-size: 13px;
