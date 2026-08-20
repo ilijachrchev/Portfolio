@@ -45,3 +45,27 @@
   background: rgb(56 139 253 / 0.4);
   color: var(--github-fg-default);
 }
+
+:root[data-theme='github'] [data-theme-slot='navbar'] {
+  visibility: hidden;
+  pointer-events: none;
+  opacity: 0;
+}
+
+:root[data-theme='github'] main {
+  min-width: 0;
+  overflow-x: clip;
+  padding-top: 110px;
+  background: var(--github-canvas);
+}
+
+:root[data-theme='github'] section {
+  scroll-margin-top: 124px;
+}
+
+:root[data-theme='github'] .liquid-glass {
+  border-color: var(--github-border);
+  background: rgb(22 27 34 / 0.94);
+  box-shadow: 0 8px 24px rgb(1 4 9 / 0.32);
+  backdrop-filter: blur(12px);
+}
