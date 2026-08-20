@@ -69,3 +69,13 @@
   box-shadow: 0 8px 24px rgb(1 4 9 / 0.32);
   backdrop-filter: blur(12px);
 }
+
+@media (min-width: 900px) {
+  :root[data-theme='github'] main {
+    transition: margin-left 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  :root[data-theme='github'][data-github-tree='open'] main {
+    margin-left: 250px;
+  }
+}
