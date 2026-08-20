@@ -34,4 +34,18 @@ export const WINDOWS98_WINDOWS = {
     position: { x: 230, y: 110 },
     size: { width: 430, height: 270 },
   },
+  find: {
+    id: 'find',
+    title: 'Find: Portfolio',
+    icon: '/themes/win98/icons/folder.svg',
+    position: { x: 280, y: 130 },
+    size: { width: 420, height: 230 },
+  },
+  appearance: {
+    id: 'appearance',
+    title: 'Appearance Properties',
+    icon: '/themes/win98/icons/computer.svg',
+    position: { x: 240, y: 90 },
+    size: { width: 440, height: 340 },
+  },
 }
