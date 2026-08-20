@@ -91,3 +91,21 @@ export function isGithubEditableTarget(target) {
     target.closest('input, textarea, select, [contenteditable="true"], [role="textbox"]')
   )
 }
+
+export const GITHUB_ACTIVITY = [
+  {
+    label: 'Leading IAESTE LC Koper',
+    detail: 'Community leadership and volunteer coordination',
+    period: '2025 — present',
+  },
+  {
+    label: 'Building full-stack products',
+    detail: 'Next.js, React, .NET, Python, and PostgreSQL',
+    period: 'active focus',
+  },
+  {
+    label: 'Supporting student communities',
+    detail: 'Student Council, tutoring, GDG, and MSOS',
+    period: 'ongoing',
+  },
+]
