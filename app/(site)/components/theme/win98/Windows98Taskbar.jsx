@@ -12,20 +12,22 @@ export default function Windows98Taskbar() {
   const [startOpen, setStartOpen] = useState(false)
   const [programsOpen, setProgramsOpen] = useState(false)
   const rootRef = useRef(null)
+  const startButtonRef = useRef(null)
   const { activeAppId, activeWindowId, focusWindow, navigateToApp, openWindow, windows } = useWindows98Workspace()
   const openUtilities = Object.values(windows).filter((window) => window.open)
 
   useEffect(() => {
     if (!startOpen) return
-    const close = () => {
+    const close = (restoreFocus = false) => {
       setStartOpen(false)
       setProgramsOpen(false)
+      if (restoreFocus) requestAnimationFrame(() => startButtonRef.current?.focus())
     }
     const handlePointerDown = (event) => {
       if (!rootRef.current?.contains(event.target)) close()
     }
     const handleKeyDown = (event) => {
-      if (event.key === 'Escape') close()
+      if (event.key === 'Escape') close(true)
     }
     document.addEventListener('pointerdown', handlePointerDown)
     document.addEventListener('keydown', handleKeyDown)
@@ -38,12 +40,22 @@ export default function Windows98Taskbar() {
   return <div ref={rootRef} className={styles.taskbarLayer}>
     {startOpen && (
       <Windows98StartMenu
-        navigateToApp={navigateToApp} onOpenUtility={openWindow}
+        navigateToApp={(appId) => {
+          navigateToApp(appId)
+          setStartOpen(false)
+          setProgramsOpen(false)
+        }}
+        onOpenUtility={(windowId) => {
+          openWindow(windowId)
+          setStartOpen(false)
+          setProgramsOpen(false)
+        }}
         onTogglePrograms={() => setProgramsOpen((current) => !current)} programsOpen={programsOpen}
       />
     )}
     <footer className={`${styles.taskbar} ${styles.raised}`} aria-label="Windows taskbar">
       <Windows98Button
+        ref={startButtonRef}
         className={styles.startButton}
         active={startOpen}
         aria-haspopup="menu"
