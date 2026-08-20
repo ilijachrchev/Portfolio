@@ -1,0 +1,29 @@
+:root[data-theme='win98'] {
+  --radius: 0;
+  --background: #008080;
+  --foreground: #000000;
+  --card: #c0c0c0;
+  --card-foreground: #000000;
+  --popover: #c0c0c0;
+  --popover-foreground: #000000;
+  --primary: #000080;
+  --primary-foreground: #ffffff;
+  --secondary: #dfdfdf;
+  --secondary-foreground: #000000;
+  --muted: #dfdfdf;
+  --muted-foreground: #404040;
+  --accent: #008080;
+  --accent-foreground: #ffffff;
+  --destructive: #a00000;
+  --border: #808080;
+  --input: #808080;
+  --ring: #000080;
+
+  --win98-surface: #c0c0c0;
+  --win98-highlight: #ffffff;
+  --win98-light: #dfdfdf;
+  --win98-shadow: #808080;
+  --win98-dark: #000000;
+  --win98-title: #000080;
+  --win98-desktop: #008080;
+}
