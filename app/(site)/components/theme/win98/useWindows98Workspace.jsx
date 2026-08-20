@@ -6,6 +6,18 @@ import { createWindows98WindowState } from './windows98Windows'
 
 const Windows98WorkspaceContext = createContext(null)
 
+function raiseWindow(current, windowId, patch = {}) {
+  const ordered = Object.values(current)
+    .filter((window) => window.open && window.id !== windowId)
+    .sort((a, b) => a.zIndex - b.zIndex)
+  const next = { ...current }
+  ordered.forEach((window, index) => {
+    next[window.id] = { ...window, zIndex: 41 + index }
+  })
+  next[windowId] = { ...current[windowId], ...patch, zIndex: 41 + ordered.length }
+  return next
+}
+
 export function Windows98WorkspaceProvider({ children }) {
   const [selectedShortcut, setSelectedShortcut] = useState('computer')
   const [activeAppId, setActiveAppId] = useState('computer')
