@@ -109,3 +109,16 @@ export const GITHUB_ACTIVITY = [
     period: 'ongoing',
   },
 ]
+
+export function createPortfolioActivityGrid(columns = 22) {
+  return Array.from({ length: columns * 7 }, (_, index) => {
+    const column = Math.floor(index / 7)
+    const row = index % 7
+    const signal = (column * 7 + row * 11 + (column % 4) * 5) % 17
+    if (signal < 6) return 0
+    if (signal < 10) return 1
+    if (signal < 13) return 2
+    if (signal < 16) return 3
+    return 4
+  })
+}
