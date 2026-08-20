@@ -44,7 +44,7 @@ function Card({ row }) {
   }, [code])
 
   return (
-    <article data-theme-slot="card" className="flex h-full flex-col gap-3 rounded-2xl border border-border bg-card p-5 shadow-sm">
+    <article data-theme-slot="card" data-github-review="Approved review" className="flex h-full flex-col gap-3 rounded-2xl border border-border bg-card p-5 shadow-sm">
       <header className="flex items-start justify-between">
         <div className="flex items-center gap-3">
           <div className="flex h-10 w-10 items-center justify-center rounded-full bg-muted text-xs font-bold text-foreground select-none">
