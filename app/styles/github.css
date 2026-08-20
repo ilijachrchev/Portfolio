@@ -154,3 +154,27 @@
   color: var(--github-fg-default);
   font: 600 12px/1.4 var(--github-mono);
 }
+
+:root[data-theme='github'] #about > div > :not(:first-child),
+:root[data-theme='github'] #about > div > span:first-of-type {
+  margin-inline: clamp(20px, 4vw, 42px);
+}
+
+:root[data-theme='github'] #about > div > span:first-of-type {
+  color: var(--github-fg-muted);
+  font-family: var(--font-body) !important;
+  font-size: 13px;
+}
+
+:root[data-theme='github'] #about h2 {
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--github-border-muted);
+  font-family: var(--font-body);
+  font-size: clamp(30px, 5vw, 44px);
+  font-weight: 600;
+  text-align: left;
+}
+
+:root[data-theme='github'] #about > div > div:last-child {
+  margin-bottom: clamp(26px, 5vw, 48px);
+}
