@@ -498,6 +498,30 @@
   border-radius: 0;
 }
 
+.shutdownScreen {
+  position: absolute;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 24px;
+  pointer-events: auto;
+  background: #000;
+  color: #ffb000;
+  text-align: center;
+}
+
+.shutdownScreen h2 {
+  font-size: clamp(20px, 4vw, 34px);
+}
+
+.shutdownScreen p {
+  color: #fff;
+}
+
 .programsMenu {
   position: absolute;
   left: calc(100% - 4px);
