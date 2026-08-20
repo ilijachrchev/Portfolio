@@ -46,6 +46,30 @@ export function GithubRepositoryProvider({ children }) {
     }
   }, [])
 
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]
+      if (!visible) return
+      setActiveSectionId(visible.target.id)
+    }, {
+      rootMargin: '-28% 0px -56% 0px',
+      threshold: [0, 0.02, 0.15],
+    })
+
+    GITHUB_SECTIONS.forEach((section) => {
+      const element = document.getElementById(section.sectionId)
+      if (element) observer.observe(element)
+    })
+
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
+    document.documentElement.dataset.githubActiveSection = activeSection.id
+  }, [activeSection.id])
+
   const value = useMemo(() => ({
     activeSection,
     activeTab,
