@@ -136,6 +136,17 @@
   font-style: normal;
 }
 
+:root[data-theme='win98'] [data-win98-app] h2 [class*='bg-gradient'] {
+  background: none;
+  color: var(--win98-title);
+  -webkit-text-fill-color: currentColor;
+}
+
+:root[data-theme='win98'] [data-win98-app] em {
+  color: var(--win98-title);
+  font-style: normal;
+}
+
 :root[data-theme='win98'] [data-theme-slot='portrait'] {
   border: 2px solid;
   border-color: var(--win98-shadow) var(--win98-highlight) var(--win98-highlight) var(--win98-shadow);
