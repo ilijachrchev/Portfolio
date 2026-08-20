@@ -54,3 +54,23 @@
   color: var(--github-fg-muted);
   font: 500 11px/20px var(--font-body);
 }
+
+.repoActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.treeToggle,
+.profileLink {
+  display: inline-flex;
+  min-height: 32px;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 1px solid var(--github-border);
+  border-radius: 6px;
+  background: var(--github-canvas-subtle);
+  color: var(--github-fg-default);
+  font-size: 12px;
+}
