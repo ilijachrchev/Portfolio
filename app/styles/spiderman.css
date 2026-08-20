@@ -148,10 +148,20 @@
 }
 
 :root[data-theme='spiderman'] [data-theme-slot='volunteering-card'] {
-  position: relative;
   background:
     linear-gradient(160deg, rgb(62 140 255 / 0.055), transparent 42%),
     var(--card);
+}
+
+:root[data-theme='spiderman'] #service {
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgb(7 17 31 / 0.72) 14%,
+    rgb(7 17 31 / 0.88) 50%,
+    rgb(7 17 31 / 0.72) 86%,
+    transparent
+  );
 }
 
 :root[data-theme='spiderman'] [data-theme-slot='volunteering-card']::before,
