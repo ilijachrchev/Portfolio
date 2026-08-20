@@ -342,3 +342,26 @@
   font: 10px/1.5 var(--github-mono);
   white-space: nowrap;
 }
+
+.insights {
+  width: min(100%, 980px);
+  margin: 0 auto 42px;
+  padding: 20px;
+  border: 1px solid var(--github-border);
+  border-radius: 6px;
+  background: var(--github-canvas-subtle);
+  color: var(--github-fg-default);
+}
+
+.insights > header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.insights > header > div {
+  display: grid;
+  gap: 3px;
+}
