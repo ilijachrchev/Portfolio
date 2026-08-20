@@ -58,6 +58,7 @@ export const WINDOWS98_WINDOWS = {
     position: { x: 270, y: 150 },
     size: { width: 410, height: 220 },
     maximizable: false,
+    minimizable: false,
     modal: true,
   },
   error: {
@@ -67,6 +68,7 @@ export const WINDOWS98_WINDOWS = {
     position: { x: 300, y: 180 },
     size: { width: 380, height: 190 },
     maximizable: false,
+    minimizable: false,
     modal: true,
   },
 }
