@@ -147,6 +147,31 @@
   flex: 1;
 }
 
+.tray {
+  display: flex;
+  min-width: 92px;
+  height: 28px;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 2px 7px;
+  white-space: nowrap;
+}
+
+.trayStatus {
+  width: 12px;
+  height: 12px;
+  border: 1px solid #000;
+  background:
+    linear-gradient(90deg, transparent 42%, #fff 42% 58%, transparent 58%),
+    linear-gradient(#008000 48%, #00c000 48%);
+}
+
+.tray time {
+  min-width: 50px;
+  text-align: center;
+}
+
 @media (max-width: 640px) {
   .desktop {
     font-size: 13px;
