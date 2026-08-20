@@ -199,3 +199,27 @@
   border-radius: 6px;
   background: var(--github-canvas-subtle);
 }
+
+:root[data-theme='github'] #service {
+  border-block: 1px solid var(--github-border-muted);
+  background: var(--github-canvas-inset);
+}
+
+:root[data-theme='github'] #service h2 {
+  font-family: var(--font-body);
+  font-weight: 600;
+}
+
+:root[data-theme='github'] #service h2 span {
+  background: none;
+  color: var(--github-accent);
+  -webkit-text-fill-color: currentColor;
+}
+
+/* Decoration only: Motion remains the sole owner of carousel geometry. */
+:root[data-theme='github'] [data-theme-slot='volunteering-card'] {
+  border-color: var(--github-border);
+  border-radius: 6px;
+  background: var(--github-canvas-subtle);
+  box-shadow: 0 16px 42px rgb(1 4 9 / 0.38);
+}
