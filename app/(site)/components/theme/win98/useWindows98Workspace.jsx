@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
+import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { WINDOWS98_APPS } from './windows98Apps'
 import { createWindows98WindowState } from './windows98Windows'
 
@@ -25,19 +25,12 @@ export function Windows98WorkspaceProvider({ children }) {
   const [activeWindowId, setActiveWindowId] = useState(null)
   const [errorMessage, setErrorMessage] = useState('The requested operation could not be completed.')
   const [isShutdown, setIsShutdown] = useState(false)
-  const nextZIndex = useRef(42)
 
   const openWindow = useCallback((windowId) => {
     if (!windows[windowId]) return false
-    const zIndex = nextZIndex.current++
-    setWindows((current) => ({
-      ...current,
-      [windowId]: {
-        ...current[windowId],
-        open: true,
-        minimized: false,
-        zIndex,
-      },
+    setWindows((current) => raiseWindow(current, windowId, {
+      open: true,
+      minimized: false,
     }))
     setActiveWindowId(windowId)
     setSelectedShortcut(windowId)
@@ -57,15 +50,7 @@ export function Windows98WorkspaceProvider({ children }) {
   }, [])
 
   const focusWindow = useCallback((windowId) => {
-    const zIndex = nextZIndex.current++
-    setWindows((current) => ({
-      ...current,
-      [windowId]: {
-        ...current[windowId],
-        minimized: false,
-        zIndex,
-      },
-    }))
+    setWindows((current) => raiseWindow(current, windowId, { minimized: false }))
     setActiveWindowId(windowId)
   }, [])
 
