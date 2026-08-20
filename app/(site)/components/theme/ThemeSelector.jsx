@@ -154,7 +154,7 @@ export default function ThemeSelector({ open, onOpenChange }) {
                             <span className="absolute bottom-1 left-1 top-3 w-3 border-r border-[#30363d]" />
                             <span className="absolute bottom-1 left-5 right-1 grid grid-cols-4 gap-px">
                               {[0.25, 0.55, 0.8, 0.4].map((opacity) => (
-                                <i key={opacity} className="bg-[#3fb950]" style={{ opacity }} />
+                                <i key={opacity} className="h-1 bg-[#3fb950]" style={{ opacity }} />
                               ))}
                             </span>
                           </span>
