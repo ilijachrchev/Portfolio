@@ -1,11 +1,16 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Windows98Button from './Windows98Button'
 import styles from './Windows98Experience.module.css'
 
 export default function Windows98Run({ onCancel, onExecute }) {
   const [command, setCommand] = useState('')
+  const inputRef = useRef(null)
+
+  useEffect(() => {
+    requestAnimationFrame(() => inputRef.current?.focus())
+  }, [])
 
   const submit = (event) => {
     event.preventDefault()
@@ -17,6 +22,7 @@ export default function Windows98Run({ onCancel, onExecute }) {
       <p>Type a portfolio destination or command, then choose OK.</p>
       <label htmlFor="win98-run-command">Open:</label>
       <input
+        ref={inputRef}
         id="win98-run-command" className={styles.sunken} value={command}
         onChange={(event) => setCommand(event.target.value)} autoComplete="off"
       />
