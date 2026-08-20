@@ -1,4 +1,5 @@
 import Windows98Error from './Windows98Error'
+import Windows98Find from './Windows98Find'
 import Windows98Help from './Windows98Help'
 import Windows98Network from './Windows98Network'
 import Windows98RecycleBin from './Windows98RecycleBin'
@@ -30,9 +31,11 @@ export default function Windows98Utilities() {
 
   return Object.values(windows).map((window) => {
     const Content = CONTENT[window.id]
-    if (!Content && !['error', 'help', 'run', 'winver'].includes(window.id)) return null
+    if (!Content && !['error', 'find', 'help', 'run', 'winver'].includes(window.id)) return null
     const content = window.id === 'error'
       ? <Windows98Error message={errorMessage} onClose={() => closeWindow('error')} />
+      : window.id === 'find'
+        ? <Windows98Find onNavigate={(appId) => { closeWindow('find'); navigateToApp(appId) }} />
       : window.id === 'help'
       ? <Windows98Help navigateToApp={navigateToApp} onOpenWinver={() => openWindow('winver')} />
       : window.id === 'winver'
