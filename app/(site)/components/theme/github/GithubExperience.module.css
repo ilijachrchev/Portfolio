@@ -1,0 +1,25 @@
+.shell {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 45;
+  color: var(--github-fg-default);
+  font-family: var(--font-body);
+  pointer-events: none;
+}
+
+.shell button,
+.shell a {
+  pointer-events: auto;
+}
+
+.repoBar {
+  display: flex;
+  min-height: 64px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 12px clamp(16px, 3vw, 32px);
+  border-bottom: 1px solid var(--github-border);
+  background: rgb(13 17 23 / 0.96);
+  backdrop-filter: blur(12px);
+}
