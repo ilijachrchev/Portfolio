@@ -1,3 +1,4 @@
+import Windows98Error from './Windows98Error'
 import Windows98Help from './Windows98Help'
 import Windows98Network from './Windows98Network'
 import Windows98RecycleBin from './Windows98RecycleBin'
@@ -13,7 +14,7 @@ const CONTENT = {
 }
 
 export default function Windows98Utilities() {
-  const { activeWindowId, closeWindow, focusWindow, minimizeWindow, moveWindow, navigateToApp, openWindow, showError, toggleMaximizeWindow, windows } = useWindows98Workspace()
+  const { activeWindowId, closeWindow, errorMessage, focusWindow, minimizeWindow, moveWindow, navigateToApp, openWindow, showError, toggleMaximizeWindow, windows } = useWindows98Workspace()
 
   const executeCommand = (input) => {
     const { command, action } = getWindows98Command(input)
@@ -29,8 +30,10 @@ export default function Windows98Utilities() {
 
   return Object.values(windows).map((window) => {
     const Content = CONTENT[window.id]
-    if (!Content && !['help', 'run', 'winver'].includes(window.id)) return null
-    const content = window.id === 'help'
+    if (!Content && !['error', 'help', 'run', 'winver'].includes(window.id)) return null
+    const content = window.id === 'error'
+      ? <Windows98Error message={errorMessage} onClose={() => closeWindow('error')} />
+      : window.id === 'help'
       ? <Windows98Help navigateToApp={navigateToApp} onOpenWinver={() => openWindow('winver')} />
       : window.id === 'winver'
         ? <Windows98Winver onClose={() => closeWindow('winver')} />
