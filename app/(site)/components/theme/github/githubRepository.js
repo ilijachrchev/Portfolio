@@ -42,3 +42,24 @@ export const GITHUB_SECTIONS = [
     kind: 'issue',
   },
 ]
+
+export const GITHUB_TABS = [
+  {
+    id: 'code',
+    label: 'Code',
+    sectionId: 'about',
+    sectionIds: ['home', 'about'],
+  },
+  {
+    id: 'discussions',
+    label: 'Discussions',
+    sectionId: 'service',
+    sectionIds: ['service'],
+  },
+  {
+    id: 'projects',
+    label: 'Projects',
+    sectionId: 'work',
+    sectionIds: ['work'],
+  },
+]
