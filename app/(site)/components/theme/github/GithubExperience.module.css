@@ -306,6 +306,28 @@
   font-size: 11px;
 }
 
+.contributionLegend {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  margin-top: 8px;
+  color: var(--github-fg-muted);
+  font-size: 10px;
+}
+
+.contributionLegend i {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  background: #161b22;
+}
+
+.contributionLegend i[data-level='1'] { background: #0e4429; }
+.contributionLegend i[data-level='2'] { background: #006d32; }
+.contributionLegend i[data-level='3'] { background: #26a641; }
+.contributionLegend i[data-level='4'] { background: #39d353; }
+
 .contributionGrid i[data-level='1'] {
   background: #0e4429;
 }
