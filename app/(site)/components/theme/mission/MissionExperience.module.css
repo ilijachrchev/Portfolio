@@ -212,3 +212,20 @@
   text-transform: uppercase;
   white-space: nowrap;
 }
+
+.systemState {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--mission-muted);
+  font: 500 8px/1.3 ui-monospace, SFMono-Regular, Consolas, monospace;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.systemState i {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--mission-nominal);
+}
