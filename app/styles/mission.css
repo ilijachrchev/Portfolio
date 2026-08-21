@@ -167,6 +167,18 @@
     width: 100%;
     max-width: 42rem;
   }
+
+  :root[data-theme='mission'] #work button[aria-label='Scroll left'] {
+    left: 0.5rem;
+  }
+
+  :root[data-theme='mission'] #work button[aria-label='Scroll right'] {
+    right: 0.5rem;
+  }
+
+  :root[data-theme='mission'] #work [role='region'] {
+    max-width: 100%;
+  }
 }
 
 @media (max-width: 919px) {
