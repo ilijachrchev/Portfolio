@@ -731,6 +731,10 @@
     border-bottom: 1px solid var(--mission-border-soft);
   }
 
+  .mobileTelemetry {
+    left: 0;
+  }
+
   .railHeader {
     display: none;
   }
@@ -797,6 +801,18 @@
   .statusStrip span:nth-child(2),
   .statusStrip span:nth-child(3) {
     display: none;
+  }
+
+  .mobileTelemetry {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .mobileTelemetry > span:nth-child(2) {
+    display: none;
+  }
+
+  .mobileTelemetry > button {
+    min-width: 112px;
   }
 
   .atmosphere::after {
