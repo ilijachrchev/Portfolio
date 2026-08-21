@@ -424,6 +424,25 @@
   stroke-width: 0.7;
 }
 
+.radarSweep {
+  fill: rgb(66 217 232 / 0.14);
+  transform-origin: 90px 90px;
+  animation: mission-radar-sweep 5.8s linear infinite;
+}
+
+.radarTargets {
+  fill: var(--mission-nominal);
+  filter: drop-shadow(0 0 3px rgb(98 211 148 / 0.8));
+}
+
+.radarCore {
+  fill: var(--mission-cyan);
+}
+
+@keyframes mission-radar-sweep {
+  to { transform: rotate(360deg); }
+}
+
 .statusStrip {
   position: fixed;
   inset: auto 0 0;
@@ -666,5 +685,10 @@
   .systemButton,
   .nominalLed {
     transition: none;
+  }
+
+  .radarSweep {
+    animation: none;
+    transform: rotate(40deg);
   }
 }
