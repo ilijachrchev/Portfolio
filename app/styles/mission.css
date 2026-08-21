@@ -306,6 +306,31 @@
   scrollbar-color: var(--mission-cyan) var(--mission-shell);
 }
 
+:root[data-theme='mission'] #endorsements-home [data-mission-report] {
+  position: relative;
+  padding-top: 46px;
+  border-radius: 2px;
+  border-color: var(--mission-border-soft);
+  background: var(--mission-panel);
+  box-shadow: inset 3px 0 var(--mission-blue);
+}
+
+:root[data-theme='mission'] #endorsements-home [data-mission-report]::before {
+  content: 'REPORT ' attr(data-mission-report) '  /  RECEIVED';
+  position: absolute;
+  inset: 0 0 auto;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--mission-border-soft);
+  color: var(--mission-nominal);
+  font: 600 8px/1.4 ui-monospace, SFMono-Regular, Consolas, monospace;
+  letter-spacing: 0.12em;
+}
+
+:root[data-theme='mission'] #endorsements-home [data-mission-report] time {
+  color: var(--mission-cyan);
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+}
+
 @media (max-width: 1180px) {
   :root[data-theme='mission'] main {
     margin-right: 0;
