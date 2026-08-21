@@ -120,6 +120,35 @@
   border-color: var(--mission-border-soft);
 }
 
+:root[data-theme='mission'] [data-mission-system] {
+  position: relative;
+  border-top: 1px solid rgb(38 52 69 / 0.48);
+  background: linear-gradient(180deg, rgb(16 23 32 / 0.26), transparent 12rem);
+}
+
+:root[data-theme='mission'] [data-mission-system]::before {
+  content: 'STAGE ' attr(data-mission-stage);
+  position: absolute;
+  top: 18px;
+  left: clamp(18px, 4vw, 48px);
+  z-index: 2;
+  color: var(--mission-cyan);
+  font: 600 9px/1.3 ui-monospace, SFMono-Regular, Consolas, monospace;
+  letter-spacing: 0.18em;
+  pointer-events: none;
+}
+
+:root[data-theme='mission'] :where(h1, h2) {
+  letter-spacing: -0.025em;
+}
+
+:root[data-theme='mission'] :where(h1, h2) em,
+:root[data-theme='mission'] h2 span.text-transparent {
+  color: var(--mission-cyan);
+  background: none;
+  -webkit-text-fill-color: currentColor;
+}
+
 @media (max-width: 1180px) {
   :root[data-theme='mission'] main {
     margin-right: 0;
