@@ -13,7 +13,7 @@ export default function MissionHeader() {
     <header className={styles.missionHeader}>
       <div className={styles.missionIdentity}>
         <span className={styles.eyebrow}>Mission Control</span>
-        <strong>ILJ-PORTFOLIO-01</strong>
+        <strong>ILIJA'S PORTFOLIO</strong>
       </div>
 
       <dl className={styles.headerStatus} aria-label="Mission status">
