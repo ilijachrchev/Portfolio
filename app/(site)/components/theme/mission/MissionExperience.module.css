@@ -439,6 +439,40 @@
   fill: var(--mission-cyan);
 }
 
+.sparklinePanel {
+  margin: 14px;
+  border: 1px solid var(--mission-border-soft);
+  background: rgb(5 8 13 / 0.72);
+}
+
+.sparklinePanel figcaption {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--mission-border-soft);
+  color: var(--mission-muted);
+  font: 600 8px/1.4 ui-monospace, SFMono-Regular, Consolas, monospace;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.sparklinePanel svg {
+  display: block;
+  width: 100%;
+  height: 54px;
+}
+
+.sparklinePanel path {
+  fill: none;
+  stroke: rgb(38 52 69 / 0.7);
+  stroke-width: 0.6;
+}
+
+.sparklinePanel polyline {
+  fill: none;
+  stroke: var(--mission-cyan);
+  stroke-width: 1.6;
+  vector-effect: non-scaling-stroke;
+}
+
 @keyframes mission-radar-sweep {
   to { transform: rotate(360deg); }
 }
