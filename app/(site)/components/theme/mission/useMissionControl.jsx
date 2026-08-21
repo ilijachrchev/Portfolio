@@ -25,6 +25,7 @@ export function findActiveMissionSystem(metrics, scrollTop, viewportHeight) {
 
 export function MissionControlProvider({ children }) {
   const [activeSystemId, setActiveSystemId] = useState('overview')
+  const [missionLog, setMissionLog] = useState([])
   const documentProgress = useMotionValue(0)
   const activeSystemRef = useRef('overview')
   const metricsRef = useRef([])
@@ -117,6 +118,20 @@ export function MissionControlProvider({ children }) {
   }, [activeSystem.id])
 
   useEffect(() => {
+    const timestamp = new Intl.DateTimeFormat(undefined, {
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false,
+    }).format(new Date())
+
+    setMissionLog((current) => [
+      { id: `${activeSystem.id}-${Date.now()}`, timestamp, system: activeSystem.label },
+      ...current,
+    ].slice(0, 4))
+  }, [activeSystem.id, activeSystem.label])
+
+  useEffect(() => {
     const metrics = measureSystems()
     const resizeObserver = new ResizeObserver(scheduleMeasure)
     metrics.forEach(({ element }) => resizeObserver.observe(element))
@@ -163,9 +178,10 @@ export function MissionControlProvider({ children }) {
     activeSystem,
     activeSystemId,
     documentProgress,
+    missionLog,
     activateSystem,
     navigateToSystem,
-  }), [activateSystem, activeSystem, activeSystemId, documentProgress, navigateToSystem])
+  }), [activateSystem, activeSystem, activeSystemId, documentProgress, missionLog, navigateToSystem])
 
   return (
     <MissionControlContext.Provider value={value}>
