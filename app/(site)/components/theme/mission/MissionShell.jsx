@@ -5,6 +5,7 @@ import MissionHeader from './MissionHeader'
 import MissionNavigation from './MissionNavigation'
 import MissionTelemetry from './MissionTelemetry'
 import MissionStatusStrip from './MissionStatusStrip'
+import MissionMobileTelemetry from './MissionMobileTelemetry'
 
 export default function MissionShell() {
   return (
@@ -13,6 +14,7 @@ export default function MissionShell() {
       <MissionHeader />
       <MissionNavigation />
       <MissionTelemetry />
+      <MissionMobileTelemetry />
       <MissionStatusStrip />
     </div>
   )
