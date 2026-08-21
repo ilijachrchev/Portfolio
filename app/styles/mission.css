@@ -331,6 +331,33 @@
   font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
 }
 
+:root[data-theme='mission'] #contact [data-mission-uplink] {
+  position: relative;
+  border-radius: 2px;
+  border-color: var(--mission-blue);
+  background:
+    linear-gradient(135deg, rgb(76 141 255 / 0.07), transparent 44%),
+    var(--mission-panel);
+  box-shadow: 0 22px 60px rgb(0 0 0 / 0.3);
+}
+
+:root[data-theme='mission'] #contact [data-mission-uplink]::before {
+  content: 'UPLINK ONLINE  /  CHANNEL OPEN  /  READY';
+  display: block;
+  margin: -24px -24px 24px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--mission-border-soft);
+  color: var(--mission-nominal);
+  font: 600 8px/1.4 ui-monospace, SFMono-Regular, Consolas, monospace;
+  letter-spacing: 0.12em;
+}
+
+@media (min-width: 768px) {
+  :root[data-theme='mission'] #contact [data-mission-uplink]::before {
+    margin: -32px -32px 28px;
+  }
+}
+
 @media (max-width: 1180px) {
   :root[data-theme='mission'] main {
     margin-right: 0;
