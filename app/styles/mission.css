@@ -33,3 +33,34 @@
   --hero-overlay-mid: rgb(5 8 13 / 0.92);
   --hero-overlay-bot: #05080d;
 }
+
+:root[data-theme='mission'] {
+  scrollbar-color: var(--mission-cyan) var(--mission-shell);
+}
+
+:root[data-theme='mission'] body {
+  background:
+    linear-gradient(rgb(38 52 69 / 0.14) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(38 52 69 / 0.14) 1px, transparent 1px),
+    var(--background);
+  background-size: 56px 56px;
+}
+
+:root[data-theme='mission'] ::selection {
+  background: rgb(66 217 232 / 0.28);
+  color: var(--mission-text);
+}
+
+:root[data-theme='mission'] ::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+
+:root[data-theme='mission'] ::-webkit-scrollbar-track {
+  background: var(--mission-shell);
+}
+
+:root[data-theme='mission'] ::-webkit-scrollbar-thumb {
+  border: 2px solid var(--mission-shell);
+  background: var(--mission-cyan);
+}
