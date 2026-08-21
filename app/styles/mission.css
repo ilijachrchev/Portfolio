@@ -428,6 +428,28 @@
   transform: translateX(-50%);
 }
 
+:root[data-theme='mission'] [data-app-modal='true'] [role='dialog'] {
+  border-radius: 2px;
+  border-color: var(--mission-blue);
+  background: var(--mission-panel);
+  box-shadow: 0 30px 90px rgb(0 0 0 / 0.62);
+}
+
+:root[data-theme='mission'] [data-app-modal='true'] [role='dialog']::before {
+  content: 'MISSION DATA  /  ACTIVE FILE';
+  display: block;
+  padding: 9px 16px;
+  border-bottom: 1px solid var(--mission-border-soft);
+  background: rgb(5 8 13 / 0.72);
+  color: var(--mission-cyan);
+  font: 600 8px/1.4 ui-monospace, SFMono-Regular, Consolas, monospace;
+  letter-spacing: 0.13em;
+}
+
+:root[data-theme='mission'] [data-app-modal='true'] button[aria-label='Close'] {
+  border-radius: 2px;
+}
+
 @media (max-width: 1180px) {
   :root[data-theme='mission'] main {
     margin-right: 0;
