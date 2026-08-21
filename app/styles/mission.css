@@ -283,6 +283,29 @@
   margin-top: 30px;
 }
 
+:root[data-theme='mission'] #work [data-mission-id] h3 {
+  letter-spacing: -0.01em;
+}
+
+:root[data-theme='mission'] #work [data-mission-id] a {
+  border-radius: 2px;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+:root[data-theme='mission'] #work button[aria-label^='Scroll'] {
+  border-radius: 2px;
+  border-color: var(--mission-border-soft);
+  background: rgb(11 16 23 / 0.94);
+  color: var(--mission-cyan);
+}
+
+:root[data-theme='mission'] #work [role='region'] {
+  scrollbar-color: var(--mission-cyan) var(--mission-shell);
+}
+
 @media (max-width: 1180px) {
   :root[data-theme='mission'] main {
     margin-right: 0;
