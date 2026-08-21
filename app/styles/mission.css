@@ -257,6 +257,32 @@
   border-color: rgb(66 217 232 / 0.68);
 }
 
+:root[data-theme='mission'] #work [data-mission-id] {
+  position: relative;
+  border-radius: 2px;
+  border-color: var(--mission-border-soft);
+  background: var(--mission-panel);
+  box-shadow: 0 18px 46px rgb(0 0 0 / 0.24);
+}
+
+:root[data-theme='mission'] #work [data-mission-id]::before {
+  content: attr(data-mission-id) '  /  ' attr(data-mission-state);
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 4;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--mission-border-soft);
+  background: rgb(5 8 13 / 0.9);
+  color: var(--mission-cyan);
+  font: 600 8px/1.4 ui-monospace, SFMono-Regular, Consolas, monospace;
+  letter-spacing: 0.12em;
+  pointer-events: none;
+}
+
+:root[data-theme='mission'] #work [data-mission-id] > :first-child {
+  margin-top: 30px;
+}
+
 @media (max-width: 1180px) {
   :root[data-theme='mission'] main {
     margin-right: 0;
