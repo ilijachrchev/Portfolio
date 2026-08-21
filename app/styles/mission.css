@@ -431,6 +431,7 @@
 @media (max-width: 1180px) {
   :root[data-theme='mission'] main {
     margin-right: 0;
+    padding-bottom: 70px;
   }
 
   :root[data-theme='mission'] #about > div > div:last-child {
@@ -468,6 +469,22 @@
 
   :root[data-theme='mission'] [data-theme-slot='hero'] {
     min-height: calc(100vh - 118px);
+  }
+
+  :root[data-theme='mission'] [data-mission-completion]::before {
+    max-width: calc(100vw - 28px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+@media (max-width: 640px) {
+  :root[data-theme='mission'] #contact label:has(+ [data-mission-field])::after {
+    display: none;
+  }
+
+  :root[data-theme='mission'] [data-mission-completion] {
+    padding-top: 66px;
   }
 }
 
