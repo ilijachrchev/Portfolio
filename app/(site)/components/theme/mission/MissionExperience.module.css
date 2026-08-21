@@ -631,6 +631,34 @@
     white-space: nowrap;
   }
 
+  .mobileTelemetry b {
+    color: var(--mission-muted);
+    font: inherit;
+  }
+
+  .mobileTelemetry > button {
+    align-self: stretch;
+    padding: 0 13px;
+    border: 0;
+    border-left: 1px solid var(--mission-border-soft);
+    background: rgb(66 217 232 / 0.08);
+    color: var(--mission-cyan);
+    font: inherit;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .mobileTelemetryDrawer {
+    position: absolute;
+    right: 0;
+    bottom: 100%;
+    width: min(320px, 100vw);
+    padding: 14px;
+    border: 1px solid var(--mission-border-soft);
+    background: rgb(11 16 23 / 0.99);
+    box-shadow: 0 -18px 40px rgb(0 0 0 / 0.32);
+  }
+
   .missionHeader {
     grid-template-columns: minmax(12rem, 1fr) auto minmax(11rem, auto);
   }
