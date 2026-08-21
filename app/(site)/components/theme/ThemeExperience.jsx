@@ -19,6 +19,10 @@ const GithubExperience = dynamic(() => import('./github/GithubExperience'), {
   ssr: false,
 })
 
+const MissionExperience = dynamic(() => import('./mission/MissionExperience'), {
+  ssr: false,
+})
+
 export default function ThemeExperience() {
   const { themeDefinition, isHydrated } = useTheme()
 
@@ -28,6 +32,7 @@ export default function ThemeExperience() {
   if (themeDefinition.experience === 'ide') return <IdeExperience />
   if (themeDefinition.experience === 'win98') return <Windows98Experience />
   if (themeDefinition.experience === 'github') return <GithubExperience />
+  if (themeDefinition.experience === 'mission') return <MissionExperience />
 
   return null
 }
