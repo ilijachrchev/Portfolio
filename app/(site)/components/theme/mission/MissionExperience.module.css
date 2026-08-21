@@ -150,3 +150,25 @@
   font: inherit;
   letter-spacing: 0.08em;
 }
+
+.systemList {
+  display: grid;
+  padding: 8px 0;
+}
+
+.systemButton {
+  position: relative;
+  display: grid;
+  grid-template-columns: 47px 1fr;
+  grid-template-rows: auto auto;
+  width: 100%;
+  min-height: 68px;
+  align-content: center;
+  gap: 2px 8px;
+  padding: 9px 14px;
+  border: 0;
+  border-bottom: 1px solid rgb(38 52 69 / 0.45);
+  background: transparent;
+  color: var(--mission-muted);
+  text-align: left;
+}
