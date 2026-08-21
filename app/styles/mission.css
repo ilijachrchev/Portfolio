@@ -18,4 +18,18 @@
   --border: #263445;
   --input: #304155;
   --ring: #42d9e8;
+  --mission-shell: #0b1017;
+  --mission-panel: #101720;
+  --mission-panel-raised: #151e29;
+  --mission-border-soft: #1d2a38;
+  --mission-text: #e7edf5;
+  --mission-muted: #98a6b8;
+  --mission-cyan: #42d9e8;
+  --mission-blue: #4c8dff;
+  --mission-nominal: #62d394;
+  --mission-warning: #f6b94a;
+  --mission-critical: #ff6470;
+  --hero-overlay-top: rgb(5 8 13 / 0.88);
+  --hero-overlay-mid: rgb(5 8 13 / 0.92);
+  --hero-overlay-bot: #05080d;
 }
