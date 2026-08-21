@@ -41,6 +41,32 @@ export function MissionControlProvider({ children }) {
     setActiveSystemId(system.id)
   }, [])
 
+  const updateFromScroll = useCallback(() => {
+    const scrollTop = window.scrollY
+    const scrollRange = Math.max(1, document.documentElement.scrollHeight - window.innerHeight)
+    documentProgress.set(clamp(scrollTop / scrollRange))
+
+    const activeMetric = findActiveMissionSystem(
+      metricsRef.current,
+      scrollTop,
+      window.innerHeight,
+    )
+    if (!activeMetric) return
+
+    const navigationLock = navigationLockRef.current
+    if (navigationLock?.until > Date.now()) return
+    navigationLockRef.current = null
+    activateSystem(activeMetric.system.id)
+  }, [activateSystem, documentProgress])
+
+  const scheduleScrollUpdate = useCallback(() => {
+    if (scrollFrameRef.current) return
+    scrollFrameRef.current = requestAnimationFrame(() => {
+      scrollFrameRef.current = 0
+      updateFromScroll()
+    })
+  }, [updateFromScroll])
+
   const value = useMemo(() => ({
     activeSystem,
     activeSystemId,
