@@ -447,3 +447,22 @@
   from { transform: translateX(-105%); }
   to { transform: translateX(215%); }
 }
+
+@media (max-width: 1180px) {
+  .telemetryPanel {
+    display: none;
+  }
+
+  .missionHeader {
+    grid-template-columns: minmax(12rem, 1fr) auto minmax(11rem, auto);
+  }
+
+  .clockGrid {
+    display: none;
+  }
+
+  .headerStatus > div {
+    min-width: 80px;
+    padding-inline: 11px;
+  }
+}

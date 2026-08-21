@@ -92,3 +92,9 @@
 :root[data-theme='mission'] .hero-poster {
   background-image: none;
 }
+
+@media (max-width: 1180px) {
+  :root[data-theme='mission'] main {
+    margin-right: 0;
+  }
+}
