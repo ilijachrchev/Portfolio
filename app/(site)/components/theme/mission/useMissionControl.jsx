@@ -2,7 +2,7 @@
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
 import { useMotionValue } from 'motion/react'
-import { MISSION_SYSTEMS } from './missionSystems'
+import { getMissionSystem, MISSION_SYSTEMS } from './missionSystems'
 
 const MissionControlContext = createContext(null)
 
@@ -135,12 +135,37 @@ export function MissionControlProvider({ children }) {
     }
   }, [measureSystems, scheduleMeasure, scheduleScrollUpdate])
 
+  const navigateToSystem = useCallback((value) => {
+    const system = getMissionSystem(value)
+    if (!system) return false
+
+    activateSystem(system.id)
+    const element = document.getElementById(system.sectionId)
+    if (!element) {
+      window.location.assign(`/#${system.sectionId}`)
+      return true
+    }
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const headerOffset = window.matchMedia('(max-width: 919px)').matches ? 118 : 76
+    navigationLockRef.current = {
+      systemId: system.id,
+      until: Date.now() + (reduceMotion ? 100 : 1400),
+    }
+    window.scrollTo({
+      top: Math.max(0, element.getBoundingClientRect().top + window.scrollY - headerOffset),
+      behavior: reduceMotion ? 'auto' : 'smooth',
+    })
+    return true
+  }, [activateSystem])
+
   const value = useMemo(() => ({
     activeSystem,
     activeSystemId,
     documentProgress,
     activateSystem,
-  }), [activateSystem, activeSystem, activeSystemId, documentProgress])
+    navigateToSystem,
+  }), [activateSystem, activeSystem, activeSystemId, documentProgress, navigateToSystem])
 
   return (
     <MissionControlContext.Provider value={value}>
