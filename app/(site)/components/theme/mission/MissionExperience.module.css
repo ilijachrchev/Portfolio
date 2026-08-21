@@ -503,4 +503,31 @@
   .systemList::-webkit-scrollbar {
     display: none;
   }
+
+  .systemButton {
+    grid-template-columns: 36px auto;
+    grid-template-rows: 1fr;
+    min-width: 124px;
+    min-height: 49px;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 10px;
+    border-right: 1px solid rgb(38 52 69 / 0.55);
+    border-bottom: 0;
+  }
+
+  .systemButton::before {
+    inset: auto 7px 0;
+    width: auto;
+    height: 2px;
+  }
+
+  .systemCode {
+    grid-row: auto;
+  }
+
+  .systemState {
+    display: none;
+  }
 }
