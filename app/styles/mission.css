@@ -98,3 +98,18 @@
     margin-right: 0;
   }
 }
+
+@media (max-width: 919px) {
+  :root[data-theme='mission'] main {
+    margin-inline: 0;
+    padding-top: 118px;
+  }
+
+  :root[data-theme='mission'] section {
+    scroll-margin-top: 132px;
+  }
+
+  :root[data-theme='mission'] [data-theme-slot='hero'] {
+    min-height: calc(100vh - 118px);
+  }
+}

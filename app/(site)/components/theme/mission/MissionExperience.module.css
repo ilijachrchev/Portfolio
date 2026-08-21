@@ -466,3 +466,17 @@
     padding-inline: 11px;
   }
 }
+
+@media (max-width: 919px) {
+  .missionHeader {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .headerStatus {
+    display: none;
+  }
+
+  .missionIdentity {
+    border-right: 0;
+  }
+}
