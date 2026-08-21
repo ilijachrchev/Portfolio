@@ -561,3 +561,15 @@
     background-size: 97px 97px;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .transitionRoot::before,
+  .transitionTrack i {
+    animation: none;
+  }
+
+  .systemButton,
+  .nominalLed {
+    transition: none;
+  }
+}

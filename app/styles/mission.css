@@ -169,3 +169,13 @@
     min-height: calc(100vh - 118px);
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  :root[data-theme='mission'] main {
+    transition: none;
+  }
+
+  :root[data-theme='mission'] .liquid-glass {
+    backdrop-filter: none;
+  }
+}
