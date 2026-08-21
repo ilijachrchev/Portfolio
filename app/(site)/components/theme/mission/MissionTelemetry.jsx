@@ -2,6 +2,7 @@
 
 import { MISSION_SYSTEMS } from './missionSystems'
 import MissionProgressReadout from './MissionProgressReadout'
+import MissionOrbit from './MissionOrbit'
 import { useMissionControl } from './useMissionControl'
 import styles from './MissionExperience.module.css'
 
@@ -42,6 +43,7 @@ export default function MissionTelemetry() {
           <dd className={styles.nominalValue}>Online</dd>
         </div>
       </dl>
+      <MissionOrbit />
     </aside>
   )
 }

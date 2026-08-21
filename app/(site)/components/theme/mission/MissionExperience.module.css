@@ -297,3 +297,11 @@
 .telemetryGrid .nominalValue {
   color: var(--mission-nominal);
 }
+
+.orbitPanel {
+  position: relative;
+  margin: 14px;
+  overflow: hidden;
+  border: 1px solid var(--mission-border-soft);
+  background: rgb(5 8 13 / 0.72);
+}
