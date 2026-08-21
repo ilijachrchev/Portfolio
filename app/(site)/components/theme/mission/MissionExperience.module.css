@@ -26,3 +26,35 @@
   background-size: 83px 83px;
   background-position: 17px 29px;
 }
+
+.missionHeader {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 46;
+  display: grid;
+  grid-template-columns: minmax(12rem, 1.25fr) auto auto minmax(11rem, 1fr);
+  min-height: 68px;
+  align-items: stretch;
+  border-bottom: 1px solid var(--mission-border-soft);
+  background: rgb(11 16 23 / 0.97);
+  box-shadow: 0 8px 30px rgb(0 0 0 / 0.24);
+  pointer-events: auto;
+}
+
+.missionIdentity {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  justify-content: center;
+  padding: 9px 20px;
+  border-right: 1px solid var(--mission-border-soft);
+}
+
+.missionIdentity strong {
+  overflow: hidden;
+  color: var(--mission-text);
+  font: 600 14px/1.3 ui-monospace, SFMono-Regular, Consolas, monospace;
+  letter-spacing: 0.08em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
