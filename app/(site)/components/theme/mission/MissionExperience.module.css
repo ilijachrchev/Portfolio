@@ -345,3 +345,22 @@
   text-transform: uppercase;
   pointer-events: auto;
 }
+
+.statusStrip span {
+  display: inline-flex;
+  min-height: 29px;
+  align-items: center;
+  gap: 7px;
+  padding: 0 15px;
+  border-right: 1px solid var(--mission-border-soft);
+  white-space: nowrap;
+}
+
+.statusStrip b {
+  color: var(--mission-muted);
+  font: inherit;
+}
+
+.statusSystem {
+  flex: 1;
+}
