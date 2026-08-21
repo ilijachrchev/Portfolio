@@ -404,6 +404,30 @@
   text-transform: uppercase;
 }
 
+:root[data-theme='mission'] [data-mission-completion] {
+  margin-top: 0;
+  padding-top: 74px;
+  border-top: 1px solid var(--mission-blue);
+  background:
+    radial-gradient(circle at 50% 0, rgb(66 217 232 / 0.1), transparent 23rem),
+    rgb(5 8 13 / 0.9);
+}
+
+:root[data-theme='mission'] [data-mission-completion]::before {
+  content: 'MISSION STATUS  /  COMPLETE  /  ALL SYSTEMS NOMINAL';
+  position: absolute;
+  top: 22px;
+  left: 50%;
+  padding: 9px 13px;
+  border: 1px solid var(--mission-border-soft);
+  background: var(--mission-shell);
+  color: var(--mission-nominal);
+  font: 600 8px/1.4 ui-monospace, SFMono-Regular, Consolas, monospace;
+  letter-spacing: 0.14em;
+  white-space: nowrap;
+  transform: translateX(-50%);
+}
+
 @media (max-width: 1180px) {
   :root[data-theme='mission'] main {
     margin-right: 0;
