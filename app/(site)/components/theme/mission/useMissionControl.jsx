@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useCallback, useContext, useMemo, useRef, useState } from 'react'
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
 import { useMotionValue } from 'motion/react'
 import { MISSION_SYSTEMS } from './missionSystems'
 
@@ -90,6 +90,31 @@ export function MissionControlProvider({ children }) {
     cancelAnimationFrame(measureFrameRef.current)
     measureFrameRef.current = requestAnimationFrame(measureSystems)
   }, [measureSystems])
+
+  useEffect(() => {
+    const root = document.documentElement
+    root.dataset.missionControl = 'true'
+    const elements = MISSION_SYSTEMS.map((system, index) => {
+      const element = document.getElementById(system.sectionId)
+      if (!element) return null
+      element.dataset.missionSystem = system.id
+      element.dataset.missionStage = String(index + 1).padStart(2, '0')
+      return element
+    }).filter(Boolean)
+
+    return () => {
+      delete root.dataset.missionControl
+      delete root.dataset.missionActiveSystem
+      elements.forEach((element) => {
+        delete element.dataset.missionSystem
+        delete element.dataset.missionStage
+      })
+    }
+  }, [])
+
+  useEffect(() => {
+    document.documentElement.dataset.missionActiveSystem = activeSystem.id
+  }, [activeSystem.id])
 
   const value = useMemo(() => ({
     activeSystem,
