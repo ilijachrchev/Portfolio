@@ -329,6 +329,34 @@
   height: auto;
 }
 
+.missionLog {
+  margin: 14px;
+  border: 1px solid var(--mission-border-soft);
+  background: rgb(5 8 13 / 0.72);
+}
+
+.missionLog header {
+  display: flex;
+  justify-content: space-between;
+  padding: 9px 11px;
+  border-bottom: 1px solid var(--mission-border-soft);
+  color: var(--mission-muted);
+  font: 600 8px/1.4 ui-monospace, SFMono-Regular, Consolas, monospace;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.missionLog header strong {
+  color: var(--mission-cyan);
+  font: inherit;
+}
+
+.missionLog ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
 .statusStrip {
   position: fixed;
   inset: auto 0 0;
