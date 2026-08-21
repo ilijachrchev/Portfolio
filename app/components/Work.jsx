@@ -335,11 +335,13 @@ export default function Work() {
           className="mx-auto max-w-7xl"
         >
           <ScrollRail ariaLabel="Featured projects, scroll horizontally">
-            {projects.map((project) => (
+            {projects.map((project, index) => (
               <article
                 key={project.title}
                 data-rail-item
                 data-theme-slot="project-card"
+                data-mission-id={`MSN-${String(index + 1).padStart(3, '0')}`}
+                data-mission-state={project.inDevelopment ? 'ACTIVE DEVELOPMENT' : project.featured ? 'FEATURED MISSION' : 'MISSION FILE'}
                 data-github-repository={project.github ? 'linked repository' : 'portfolio project'}
                 data-github-language={project.stack[0]}
                 className={[

@@ -138,6 +138,7 @@ export default function About() {
                 {duplicatedTools.map((tool, index) => (
                   <motion.li
                     key={index}
+                    data-mission-capability={`CAP-${String((index % 10) + 1).padStart(2, '0')}`}
                     whileHover={{ scale: 1.1, y: -4 }}
                     transition={{ duration: 0.3 }}
                     className="flex aspect-square w-12 cursor-pointer items-center justify-center rounded-lg border border-border bg-card sm:w-14"

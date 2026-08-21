@@ -107,6 +107,7 @@ export default function Contact() {
 
         <motion.form
           data-theme-slot="contact-form"
+          data-mission-uplink="communications"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -121,6 +122,7 @@ export default function Contact() {
               </label>
               <input
                 id="contact-name"
+                data-mission-field="transmission-source"
                 name="name"
                 type="text"
                 required
@@ -136,6 +138,7 @@ export default function Contact() {
               </label>
               <input
                 id="contact-email"
+                data-mission-field="return-channel"
                 name="email"
                 type="email"
                 required
@@ -152,6 +155,7 @@ export default function Contact() {
             </label>
             <textarea
               id="contact-message"
+              data-mission-field="message-payload"
               name="message"
               required
               rows={6}

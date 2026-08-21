@@ -605,6 +605,8 @@ const Services = () => {
                                     return (
                                         <motion.article
                                             data-theme-slot="volunteering-card"
+                                            data-mission-ops={`OPS-${String(index + 1).padStart(2, '0')}`}
+                                            data-mission-state={isActive ? 'ACTIVE' : 'NOMINAL'}
                                             key={`${title}-${index}`}
                                             initial={{
                                                 opacity: 0,

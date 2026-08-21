@@ -10,7 +10,7 @@ const Footer = () => {
   const { isDarkScheme } = useTheme()
 
   return (
-    <footer id="footer" data-theme-slot="footer" className='relative mt-20 overflow-hidden pt-12'>
+    <footer id="footer" data-theme-slot="footer" data-mission-completion="true" className='relative mt-20 overflow-hidden pt-12'>
         <div className='text-center'>
             <Image src={isDarkScheme ? assets.logo_dark : assets.logo} alt='' className='w-36 mx-auto mb-2' />
 

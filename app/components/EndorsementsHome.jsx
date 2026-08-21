@@ -36,7 +36,7 @@ function getInitials(name = '') {
   return (firstChar + secondChar).toLocaleUpperCase() || '??'
 }
 
-function Card({ row }) {
+function Card({ row, reportId }) {
   const code = (row.country || '').toLowerCase()
   const meta = useMemo(() => {
     const found = COUNTRIES.find((c) => (c.code || '').toLowerCase() === code)
@@ -44,7 +44,7 @@ function Card({ row }) {
   }, [code])
 
   return (
-    <article data-theme-slot="card" data-github-review="Approved review" className="flex h-full flex-col gap-3 rounded-2xl border border-border bg-card p-5 shadow-sm">
+    <article data-theme-slot="card" data-github-review="Approved review" data-mission-report={reportId} className="flex h-full flex-col gap-3 rounded-2xl border border-border bg-card p-5 shadow-sm">
       <header className="flex items-start justify-between">
         <div className="flex items-center gap-3">
           <div className="flex h-10 w-10 items-center justify-center rounded-full bg-muted text-xs font-bold text-foreground select-none">
@@ -197,7 +197,7 @@ export default function EndorsementsHome() {
           >
             {(loading ? Array.from({ length: perPage }) : visible).map((row, i) => (
               <motion.div key={loading ? i : row.id} variants={cardVariants}>
-                {loading ? <Skeleton /> : <Card row={row} />}
+                {loading ? <Skeleton /> : <Card row={row} reportId={`FR-${String((page - 1) * perPage + i + 1).padStart(3, '0')}`} />}
               </motion.div>
             ))}
           </motion.div>
