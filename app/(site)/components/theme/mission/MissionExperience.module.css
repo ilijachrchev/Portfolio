@@ -259,3 +259,20 @@
   font: inherit;
   letter-spacing: 0.1em;
 }
+
+.telemetryGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 0;
+}
+
+.telemetryGrid > div {
+  min-width: 0;
+  padding: 13px 14px;
+  border-right: 1px solid rgb(38 52 69 / 0.5);
+  border-bottom: 1px solid rgb(38 52 69 / 0.5);
+}
+
+.telemetryGrid > div:first-child {
+  grid-column: 1 / -1;
+}
