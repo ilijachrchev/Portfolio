@@ -358,6 +358,32 @@
   }
 }
 
+:root[data-theme='mission'] #contact label {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+:root[data-theme='mission'] #contact label:has(+ [data-mission-field])::after {
+  color: var(--mission-muted);
+  font: 600 7px/1.4 ui-monospace, SFMono-Regular, Consolas, monospace;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+:root[data-theme='mission'] #contact label:has(+ [data-mission-field='transmission-source'])::after {
+  content: 'TRANSMISSION SOURCE';
+}
+
+:root[data-theme='mission'] #contact label:has(+ [data-mission-field='return-channel'])::after {
+  content: 'RETURN CHANNEL';
+}
+
+:root[data-theme='mission'] #contact label:has(+ [data-mission-field='message-payload'])::after {
+  content: 'MESSAGE PAYLOAD';
+}
+
 @media (max-width: 1180px) {
   :root[data-theme='mission'] main {
     margin-right: 0;
