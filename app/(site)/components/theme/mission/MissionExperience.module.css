@@ -421,3 +421,29 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
+
+.transitionTrack {
+  position: relative;
+  height: 3px;
+  overflow: hidden;
+  background: #1d2a38;
+}
+
+.transitionTrack i {
+  display: block;
+  width: 48%;
+  height: 100%;
+  background: #42d9e8;
+  box-shadow: 0 0 12px rgb(66 217 232 / 0.65);
+  animation: mission-link 520ms ease-in-out both;
+}
+
+@keyframes mission-scan {
+  from { transform: translateX(-35%); }
+  to { transform: translateX(35%); }
+}
+
+@keyframes mission-link {
+  from { transform: translateX(-105%); }
+  to { transform: translateX(215%); }
+}
