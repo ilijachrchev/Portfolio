@@ -71,6 +71,18 @@ export const THEMES = {
     icon: 'repository',
     preview: ['#0d1117', '#58a6ff', '#3fb950'],
   },
+  mission: {
+    id: 'mission',
+    label: 'Mission Control',
+    shortLabel: 'Mission',
+    description: 'Space Operations',
+    colorScheme: 'dark',
+    experience: 'mission',
+    transition: 'mission',
+    heroMedia: false,
+    icon: 'orbit',
+    preview: ['#05080d', '#42d9e8', '#62d394'],
+  },
 }
 
 export const THEME_IDS = Object.keys(THEMES)
@@ -93,6 +105,7 @@ export function getThemeTransition(fromTheme, toTheme) {
     getThemeDefinition(toTheme).transition,
   ]
 
+  if (transitions.includes('mission')) return 'mission'
   if (transitions.includes('repository')) return 'repository'
   if (transitions.includes('system')) return 'system'
   if (transitions.includes('workspace')) return 'workspace'
