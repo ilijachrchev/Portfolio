@@ -1,0 +1,21 @@
+:root[data-theme='mission'] {
+  --radius: 0.25rem;
+  --background: #05080d;
+  --foreground: #e7edf5;
+  --card: #101720;
+  --card-foreground: #e7edf5;
+  --popover: #101720;
+  --popover-foreground: #e7edf5;
+  --primary: #42d9e8;
+  --primary-foreground: #05080d;
+  --secondary: #151e29;
+  --secondary-foreground: #e7edf5;
+  --muted: #151e29;
+  --muted-foreground: #98a6b8;
+  --accent: #16273a;
+  --accent-foreground: #e7edf5;
+  --destructive: #ff6470;
+  --border: #263445;
+  --input: #304155;
+  --ring: #42d9e8;
+}
