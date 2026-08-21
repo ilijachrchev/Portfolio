@@ -6,6 +6,7 @@ import MissionOrbit from './MissionOrbit'
 import MissionLog from './MissionLog'
 import MissionRadar from './MissionRadar'
 import MissionSparkline from './MissionSparkline'
+import MissionObjectReadout from './MissionObjectReadout'
 import { useMissionControl } from './useMissionControl'
 import styles from './MissionExperience.module.css'
 
@@ -44,6 +45,10 @@ export default function MissionTelemetry() {
         <div>
           <dt>Uplink</dt>
           <dd className={styles.nominalValue}>Online</dd>
+        </div>
+        <div>
+          <dt>Objects</dt>
+          <dd><MissionObjectReadout /></dd>
         </div>
       </dl>
       <MissionSparkline />
