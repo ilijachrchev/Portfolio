@@ -93,6 +93,33 @@
   background-image: none;
 }
 
+:root[data-theme='mission'] .liquid-glass {
+  border-color: var(--mission-border-soft);
+  border-radius: 2px;
+  background: rgb(16 23 32 / 0.9);
+  box-shadow: inset 0 1px rgb(231 237 245 / 0.04);
+  backdrop-filter: blur(12px);
+}
+
+:root[data-theme='mission'] :where(a, button):focus-visible {
+  border-radius: 2px;
+  outline: 2px solid var(--mission-cyan);
+  outline-offset: 2px;
+  box-shadow: none;
+}
+
+:root[data-theme='mission'] [data-theme-slot='primary-cta'] {
+  border-radius: 2px;
+  background: var(--mission-cyan);
+  color: #05080d;
+  box-shadow: 0 0 18px rgb(66 217 232 / 0.13);
+}
+
+:root[data-theme='mission'] [data-theme-slot='portrait'] {
+  border-radius: 2px;
+  border-color: var(--mission-border-soft);
+}
+
 @media (max-width: 1180px) {
   :root[data-theme='mission'] main {
     margin-right: 0;
