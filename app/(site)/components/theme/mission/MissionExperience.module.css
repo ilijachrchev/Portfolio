@@ -328,3 +328,20 @@
   width: 100%;
   height: auto;
 }
+
+.statusStrip {
+  position: fixed;
+  inset: auto 0 0;
+  z-index: 47;
+  display: flex;
+  min-height: 30px;
+  align-items: center;
+  gap: 0;
+  border-top: 1px solid var(--mission-border-soft);
+  background: rgb(11 16 23 / 0.98);
+  color: var(--mission-text);
+  font: 600 9px/1.2 ui-monospace, SFMono-Regular, Consolas, monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  pointer-events: auto;
+}
