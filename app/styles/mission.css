@@ -384,6 +384,26 @@
   content: 'MESSAGE PAYLOAD';
 }
 
+:root[data-theme='mission'] #contact [data-mission-field] {
+  border-radius: 2px;
+  border-color: var(--mission-border-soft);
+  background: rgb(5 8 13 / 0.66);
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+}
+
+:root[data-theme='mission'] #contact [data-mission-field]:focus {
+  border-color: var(--mission-cyan);
+  box-shadow: 0 0 0 2px rgb(66 217 232 / 0.16);
+}
+
+:root[data-theme='mission'] #contact button[type='submit'] {
+  border: 1px solid var(--mission-cyan);
+  border-radius: 2px;
+  font: 600 10px/1.2 ui-monospace, SFMono-Regular, Consolas, monospace;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
 @media (max-width: 1180px) {
   :root[data-theme='mission'] main {
     margin-right: 0;
