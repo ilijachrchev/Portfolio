@@ -659,6 +659,43 @@
     box-shadow: 0 -18px 40px rgb(0 0 0 / 0.32);
   }
 
+  .mobileTelemetryDrawer dl {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 0 0 12px;
+  }
+
+  .mobileTelemetryDrawer dl div {
+    padding: 8px;
+    border: 1px solid var(--mission-border-soft);
+  }
+
+  .mobileTelemetryDrawer dt {
+    color: var(--mission-muted);
+  }
+
+  .mobileTelemetryDrawer dd {
+    margin: 3px 0 0;
+    color: var(--mission-nominal);
+  }
+
+  .mobileTelemetryDrawer ol {
+    margin: 0;
+    padding: 0;
+    color: var(--mission-text);
+    list-style: none;
+  }
+
+  .mobileTelemetryDrawer li {
+    padding: 6px 2px;
+    border-bottom: 1px solid rgb(38 52 69 / 0.45);
+  }
+
+  .mobileTelemetryDrawer time {
+    margin-right: 8px;
+    color: var(--mission-cyan);
+  }
+
   .missionHeader {
     grid-template-columns: minmax(12rem, 1fr) auto minmax(11rem, auto);
   }
