@@ -153,6 +153,35 @@
   -webkit-text-fill-color: currentColor;
 }
 
+:root[data-theme='mission'] :is(#about, #service, #work, #endorsements-home, #contact) h2::before {
+  display: block;
+  margin-bottom: 9px;
+  color: var(--mission-cyan);
+  font: 600 9px/1.4 ui-monospace, SFMono-Regular, Consolas, monospace;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+:root[data-theme='mission'] #about h2::before {
+  content: 'CREW / MISSION PROFILE';
+}
+
+:root[data-theme='mission'] #service h2::before {
+  content: 'GROUND OPERATIONS';
+}
+
+:root[data-theme='mission'] #work h2::before {
+  content: 'PROJECT MISSIONS';
+}
+
+:root[data-theme='mission'] #endorsements-home h2::before {
+  content: 'FLIGHT REPORTS / INBOUND TRANSMISSIONS';
+}
+
+:root[data-theme='mission'] #contact h2::before {
+  content: 'COMMUNICATIONS UPLINK';
+}
+
 @media (max-width: 1180px) {
   :root[data-theme='mission'] main {
     margin-right: 0;
