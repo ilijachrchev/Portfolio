@@ -58,3 +58,16 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+.eyebrow {
+  color: var(--mission-cyan);
+  font: 600 9px/1.4 ui-monospace, SFMono-Regular, Consolas, monospace;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.headerStatus,
+.clockGrid {
+  display: flex;
+  margin: 0;
+}
