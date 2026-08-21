@@ -116,6 +116,25 @@ export function MissionControlProvider({ children }) {
     document.documentElement.dataset.missionActiveSystem = activeSystem.id
   }, [activeSystem.id])
 
+  useEffect(() => {
+    const metrics = measureSystems()
+    const resizeObserver = new ResizeObserver(scheduleMeasure)
+    metrics.forEach(({ element }) => resizeObserver.observe(element))
+
+    window.addEventListener('scroll', scheduleScrollUpdate, { passive: true })
+    window.addEventListener('resize', scheduleMeasure, { passive: true })
+    window.addEventListener('load', scheduleMeasure)
+
+    return () => {
+      resizeObserver.disconnect()
+      window.removeEventListener('scroll', scheduleScrollUpdate)
+      window.removeEventListener('resize', scheduleMeasure)
+      window.removeEventListener('load', scheduleMeasure)
+      cancelAnimationFrame(scrollFrameRef.current)
+      cancelAnimationFrame(measureFrameRef.current)
+    }
+  }, [measureSystems, scheduleMeasure, scheduleScrollUpdate])
+
   const value = useMemo(() => ({
     activeSystem,
     activeSystemId,
