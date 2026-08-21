@@ -3,6 +3,7 @@
 import styles from './MissionExperience.module.css'
 import MissionHeader from './MissionHeader'
 import MissionNavigation from './MissionNavigation'
+import MissionTelemetry from './MissionTelemetry'
 
 export default function MissionShell() {
   return (
@@ -10,6 +11,7 @@ export default function MissionShell() {
       <div className={styles.atmosphere} aria-hidden="true" />
       <MissionHeader />
       <MissionNavigation />
+      <MissionTelemetry />
     </div>
   )
 }
