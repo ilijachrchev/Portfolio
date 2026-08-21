@@ -329,6 +329,17 @@
   height: auto;
 }
 
+.orbitStages {
+  fill: var(--mission-shell);
+  stroke: var(--mission-cyan);
+  stroke-width: 1;
+}
+
+.orbitStages circle:first-child,
+.orbitStages circle:last-child {
+  fill: var(--mission-nominal);
+}
+
 .missionLog {
   margin: 14px;
   border: 1px solid var(--mission-border-soft);
