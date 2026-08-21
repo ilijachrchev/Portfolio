@@ -340,6 +340,11 @@
   fill: var(--mission-nominal);
 }
 
+.orbitStages circle[data-active='true'] {
+  fill: var(--mission-cyan);
+  filter: drop-shadow(0 0 4px rgb(66 217 232 / 0.9));
+}
+
 .missionLog {
   margin: 14px;
   border: 1px solid var(--mission-border-soft);
