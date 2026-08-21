@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import MissionProgressReadout from './MissionProgressReadout'
 import { useMissionControl } from './useMissionControl'
 import styles from './MissionExperience.module.css'
@@ -8,6 +8,15 @@ import styles from './MissionExperience.module.css'
 export default function MissionMobileTelemetry() {
   const [open, setOpen] = useState(false)
   const { activeSystem, documentProgress, missionLog } = useMissionControl()
+
+  useEffect(() => {
+    if (!open) return undefined
+    const closeOnEscape = (event) => {
+      if (event.key === 'Escape') setOpen(false)
+    }
+    document.addEventListener('keydown', closeOnEscape)
+    return () => document.removeEventListener('keydown', closeOnEscape)
+  }, [open])
 
   return (
     <aside className={styles.mobileTelemetry} aria-label="Compact mission telemetry">
