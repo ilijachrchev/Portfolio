@@ -531,3 +531,33 @@
     display: none;
   }
 }
+
+@media (max-width: 640px) {
+  .missionIdentity {
+    padding-inline: 12px;
+  }
+
+  .missionIdentity strong {
+    font-size: 11px;
+    letter-spacing: 0.05em;
+  }
+
+  .appearanceControl {
+    padding-inline: 8px;
+  }
+
+  .statusStrip span {
+    padding-inline: 9px;
+    font-size: 8px;
+  }
+
+  .statusStrip span:nth-child(2),
+  .statusStrip span:nth-child(3) {
+    display: none;
+  }
+
+  .atmosphere::after {
+    opacity: 0.18;
+    background-size: 97px 97px;
+  }
+}
