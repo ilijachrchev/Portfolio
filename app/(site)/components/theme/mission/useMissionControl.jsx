@@ -67,6 +67,30 @@ export function MissionControlProvider({ children }) {
     })
   }, [updateFromScroll])
 
+  const measureSystems = useCallback(() => {
+    metricsRef.current = MISSION_SYSTEMS.map((system, index) => {
+      const element = document.getElementById(system.sectionId)
+      if (!element) return null
+      const rect = element.getBoundingClientRect()
+
+      return {
+        system,
+        index,
+        element,
+        top: rect.top + window.scrollY,
+        bottom: rect.bottom + window.scrollY,
+      }
+    }).filter(Boolean).sort((a, b) => a.top - b.top)
+
+    updateFromScroll()
+    return metricsRef.current
+  }, [updateFromScroll])
+
+  const scheduleMeasure = useCallback(() => {
+    cancelAnimationFrame(measureFrameRef.current)
+    measureFrameRef.current = requestAnimationFrame(measureSystems)
+  }, [measureSystems])
+
   const value = useMemo(() => ({
     activeSystem,
     activeSystemId,
