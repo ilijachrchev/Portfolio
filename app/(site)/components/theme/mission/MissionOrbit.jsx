@@ -33,6 +33,14 @@ export default function MissionOrbit() {
         <circle cx="72" cy="112" r="45" fill="url(#mission-planet)" stroke="#4c8dff" strokeWidth="1" />
         <ellipse cx="72" cy="112" rx="45" ry="15" fill="none" stroke="#4c8dff" strokeOpacity=".45" />
         <ellipse cx="72" cy="112" rx="19" ry="45" fill="none" stroke="#4c8dff" strokeOpacity=".32" />
+        <g className={styles.orbitStages}>
+          <circle cx="28" cy="156" r="2" />
+          <circle cx="45" cy="91" r="2" />
+          <circle cx="76" cy="49" r="2" />
+          <circle cx="121" cy="25" r="2" />
+          <circle cx="155" cy="62" r="2" />
+          <circle cx="155" cy="151" r="2" />
+        </g>
         <path d={TRAJECTORY} fill="none" stroke="#263445" strokeWidth="1.5" />
         <motion.path
           d={TRAJECTORY}
