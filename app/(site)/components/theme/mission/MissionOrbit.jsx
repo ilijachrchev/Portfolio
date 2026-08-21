@@ -1,13 +1,16 @@
 'use client'
 
 import { motion, useTransform } from 'motion/react'
+import { MISSION_SYSTEMS } from './missionSystems'
 import { useMissionControl } from './useMissionControl'
 import styles from './MissionExperience.module.css'
 
 const TRAJECTORY = 'M28 156 C38 80 76 24 164 22 C135 53 117 98 155 151'
+const STAGE_POINTS = [[28, 156], [45, 91], [76, 49], [121, 25], [155, 62], [155, 151]]
 
 export default function MissionOrbit() {
-  const { documentProgress } = useMissionControl()
+  const { activeSystemId, documentProgress } = useMissionControl()
+  const activeStage = MISSION_SYSTEMS.findIndex((system) => system.id === activeSystemId)
   const markerX = useTransform(documentProgress, (value) => (
     value < 0.65 ? 28 + (value / 0.65) * 136 : 164 - ((value - 0.65) / 0.35) * 9
   ))
@@ -34,12 +37,9 @@ export default function MissionOrbit() {
         <ellipse cx="72" cy="112" rx="45" ry="15" fill="none" stroke="#4c8dff" strokeOpacity=".45" />
         <ellipse cx="72" cy="112" rx="19" ry="45" fill="none" stroke="#4c8dff" strokeOpacity=".32" />
         <g className={styles.orbitStages}>
-          <circle cx="28" cy="156" r="2" />
-          <circle cx="45" cy="91" r="2" />
-          <circle cx="76" cy="49" r="2" />
-          <circle cx="121" cy="25" r="2" />
-          <circle cx="155" cy="62" r="2" />
-          <circle cx="155" cy="151" r="2" />
+          {STAGE_POINTS.map(([cx, cy], index) => (
+            <circle key={`${cx}-${cy}`} cx={cx} cy={cy} r={index === activeStage ? 3 : 2} data-active={index === activeStage} />
+          ))}
         </g>
         <path d={TRAJECTORY} fill="none" stroke="#263445" strokeWidth="1.5" />
         <motion.path
