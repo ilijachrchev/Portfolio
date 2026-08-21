@@ -479,4 +479,28 @@
   .missionIdentity {
     border-right: 0;
   }
+
+  .systemRail {
+    inset: 68px 0 auto;
+    width: auto;
+    height: 50px;
+    border-right: 0;
+    border-bottom: 1px solid var(--mission-border-soft);
+  }
+
+  .railHeader {
+    display: none;
+  }
+
+  .systemList {
+    display: flex;
+    height: 100%;
+    overflow-x: auto;
+    padding: 0;
+    scrollbar-width: none;
+  }
+
+  .systemList::-webkit-scrollbar {
+    display: none;
+  }
 }
