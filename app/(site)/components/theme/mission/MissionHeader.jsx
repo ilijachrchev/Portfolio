@@ -16,6 +16,21 @@ export default function MissionHeader() {
         <strong>ILJ-PORTFOLIO-01</strong>
       </div>
 
+      <dl className={styles.headerStatus} aria-label="Mission status">
+        <div>
+          <dt>Status</dt>
+          <dd><i className={styles.nominalLed} /> Nominal</dd>
+        </div>
+        <div>
+          <dt>Mode</dt>
+          <dd>Active</dd>
+        </div>
+        <div>
+          <dt>Link</dt>
+          <dd>Online</dd>
+        </div>
+      </dl>
+
       <dl className={styles.clockGrid} aria-label="Mission time">
         <div><dt>Local</dt><dd>{clock.local}</dd></div>
         <div><dt>Mission Elapsed</dt><dd>{clock.elapsed}</dd></div>
