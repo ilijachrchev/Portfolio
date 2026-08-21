@@ -172,3 +172,26 @@
   color: var(--mission-muted);
   text-align: left;
 }
+
+.systemButton::before {
+  content: '';
+  position: absolute;
+  inset: 7px auto 7px 0;
+  width: 2px;
+  background: transparent;
+}
+
+.systemButton:hover {
+  background: rgb(66 217 232 / 0.05);
+  color: var(--mission-text);
+}
+
+.systemButtonActive {
+  background: linear-gradient(90deg, rgb(66 217 232 / 0.12), transparent 92%);
+  color: var(--mission-text);
+}
+
+.systemButtonActive::before {
+  background: var(--mission-cyan);
+  box-shadow: 0 0 10px rgb(66 217 232 / 0.55);
+}
