@@ -4,6 +4,7 @@ import styles from './MissionExperience.module.css'
 import MissionHeader from './MissionHeader'
 import MissionNavigation from './MissionNavigation'
 import MissionTelemetry from './MissionTelemetry'
+import MissionStatusStrip from './MissionStatusStrip'
 
 export default function MissionShell() {
   return (
@@ -12,6 +13,7 @@ export default function MissionShell() {
       <MissionHeader />
       <MissionNavigation />
       <MissionTelemetry />
+      <MissionStatusStrip />
     </div>
   )
 }
