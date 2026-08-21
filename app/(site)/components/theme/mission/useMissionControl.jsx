@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useContext, useMemo, useState } from 'react'
+import { createContext, useCallback, useContext, useMemo, useRef, useState } from 'react'
 import { useMotionValue } from 'motion/react'
 import { MISSION_SYSTEMS } from './missionSystems'
 
@@ -26,15 +26,27 @@ export function findActiveMissionSystem(metrics, scrollTop, viewportHeight) {
 export function MissionControlProvider({ children }) {
   const [activeSystemId, setActiveSystemId] = useState('overview')
   const documentProgress = useMotionValue(0)
+  const activeSystemRef = useRef('overview')
+  const metricsRef = useRef([])
+  const scrollFrameRef = useRef(0)
+  const measureFrameRef = useRef(0)
+  const navigationLockRef = useRef(null)
   const activeSystem = MISSION_SYSTEMS.find((system) => system.id === activeSystemId)
     || MISSION_SYSTEMS[0]
+
+  const activateSystem = useCallback((systemId) => {
+    const system = MISSION_SYSTEMS.find((candidate) => candidate.id === systemId)
+    if (!system || activeSystemRef.current === system.id) return
+    activeSystemRef.current = system.id
+    setActiveSystemId(system.id)
+  }, [])
 
   const value = useMemo(() => ({
     activeSystem,
     activeSystemId,
     documentProgress,
-    setActiveSystemId,
-  }), [activeSystem, activeSystemId, documentProgress])
+    activateSystem,
+  }), [activateSystem, activeSystem, activeSystemId, documentProgress])
 
   return (
     <MissionControlContext.Provider value={value}>
