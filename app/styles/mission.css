@@ -64,3 +64,31 @@
   border: 2px solid var(--mission-shell);
   background: var(--mission-cyan);
 }
+
+:root[data-theme='mission'] [data-theme-slot='navbar'] {
+  display: none;
+}
+
+:root[data-theme='mission'] main {
+  position: relative;
+  z-index: 10;
+  width: auto;
+  margin-right: 248px;
+  margin-left: 212px;
+  padding-top: 68px;
+  padding-bottom: 30px;
+  background: rgb(5 8 13 / 0.64);
+  transition: margin 180ms ease;
+}
+
+:root[data-theme='mission'] section {
+  scroll-margin-top: 84px;
+}
+
+:root[data-theme='mission'] [data-theme-slot='hero'] {
+  min-height: calc(100vh - 68px);
+}
+
+:root[data-theme='mission'] .hero-poster {
+  background-image: none;
+}
