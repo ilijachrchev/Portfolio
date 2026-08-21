@@ -5,11 +5,22 @@ import SpiderTransition from './spider/SpiderTransition'
 import IdeTransition from './ide/IdeTransition'
 import Windows98Transition from './win98/Windows98Transition'
 import GithubTransition from './github/GithubTransition'
+import MissionTransition from './mission/MissionTransition'
 
 export default function ThemeTransitionLayer() {
   const { transition, commitPendingTheme, finishThemeTransition } = useTheme()
 
   if (!transition) return null
+
+  if (transition.kind === 'mission') {
+    return (
+      <MissionTransition
+        direction={transition.to === 'mission' ? 'enter' : 'exit'}
+        onCovered={commitPendingTheme}
+        onComplete={finishThemeTransition}
+      />
+    )
+  }
 
   if (transition.kind === 'repository') {
     return (

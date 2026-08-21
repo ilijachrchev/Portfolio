@@ -107,7 +107,7 @@ export function ThemeProvider({ children }) {
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     const transitionKind = getThemeTransition(theme, nextTheme)
 
-    if (transitionKind !== 'color' && !reduceMotion) {
+    if (transitionKind !== 'color' && (!reduceMotion || transitionKind === 'mission')) {
       setTransition({ from: theme, to: nextTheme, kind: transitionKind })
       return
     }
