@@ -305,3 +305,26 @@
   border: 1px solid var(--mission-border-soft);
   background: rgb(5 8 13 / 0.72);
 }
+
+.orbitPanel figcaption {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--mission-border-soft);
+  color: var(--mission-muted);
+  font: 600 8px/1.4 ui-monospace, SFMono-Regular, Consolas, monospace;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.orbitPanel figcaption strong {
+  color: var(--mission-cyan);
+  font: inherit;
+  letter-spacing: 0.08em;
+}
+
+.orbitPanel svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
