@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import { useEffect, useMemo, useRef } from 'react'
 import { AnimatePresence, motion } from 'motion/react'
-import { Check, ChevronDown, Code2, Github, Monitor, Moon, Palette, Sun } from 'lucide-react'
+import { Check, ChevronDown, Code2, Github, Monitor, Moon, Orbit, Palette, Sun } from 'lucide-react'
 import spiderMask from '@/app/icon.png'
 import { useTheme } from '../ThemeProvider'
 
@@ -13,6 +13,7 @@ const ICONS = {
   ide: Code2,
   win98: Monitor,
   github: Github,
+  mission: Orbit,
 }
 
 export default function ThemeSelector({ open, onOpenChange }) {
@@ -148,7 +149,16 @@ export default function ThemeSelector({ open, onOpenChange }) {
                       </span>
                       <span className="mt-0.5 block text-xs text-muted-foreground">{item.description}</span>
                       <span className="mt-2 flex gap-1.5" aria-hidden="true">
-                        {item.id === 'github' ? (
+                        {item.id === 'mission' ? (
+                          <span className="relative h-6 w-16 overflow-hidden rounded-sm border border-[#263445] bg-[#05080d]">
+                            <span className="absolute -bottom-3 -left-2 h-7 w-7 rounded-full border border-[#4c8dff]" />
+                            <span className="absolute left-3 top-1 h-7 w-10 rotate-[-10deg] rounded-[50%] border-t border-[#42d9e8]" />
+                            <span className="absolute right-2 top-1.5 h-1.5 w-1.5 rounded-full bg-[#62d394] shadow-[0_0_5px_#62d394]" />
+                            <span className="absolute bottom-1 right-1 h-1 w-5 bg-[#1d2a38]">
+                              <i className="block h-full w-3 bg-[#42d9e8]" />
+                            </span>
+                          </span>
+                        ) : item.id === 'github' ? (
                           <span className="relative h-6 w-16 overflow-hidden rounded-sm border border-[#30363d] bg-[#0d1117]">
                             <span className="absolute inset-x-1 top-1 h-1 border-b border-[#30363d]" />
                             <span className="absolute bottom-1 left-1 top-3 w-3 border-r border-[#30363d]" />
